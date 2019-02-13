@@ -23,6 +23,11 @@ header>section>h3{
     height:var(--header-height);
     width:var(--header-height);
     background-color:#29434e;
+    text-align: center;
+    vertical-align: -webkit-baseline-middle;
+}
+.btnMenu>i{
+    margin-top:7px;
 }
 #btnUser{
     position: absolute;
@@ -37,6 +42,7 @@ header>menu{
     overflow:hidden;
     display:none;
     padding: 0 20px;
+    
 }
 #userMenu{
     right:0;
@@ -49,8 +55,7 @@ main{
 menu>ul{
     list-style-type: none;
 }
-a{
-
+header a{
     font-size:27px;
     color:white;
 }
