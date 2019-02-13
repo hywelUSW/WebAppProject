@@ -1,0 +1,56 @@
+:root{
+    --header-height:50px;
+}
+html,body{
+    margin:0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+header{
+    position: sticky;
+    top:0;
+}
+header>section{
+    height:var(--header-height);
+    background-color: #546e7a;
+    display:flex;
+    color:white;
+}
+header>section>h3{
+    text-align:center;
+    width:calc(100% - (50px * 2));
+}
+.btnMenu{
+    height:var(--header-height);
+    width:var(--header-height);
+    background-color:#29434e;
+}
+#btnUser{
+    position: absolute;
+    right:0;
+}
+header>menu{
+    margin-top: 0;
+    background-color: #29424e;
+    height: 200px;
+    padding: 0;
+    position: absolute;
+    overflow:hidden;
+    display:none;
+    padding: 0 20px;
+}
+#userMenu{
+    right:0;
+}
+
+main{
+    border: solid black 2px;
+    height:2000px;
+}
+menu>ul{
+    list-style-type: none;
+}
+a{
+
+    font-size:27px;
+    color:white;
+}
