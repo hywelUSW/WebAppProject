@@ -1,6 +1,6 @@
 <header>
     <!--Header bar-->
-    <section>
+    <nav>
         <div id="btnMain" class="btnMenu">
             <i class="fas fa-bars fa-2x"></i>
         </div>
@@ -11,7 +11,7 @@
             <i class="far fa-user fa-2x"></i>
         </div>
         
-    </section>
+</nav>
         <menu id="mainMenu">
         <ul>
         <li><a href="<?=$root?>">Home</a></li>
@@ -49,7 +49,7 @@
         else 
         {?>
             <ul>
-            <li><a href="<?=$root."account/logout.php"?>">Logout</a></li>
+            <li><a onClick="toggleLogin()" href="#">Login</a></li>
             </ul>
                
             
@@ -57,4 +57,13 @@
         }
         ?>
         </menu>
+        <section id="login" onClick="toggleLogin()">
+            <div id="loginMenu">
+            <form action="/php/user/login.php" method="post">
+                <input name="email" placeholder="email" required>
+                <input name="password" type="password" required>
+                <button type="submit">Log in</button> 
+</form>
+            </div>
+        </section>
 </header>

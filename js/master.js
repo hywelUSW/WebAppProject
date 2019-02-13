@@ -13,3 +13,7 @@ function toggleMenu(selectedMenu,otherMenu){
     }
     $(selectedMenu).animate({width:'toggle'},350);
 }
+
+function toggleLogin(){
+    $("#login").fadeToggle();
+}
