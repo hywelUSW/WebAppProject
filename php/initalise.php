@@ -5,4 +5,5 @@ session_start();
 $root = "/students/15080900/projectapp/";
 $phpRoot = $_SERVER['DOCUMENT_ROOT'] . $root;
 $header = $root."header.php";
+require($root."php/user/getUserDetails.php");
 ?>

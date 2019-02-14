@@ -1,5 +1,10 @@
 <?php
  require_once("/students/15080900/projectapp/php/initalise.php");
+ //redirect to home page
+if(!isset($_SESSION['user']))
+{
+    header("Location:". $root);
+}
 ?>
 <html>
     <head>
@@ -16,7 +21,22 @@
             require_once($header);
         ?>
         <main>
-
+            <h4>Account details</h4>
+            <p> </p>
+            <hr>
+            <section>
+            <form action="../php/user/updateDetails.php" method="POST">
+                    <input type="text" name="email" placeholder="Email" value="<?=$userDetails['email']?>" required>
+                    <br><br>
+                    <input type="text" name="name" placeholder="Name" value="<?=$userDetails['name']?>" required>
+                    <br><br>
+                    <input type="password" name="NewPassword" placeholder="New password">
+                    <br><br>
+                    <input type="password" name="password" placeholder="Current Password (required)" required>
+                    <br><br>
+                    <button type="submit">Update Details</button>
+            </form>
+            </section>
         </main>
     </body>
     <footer>

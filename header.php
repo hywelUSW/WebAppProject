@@ -31,7 +31,13 @@
         <menu id="userMenu">
         <div>
             <p>Welcome, <?php 
-            require($root."php/user/getUsername.php");
+                if($userDetailsAvailable)
+                {
+                    echo $userDetails['Name'];
+                }
+                else {
+                    echo "Guest";
+                }
                 ?>
              </p>
         </div>
