@@ -1,5 +1,5 @@
 <?php
- include_once("/students/15080900/projectapp/php/initalise.php");
+ require_once("/students/15080900/projectapp/php/initalise.php");
 ?>
 <html>
     <head>
@@ -12,7 +12,7 @@
     </head>
     <body>
         <?php
-            require_once($root."header.php");
+            require_once($header);
         ?>
         <main>
         <section>

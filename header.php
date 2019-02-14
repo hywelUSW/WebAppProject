@@ -61,7 +61,7 @@
         <section class="popup">
             <div class="popupDialog">
             <h4>Login</h4>
-            <form action="/php/user/login.php" method="post">
+            <form action="<?=$root?>php/user/login.php" method="post">
                 <input name="email" placeholder="email" required>
                 <br><br>
                 <input name="password" type="password" placeholder="password" required>

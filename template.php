@@ -13,7 +13,7 @@
     <body>
         <?php
         //get header file
-            require_once("header.php");
+            require_once($header);
         ?>
         <main>
 
