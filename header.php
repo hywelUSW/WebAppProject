@@ -5,13 +5,10 @@
             <i class="fas fa-bars fa-2x"></i>
         </div>
         <h3 class="mainHeading">Drone Checklist</h3>
-        
-       
         <div id="btnUser" class="btnMenu">
             <i class="far fa-user fa-2x"></i>
         </div>
-        
-</nav>
+    </nav>
         <menu id="mainMenu">
         <ul>
         <li><a href="<?=$root?>">Home</a></li>
