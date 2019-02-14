@@ -12,10 +12,10 @@
     </head>
     <body>
         <?php
-            require_once("header.php");
+            require_once($root."header.php");
         ?>
         <main>
-            
+        <h4>Home</h4>
         </main>
     </body>
     <footer>

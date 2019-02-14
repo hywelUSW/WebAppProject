@@ -15,26 +15,25 @@
             require_once($root."header.php");
         ?>
         <main>
-        <section>
-            <h4>About</h4>
-            <p>This app is used to help proffesional drone users send</p>
-        </section>
-        <hr>
-        <section id="contact">
-            <h4>Contact us</h4>
-            <p>If you need to contact us, use the form below</p>
-            <form method="POST">
-                <input type="email" name="email" placeholder="Email address">
+            <h4>Register</h4>
+            <p>To register enter your details below</p>
+            <hr>
+            <form action="../php/user/newUser.php" method="POST">
+                <input type="text" name="email" placeholder="Email" required>
                 <br><br>
-                <textarea name="message" cols="40" rows="5" placeholder="message..."></textarea>
-                <br>
-                <button type="submit">Send</button>
+                <input type="text" name="name" placeholder="Name" required>
+                <br><br>
+                <input type="password" name="password" placeholder="Password" required>
+                <br><br>
+                <input type="password" name="passwordConfirm" placeholder="Confirm password" required>
+                <br><br>
+                <button type="submit">Register</button>
             </form>
-        </section>
+
         </main>
     </body>
     <footer>
 
     </footer>
 </html>
-<script src="<?=$root?>js/master.js"></script>
+<script src="../js/master.js"></script>

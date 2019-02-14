@@ -36,7 +36,7 @@ header>nav>h3{
 header>menu{
     margin-top: 0;
     background-color: #29424e;
-    height: 200px;
+    height: 100vh;
     padding: 0;
     position: absolute;
     overflow:hidden;
@@ -44,6 +44,7 @@ header>menu{
     padding: 0 20px;
     
 }
+
 #userMenu{
     right:0;
 }
@@ -51,6 +52,7 @@ header>menu{
 
 menu>ul{
     list-style-type: none;
+    padding: 0 20px;
 }
 header a{
     font-size:27px;
@@ -87,4 +89,5 @@ main{
     margin: 0 10px;
     border: solid black 2px;
     height:2000px;
+    padding:1% 2%;
 }

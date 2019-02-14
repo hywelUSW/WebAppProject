@@ -50,6 +50,7 @@
         {?>
             <ul>
             <li><a href="#" class="loginLink">Login</a></li>
+            <li><a href="<?=$root."register/"?>" class="loginLink">register</a></li>
             </ul>
                
             
