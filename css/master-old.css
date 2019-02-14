@@ -1,0 +1,54 @@
+html,body{
+    margin:0;
+    font-family: Helvetica, Arial, sans-serif;
+    
+}
+.mainHeading{
+    font-size:25px;
+    margin-top:10px;
+}
+.subHeading{
+    font-size:20px;
+}
+.mainText{
+    font-size:15px;
+}
+header ~ section{
+
+    
+   
+}
+section{
+    position: sticky;
+    display:flex;
+    height:50px;
+    background-color: #546e7a;
+    top:0;
+    align-content: center;
+    color:white;
+}
+h3{
+    text-align:center;
+    width:calc(100% - (50px * 2));
+}
+.btnMenu{
+    height:50px;
+    width: 50px;
+    background-color:#29434e;
+}
+#btnUser{
+    position: absolute;
+    right:0;
+}
+menu{
+    margin-top:55px;
+    width:250px;
+    background-color:red;
+    height:200px;
+    left:0;
+}
+main{
+    height:2000px;
+    border: solid black 1px;
+    margin: 0 20px 10px;
+}

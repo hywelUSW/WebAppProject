@@ -49,7 +49,7 @@
         else 
         {?>
             <ul>
-            <li><a onClick="toggleLogin()" href="#">Login</a></li>
+            <li><a href="#" class="loginLink">Login</a></li>
             </ul>
                
             
@@ -57,13 +57,16 @@
         }
         ?>
         </menu>
-        <section id="login" onClick="toggleLogin()">
-            <div id="loginMenu">
+        <section class="popup">
+            <div class="popupDialog">
+            <h4>Login</h4>
             <form action="/php/user/login.php" method="post">
                 <input name="email" placeholder="email" required>
-                <input name="password" type="password" required>
+                <br><br>
+                <input name="password" type="password" placeholder="password" required>
+                <br><br>
                 <button type="submit">Log in</button> 
-</form>
+            </form>
             </div>
         </section>
 </header>
