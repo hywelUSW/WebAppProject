@@ -3,6 +3,7 @@
  if(isset($_SESSION['user']))
  {
     header("Location:". $root);
+    exit;
  }
 ?>
 <html>

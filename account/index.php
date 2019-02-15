@@ -4,6 +4,7 @@
 if(!isset($_SESSION['user']))
 {
     header("Location:". $root);
+    die();
 }
 ?>
 <html>
