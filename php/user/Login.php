@@ -1,14 +1,12 @@
 <?php
-echo "hello world!";
 require_once('userClass.php');
 $User = new user();
 If($User->userVerify($_POST['email'],$_POST['password']))
 {
-    
-    echo("correct Details");
+    header("Location:". $root);
 }
 else {
-    echo("Incorrect details");
+    header("Location:". $root."login/");
 }
 
 ?>

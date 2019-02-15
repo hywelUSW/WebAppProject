@@ -29,7 +29,7 @@ $("main").click(function(e){
 });
 
 //popup dialog
-$(".loginLink").click(function(){
+$("#loginLink").click(function(){
     $("#userMenu").animate({width:'toggle'},350);
     $(".popup").fadeToggle();
 });

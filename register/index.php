@@ -1,5 +1,9 @@
 <?php
  require_once("/students/15080900/projectapp/php/initalise.php");
+ if(isset($_SESSION['user']))
+ {
+    header("Location:". $root);
+ }
 ?>
 <html>
     <head>
@@ -23,11 +27,13 @@
                 <br><br>
                 <input type="text" name="name" placeholder="Name" required>
                 <br><br>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" id="password" required>
                 <br><br>
-                <input type="password" name="passwordConfirm" placeholder="Confirm password" required>
-                <br><br>
-                <button type="submit">Register</button>
+                <input type="password" name="passwordConfirm" placeholder="Confirm password" id="passwordConfirm" required>
+                <br>
+                <p id="RegMsg"><?=$errMsg?> </p>
+                <br>
+                <button type="submit" id="RegSubmit" disabled>Register</button>
             </form>
 
         </main>
@@ -36,4 +42,5 @@
 
     </footer>
 </html>
-<script src="../js/master.js"></script>
+<script src="<?=$root?>/js/master.js"></script>
+<script src="js/script.js"></script>
