@@ -1,5 +1,10 @@
 <?php
  include_once("/students/15080900/projectapp/php/initalise.php");
+ if(!isset($_SESSION['user']))
+ {
+     header("Location:".$root."login/");
+     die();
+ }
 ?>
 <html>
     <head>
@@ -16,7 +21,7 @@
             require_once($header);
         ?>
         <main>
-
+            <h3></h3>
         </main>
     </body>
     <footer>

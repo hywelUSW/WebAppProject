@@ -36,8 +36,9 @@ header>nav>h1{
 }
 header>menu{
     margin-top: 0;
-    background-color: #29424e;
-    height: 100vh;
+    margin-bottom:0;
+    background-color: #819ca9;
+    height: 94.8vh;
     padding: 0;
     position: absolute;
     overflow:hidden;
@@ -76,8 +77,8 @@ menu a{
     border-radius:15px;
     padding:10px;
 }
-.popupDialog h4{
-    padding-top:15px;
+.popupDialog h3{
+    padding-top:0px;
 }
 .popupDialog input{
     width:100%;
@@ -91,6 +92,7 @@ main{
     min-height: 90vh;
     padding:1% 2%;
 }
+
 .btnMain{
     padding:10px;
     width:95%;
@@ -99,6 +101,7 @@ main{
     color:white;
     background-color:#29434e;
     border:none;
+    
 
 }
 .btnMain:active{

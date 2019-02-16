@@ -39,6 +39,22 @@ class drone{
             return false;    
         }
     }
+    function getDroneHeaders(){
+        
+        $db = new database();
+        $conn = $db->dbConnect();
+        $query = $conn->prepare("show columns from drone");
+        $query->execute();
+        
+        $result = $query->get_result();
+        print_r($result);
+        while($row = $result->fetch_assoc())
+        {
+            print_r($row);
+            echo "<br>";
+        }
+        
+    }
 }
 
 ?>

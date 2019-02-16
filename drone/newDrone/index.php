@@ -1,9 +1,5 @@
 <?php
  include_once("/students/15080900/projectapp/php/initalise.php");
-if(!isset($_SESSION['user']))
-{
-
-}
 ?>
 <html>
     <head>
@@ -20,7 +16,15 @@ if(!isset($_SESSION['user']))
             require_once($header);
         ?>
         <main>
-            <h2>New Drone</h2>
+            <h3>Add new Drone</h3>
+            <section>
+                <form action="" method="POST">
+                   <?php
+                   //generate text inputs
+                    require_once($root."php/drone/getTableHeaders.php");
+                    ?>
+                </form>
+            <section>
         </main>
     </body>
     <footer>

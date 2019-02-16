@@ -22,7 +22,7 @@
         </section>
         <hr>
         <section id="contact">
-            <h4>Contact us</h4>
+            <h2>Contact us</h2>
             <p>If you need to contact us, use the form below</p>
             <form method="POST">
                 <input type="email" name="email" placeholder="Email address">

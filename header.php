@@ -63,7 +63,7 @@
         </menu>
         <section class="popup">
             <div class="popupDialog">
-            <h4>Login</h4>
+            <h3>Login</h3>
             <p>Not a user? <a href="<?=$root."login/"?>">Register here</a></p>
             <form action="<?=$root?>php/user/login.php" method="post">
                 <input name="email" placeholder="email" required>
