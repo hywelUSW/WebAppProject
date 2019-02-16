@@ -1,14 +1,14 @@
 <?php
     require_once("droneClass.php");
     $drone = new drone();
-    $result = $drone->getDroneOVerview($_GET['droneID']);
+    $result = $drone->getDroneOVerview($_GET['DroneID']);
     if($result)
     {
-
+        return $result;
     }
     else
     {
-        //drone detaisl
+        return false;
     }
 
 ?>

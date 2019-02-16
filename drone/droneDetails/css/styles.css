@@ -1,0 +1,19 @@
+#message{
+    margin-top:10vh;
+    text-align:center;
+}
+summary h3{
+    float:left;
+}
+summary button{
+    float:right;
+    margin-top:13.720;
+    border-radius:7px;
+    
+    color:white;
+    background-color:#29434e;
+    border:none;
+    font-size:22px;
+    padding: 5px;
+
+}
