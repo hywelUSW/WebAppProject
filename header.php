@@ -16,7 +16,7 @@
             if(isset($_SESSION['user']))
             {
                 ?>
-                <li><a href="<?=$root."checklist/"?>">Checklist</a></li>
+                <li><a href="<?=$root."checklists/"?>">Checklist</a></li>
                 <li><a href="<?=$root."drone/"?>">Drone</a></li>
     
                 <?php

@@ -1,0 +1,7 @@
+.checklists{
+    display:flex;
+    justify-content: space-between;
+}
+.checklists a{
+    margin-top: 21.280px;
+}

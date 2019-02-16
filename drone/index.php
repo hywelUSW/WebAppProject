@@ -37,7 +37,7 @@ require_once("/students/15080900/projectapp/php/initalise.php");
                         ?>
                         <div class="droneList">
                             
-                            <h4><a href="<?="droneDetails?DroneID=".$row['DroneID']?>"><?=$row['DroneName']?></a><h4>
+                            <h4><a href="<?="droneDetails?DroneID=".$row['DroneID']?>"><?=$row['DroneName']?></a></h4>
                         </div>
                         <hr>
                         <?php

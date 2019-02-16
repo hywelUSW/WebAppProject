@@ -4,24 +4,37 @@ class checklist{
 
     function newChecklist()
     {
-        $db = new database();
-        $conn = $db->dbConnect();
-
-        $query = $conn->prepare("INSERT INTO CHECKLIST VALUES (?,?,?,?,?");
-        $query->bind_param("iisss",$userID,$droneID,$name,date("Y-m-d H:i:s"),$desc);
-        $query->execute();
-        $result = $query->get_result();
-        if($result->num_rows > 0)
+        //check that date is correct
+        if(date("Y-m-d") < $date)
         {
-            
+            $db = new database();
+            $conn = $db->dbConnect();
+    
+            $query = $conn->prepare("INSERT INTO CHECKLIST VALUES (?,?,?,?,?");
+            $query->bind_param("iisss",$userID,$droneID,$name,$date,$desc);
+            $query->execute();
+            if($query->affected_rows > 0)
+            {
+
+            }
+            else
+            {
+                return false;
+            }
         }
+        else
+        {
+            //wrong date
+            return false;
+        }
+        
     }
     function getUserChecklists($UserID)
     {
         $db = new database();
         $conn = $db->dbConnect();
-        $query = $conn->prepare("SELECT * FROM checklist WHERE UserID = ? ORDEY BY dateCreated");
-        $query->bind_para("i",$UserID);
+        $query = $conn->prepare("SELECT * FROM checklist WHERE UserID = ? ORDER BY PlannedDate");
+        $query->bind_param("i",$UserID);
         $query->execute();
         $result = $query->get_result();
         if($result->num_rows > 0)
