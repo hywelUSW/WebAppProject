@@ -11,6 +11,7 @@ require_once("/students/15080900/projectapp/php/initalise.php");
         <title>App project</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?=$root?>css/master.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1'/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
@@ -22,7 +23,7 @@ require_once("/students/15080900/projectapp/php/initalise.php");
         ?>
         <main>
             <h3>Drone List</h3>
-            <a href="<?=$root?>drone/newDrone">Add new drone</a>
+            <a href="<?=$root?>drone/newDrone"><button class="btnMain">Add new drone</button></a>
             <section id="droneList">
             <?php
                 require_once($root."php/drone/droneClass.php");
@@ -31,16 +32,21 @@ require_once("/students/15080900/projectapp/php/initalise.php");
                 
                 if($result)
                 {
-                    foreach($result as $row)
+                    while($row = $result->fetch_assoc())
                     {
-                        //print row results here
-                        echo "no";
+                        ?>
+                        <div class="droneList">
+                            
+                            <h4><a href="<?="drone/?DroneID=".$row['DroneID']?>"><?=$row['DroneName']?></a><h4>
+                        </div>
+                        <hr>
+                        <?php
                     }
                 }
                 else
                 {
                     ?>
-                    <h4 id="msg" align="center">No drones added!</h4>
+                    <h4 id="msg" style="text-align:center;">No drones added!</h4>
                     <?php
                 }
             ?>

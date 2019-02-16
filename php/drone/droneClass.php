@@ -8,15 +8,13 @@ class drone{
         
         $db = new database();
         $conn = $db->dbConnect();
-        $query = $conn->prepare("SELECT DroneID,DroneName from Drone WHERE UserID = ? ORDER BY DroneName");
+        $query = $conn->prepare("SELECT * from drone WHERE UserID = ? ORDER BY DroneName");
         $query->bind_param("i",$userID);
         $query->execute();
-        
-        if($query->num_rows > 0)
+        $result = $query->get_result();
+        if($result->num_rows > 0)
         {
-           
-            print_r($result);
-            return $result->fetch_assoc();
+            return $result;
         }
         else
         {
@@ -30,7 +28,8 @@ class drone{
         $query = $conn->prepare("SELECT * FROM Drone WHERE DroneID = ?");
         $query->bind_param(i,$droneID);
         $query->execute();
-        if($query->num_rows > 0)
+        $result = $query->get_result();
+        if($result->num_rows > 0)
         {
             $conn->close();
             return $result->fetch_assoc();

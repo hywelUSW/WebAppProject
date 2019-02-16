@@ -18,6 +18,7 @@ header>nav{
 header>nav>h1{
     text-align:center;
     width:calc(100% - (50px * 2));
+    margin-top:10px;
 }
 .btnMenu{
     height:var(--header-height);
@@ -69,9 +70,8 @@ menu a{
     text-align: center;
 }
 .popupDialog{
-    margin: 50px auto;
+    margin: 20vh auto;
     background-color:white;
-    
     width:200px;
     border-radius:15px;
     padding:10px;
@@ -90,4 +90,17 @@ main{
     border: solid black 2px;
     min-height: 90vh;
     padding:1% 2%;
+}
+.btnMain{
+    padding:10px;
+    width:95%;
+    border-radius:15px;
+    font-size:20px;
+    color:white;
+    background-color:#29434e;
+    border:none;
+
+}
+.btnMain:active{
+    background-color:#223942;
 }
