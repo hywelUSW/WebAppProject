@@ -15,7 +15,7 @@ header>nav{
     display:flex;
     color:white;
 }
-header>nav>h3{
+header>nav>h1{
     text-align:center;
     width:calc(100% - (50px * 2));
 }
@@ -54,7 +54,7 @@ menu>ul{
     list-style-type: none;
     padding: 0 20px;
 }
-header a{
+menu a{
     font-size:27px;
     color:white;
 }
@@ -71,7 +71,7 @@ header a{
 .popupDialog{
     margin: 50px auto;
     background-color:white;
-    height:200px;
+    
     width:200px;
     border-radius:15px;
     padding:10px;
@@ -88,6 +88,6 @@ header a{
 main{
     margin: 0 10px;
     border: solid black 2px;
-    height:2000px;
+    min-height: 90vh;
     padding:1% 2%;
 }

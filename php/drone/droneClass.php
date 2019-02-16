@@ -5,14 +5,17 @@ class drone{
 
 
     function getDroneList($userID){
+        
         $db = new database();
         $conn = $db->dbConnect();
         $query = $conn->prepare("SELECT DroneID,DroneName from Drone WHERE UserID = ? ORDER BY DroneName");
         $query->bind_param("i",$userID);
         $query->execute();
+        
         if($query->num_rows > 0)
         {
-            $conn->close();
+           
+            print_r($result);
             return $result->fetch_assoc();
         }
         else
@@ -38,6 +41,5 @@ class drone{
         }
     }
 }
-
 
 ?>

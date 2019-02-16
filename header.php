@@ -4,7 +4,7 @@
         <div id="btnMain" class="btnMenu">
             <i class="fas fa-bars fa-2x"></i>
         </div>
-        <h3 class="mainHeading">Drone Checklist</h3>
+        <h1 class="mainHeading">Drone Checklist</h1>
         <div id="btnUser" class="btnMenu">
             <i class="far fa-user fa-2x"></i>
         </div>
@@ -64,6 +64,7 @@
         <section class="popup">
             <div class="popupDialog">
             <h4>Login</h4>
+            <p>Not a user? <a href="<?=$root."login/"?>">Register here</a></p>
             <form action="<?=$root?>php/user/login.php" method="post">
                 <input name="email" placeholder="email" required>
                 <br><br>
