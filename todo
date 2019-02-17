@@ -3,6 +3,7 @@ General
     fix email
     add icons
     fix menu links sizing
+    Put PHP code into webpages rather than php page to prevent hacker abuse
 Users
     user password reset
 

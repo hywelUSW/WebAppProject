@@ -46,6 +46,41 @@ class checklist{
             return false;
         }
     }
+    function getDroneChecklists($droneID)
+    {
+        $db = new database();
+        $conn = $db->dbConnect();
+        $query = $conn->prepare("SELECT * FROM checklist WHERE DroneID = ?");
+        $query->bind_param("i",$ChecklistID);
+        $query->execute();
+        $result = $query->get_result();
+        if($result->num_rows > 0)
+        {
+            return $result;
+        }
+        else
+        {
+            return false;
+        } 
+    }
+
+    function getChecklistOverview($ChecklistID)
+    {
+        $db = new database();
+        $conn = $db->dbConnect();
+        $query = $conn->prepare("SELECT * FROM checklist WHERE ChecklistID = ? LIMIT 1");
+        $query->bind_param("i",$ChecklistID);
+        $query->execute();
+        $result = $query->get_result();
+        if($result->num_rows > 0)
+        {
+            return $result;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 
 

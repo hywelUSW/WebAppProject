@@ -6,25 +6,25 @@
      die();
  }
  //echck that drone is set
- if($_GET['DroneID'] == null)
+ if($_GET['checklistID'] == null)
  {
-    header("Location:".$root."drone/");
+    header("Location:".$root."checklists/");
      die();
  }
- require_once($root."php/drone/getDroneOverview.php");
+ /*
+ require_once($root."php/checklist/getChecklistOverview.php");
  if($result)
  {  //user owns data
      if($result['UserID'] != $_SESSION['user'])
      {
-        header("Location:".$root."drone/");
+        header("Location:".$root."checklist/");
         die();
      }
-     
- }else
+ }
+ else
  {
      $Nodata = true;
- }
-
+ }*/
 ?>
 <html>
     <head>
@@ -49,16 +49,29 @@
                     {
                         ?>
                         <h3>Drone Details</h3>
-                        <h3 id="message">Drone does not exist!</h3>
+                        <h3 id="message">Checklist does not exist!</h3>
                         <?php
                     }else{
                         ?>
                         <summary>
-                            <h3><?=$result['DroneName']?></h3>
-                            <button >Edit details</button>
+                            <h3><?=$result['Name']?></h3>
                         </summary>
-                        <div id="flightList">
-                            <h4>Flights</h4>
+                        <div id="overview">
+                        <ul>
+                            <li>result: <?=$result['DatePlanned']?></li>
+                            <li>result: <?=$result['Description']?></li>
+                        </ul>
+                        </div>
+                        <div id="buttonList">
+                            <button class="btnMain"><a href="">Edit</a></button>
+                            <br><br>
+                            <button class="btnMain"><a href="">Edit</a></button>
+                            <br><br>
+                            <button class="btnMain"><a href="">Edit</a></button>
+                            <br><br>
+                            <button class="btnMain"><a href="">Edit</a></button>
+                            <br><br>
+                            <button class="btnMain"><a href="">Edit</a></button>
                         </div>
                         <?php
                     }

@@ -10,7 +10,7 @@ if($result)
     {
         ?>
         <div class="Checklists">           
-            <h4><a href="<?="checklist?checklistID=".$row['ChecklistID']?>"><?=$row['Name']?></a></h4>
+            <h4><a href="<?="checklistDetails?checklistID=".$row['ChecklistID']?>"><?=$row['Name']?></a></h4>
                 <a href="download?checklistID=<?=$row['ChecklistID']?>">Download</a>
         </div>
         <hr>

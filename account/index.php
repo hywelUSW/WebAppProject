@@ -6,6 +6,7 @@ if(!isset($_SESSION['user']))
     header("Location:". $root);
     die();
 }
+require_once($root."php/user/updateDetails.php");
 ?>
 <html>
     <head>
@@ -26,7 +27,7 @@ if(!isset($_SESSION['user']))
             <p> </p>
             <hr>
             <section>
-            <form action="../php/user/updateDetails.php" method="POST">
+            <form action="" method="POST">
                     <input type="text" name="email" placeholder="Email" value="<?=$userDetails['email']?>" required>
                     <br><br>
                     <input type="text" name="name" placeholder="Name" value="<?=$userDetails['name']?>" required>
@@ -34,7 +35,7 @@ if(!isset($_SESSION['user']))
                     <input type="password" name="NewPassword" placeholder="New password">
                     <br><br>
                     <input type="password" name="password" placeholder="Current Password (required)" required>
-                    <br><br>
+                    <br><?=$Msg?><br>
                     <button type="submit">Update Details</button>
             </form>
             </section>

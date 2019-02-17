@@ -1,5 +1,15 @@
 <?php
  include_once("/students/15080900/projectapp/php/initalise.php");
+ require_once($root."php/user/userClass.php");
+ $User = new user();
+If($User->userVerify($_POST['email'],$_POST['password']))
+{
+    header("Location:". $root);
+    die();
+}
+else {
+    $errmsg = '<p class="ErrMsg">Invalid login details!</p>';
+}
 ?>
 <html>
     <head>
@@ -18,13 +28,13 @@
         <main>
             <h3>Login</h3>
             <section>
-            <p>Not a user? <a href="<?=$root."login/"?>">Register here</a></p>
-            <form action="../php/user/login.php" method="post">
-                <input name="email" type="email" required>
+            <p>Not a user? <a href="<?=$root?>register/">Register here</a></p>
+            <form action="<?=$root?>login/" method="post">
+                <input name="email" placeholder="email" required>
                 <br><br>
-                <input name="password" type="password" required>
-                <br><br>
-                <input type="submit"> 
+                <input name="password" type="password" placeholder="password" required>
+                <?=$errmsg?><br>
+                <button type="submit" >Log in</button> 
             </form>
             </section>
         </main>
