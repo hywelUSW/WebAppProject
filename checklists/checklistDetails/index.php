@@ -11,20 +11,9 @@
     header("Location:".$root."checklists/");
      die();
  }
- /*
+ 
  require_once($root."php/checklist/getChecklistOverview.php");
- if($result)
- {  //user owns data
-     if($result['UserID'] != $_SESSION['user'])
-     {
-        header("Location:".$root."checklist/");
-        die();
-     }
- }
- else
- {
-     $Nodata = true;
- }*/
+
 ?>
 <html>
     <head>
@@ -58,20 +47,21 @@
                         </summary>
                         <div id="overview">
                         <ul>
-                            <li>result: <?=$result['DatePlanned']?></li>
+                            <li>result: <?=$result['PlannedDate']?></li>
                             <li>result: <?=$result['Description']?></li>
                         </ul>
                         </div>
                         <div id="buttonList">
-                            <button class="btnMain"><a href="">Edit</a></button>
+                            <a href=""> <button class="btnMain">Edit</button></a>
                             <br><br>
-                            <button class="btnMain"><a href="">Edit</a></button>
+                            <a href=""> <button class="btnMain">Edit</button></a>
                             <br><br>
-                            <button class="btnMain"><a href="">Edit</a></button>
+                            <a href=""> <button class="btnMain">Edit</button></a>
                             <br><br>
-                            <button class="btnMain"><a href="">Edit</a></button>
+                            <a href=""> <button class="btnMain">Edit</button></a>
                             <br><br>
-                            <button class="btnMain"><a href="">Edit</a></button>
+                            <a href=""> <button class="btnMain">Edit</button></a>
+                            <br><br>
                         </div>
                         <?php
                     }

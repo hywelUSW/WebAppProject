@@ -51,7 +51,7 @@ class checklist{
         $db = new database();
         $conn = $db->dbConnect();
         $query = $conn->prepare("SELECT * FROM checklist WHERE DroneID = ?");
-        $query->bind_param("i",$ChecklistID);
+        $query->bind_param("i",$droneID);
         $query->execute();
         $result = $query->get_result();
         if($result->num_rows > 0)
