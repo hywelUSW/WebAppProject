@@ -10,31 +10,65 @@
         </div>
     </nav>
         <menu id="mainMenu">
-        <ul>
-            <li><a href="<?=$root?>">Home</a></li>
-            <hr>
+            <ul>
+                <li><a href="<?=$root?>"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+                <hr>
+                <?php
+                if(isset($_SESSION['user']))
+                {
+                    ?>
+                    <li><a href="<?=$root."checklists/"?>"><i class="fas fa-tasks"></i>&nbsp;Checklist</a></li>
+                    <hr>
+                    <li><a href="<?=$root."drone/"?>"><i class="fas fa-helicopter"></i>&nbsp;Drone</a></li>
+                    <hr>
+                    <?php
+                }
+                ?>
+                
+                <li><a href="<?=$root."about/"?>"><i class="fas fa-info"></i>&nbsp;About</a></li>
+            </ul>
+        </menu>
+        <menu id="userMenu">
+        <div id="userInfo">
+                <?php 
+                    if($userDetailsAvailable)
+                    {
+                        ?>
+                        <i class="far fa-user-circle fa-3x"></i>
+                        <p>Welcome, <?=$userDetails['Name']?></p>
+                        <p><?=$userDetails['Email']?></p>
+                        <?php
+                    }
+                    else {
+                        echo "<p>Welcome, Guest<p>";
+                    }
+                    ?>
+                
+        <hr>
+        </div>
             <?php
             if(isset($_SESSION['user']))
             {
-                ?>
-                <li><a href="<?=$root."checklists/"?>">Checklist</a></li>
+            ?>
+                    <ul>
+                    <li><a href="<?=$root."account/"?>"><i class="fas fa-cogs"></i>&nbsp;Account details</a></li>
+                    <hr>
+                    <li><a href="<?=$root."account/logout.php"?>"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a></li>
+                    </ul>
+            <?php
+            }
+            else 
+            {?>
+                <ul>
+                <li><a href="#" class="loginLink" id="loginLink"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a></li>
                 <hr>
-                <li><a href="<?=$root."drone/"?>">Drone</a></li>
-    
-                <?php
+                <li><a href="<?=$root."register/"?>" class="loginLink"><i class="fas fa-user-plus"></i>&nbsp;register</a></li>
+                </ul>
+                
+                
+            <?php
             }
             ?>
-            <hr>
-            <li><a href="<?=$root."about/"?>">About</a></li>
-        </ul>
-        </menu>
-        <menu id="userMenu">
-        <ul>
-                <li><a href="<?=$root."account/"?>">Account Details</a></li>
-                <hr>
-                <li><a href="<?=$root."account/logout.php"?>"><i class="fas fa-sign-out-alt fa-lg"></i>Logout</a></li>
-        </ul>
-       
         </menu>
         <section class="popup">
             <div class="popupDialog">

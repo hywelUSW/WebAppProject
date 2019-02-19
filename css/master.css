@@ -38,32 +38,40 @@ header menu{
     margin-top: 0;
     margin-bottom:0;
     background-color: #819ca9;
-    height: 94.8vh;
+    height: 94.6vh;
     padding: 0;
     position: absolute;
     display:none;
     padding: 0 20px;
-    
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
     
 }
 
 #userMenu{
     right:0;
-    white-space: nowrap;
-    overflow: hidden;
+    
 }
-
+#userInfo{
+    text-align: right;
+    margin:5px;
+}
+#userInfo p{
+    text-align: left;
+    margin: 5px 0px;
+}
 
 menu ul{
     list-style-type: none;
     padding: 0 20px;
-    text-align:center;
+    
     word-break:none;
 }
 menu a{
     font-size:27px;
     color:black;
-    text-emphasis: none;
+    text-decoration: none;
 }
 .popup{
     display:none;

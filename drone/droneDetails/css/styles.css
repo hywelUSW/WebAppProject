@@ -3,7 +3,7 @@
     text-align:center;
 }
 summary h3{
-    float:left;
+   display: inline-block;
 }
 summary button{
     float:right;

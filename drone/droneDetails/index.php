@@ -56,8 +56,19 @@
                         <summary>
                             <h3><?=$result['DroneName']?></h3>
                             <button >Edit details</button>
-                        </summary>
-                        <br><hr><br>
+                        </summary>  
+                        <hr>
+                        <div id="basicDetails">
+                            <h4>Basic Specifications</h4>
+                            <ul>
+                                <li>Manufacturer:</li>
+                                <li>Manufacturer:</li>
+                                <li>Manufacturer:</li>
+                                <li>Manufacturer:</li>
+                            </ul>
+                            <a href="fullSepc?DroneID=<?=$result['DroneID']?>">View full spec</a>
+                        </div>              
+                        <hr>
                         <div id="flightList">
                             <h4>Flights</h4>
                                 <?php
