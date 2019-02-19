@@ -25,7 +25,7 @@
                 }
                 ?>
                 
-                <li><a href="<?=$root."about/"?>"><i class="fas fa-info"></i>&nbsp;About</a></li>
+                <li><a href="<?=$root."about/"?>"><i class="fas fa-info-circle"></i>&nbsp;About</a></li>
             </ul>
         </menu>
         <menu id="userMenu">

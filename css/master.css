@@ -53,12 +53,12 @@ header menu{
     right:0;
     
 }
-#userInfo{
-    text-align: right;
+#userInfo i{
+   
     margin:5px;
 }
 #userInfo p{
-    text-align: left;
+    
     margin: 5px 0px;
 }
 
