@@ -52,16 +52,17 @@
                         </ul>
                         </div>
                         <div id="buttonList">
-                            <a href=""> <button class="btnMain">Edit</button></a>
+                            <a href=""> <button class="btnMain">Loading List</button></a>
                             <br><br>
-                            <a href=""> <button class="btnMain">Edit</button></a>
+                            <a href=""> <button class="btnMain">Pre-Flight</button></a>
                             <br><br>
-                            <a href=""> <button class="btnMain">Edit</button></a>
+                            <a href=""> <button class="btnMain">Post-Take Off</button></a>
                             <br><br>
-                            <a href=""> <button class="btnMain">Edit</button></a>
+                            <a href=""> <button class="btnMain">Pre-Landing</button></a>
                             <br><br>
-                            <a href=""> <button class="btnMain">Edit</button></a>
-                            <br><br>
+                            <a href=""> <button class="btnMain">Post-Landing</button></a>
+                            <hr>
+                            <a href=""> <button class="btnMain">Download(PDF)</button></a>
                         </div>
                         <?php
                     }

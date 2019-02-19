@@ -11,7 +11,7 @@ if($result)
         ?>
         <div class="Checklists">           
             <h4><a href="<?="checklistDetails?checklistID=".$row['ChecklistID']?>"><?=$row['Name']?></a></h4>
-                <a href="download?checklistID=<?=$row['ChecklistID']?>">Download</a>
+                <a href="download?checklistID=<?=$row['ChecklistID']?>"><i class="fas fa-download fa-lg"></i></a>
         </div>
         <hr>
         <?php

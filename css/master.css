@@ -27,38 +27,43 @@ header>nav>h1{
     text-align: center;
     vertical-align: -webkit-baseline-middle;
 }
-.btnMenu>i{
+.btnMenu i{
     margin-top:7px;
 }
 #btnUser{
     position: absolute;
     right:0;
 }
-header>menu{
+header menu{
     margin-top: 0;
     margin-bottom:0;
     background-color: #819ca9;
     height: 94.8vh;
     padding: 0;
     position: absolute;
-    overflow:hidden;
     display:none;
     padding: 0 20px;
+    
     
 }
 
 #userMenu{
     right:0;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 
-menu>ul{
+menu ul{
     list-style-type: none;
     padding: 0 20px;
+    text-align:center;
+    word-break:none;
 }
 menu a{
     font-size:27px;
-    color:white;
+    color:black;
+    text-emphasis: none;
 }
 .popup{
     display:none;

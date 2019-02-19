@@ -11,55 +11,30 @@
     </nav>
         <menu id="mainMenu">
         <ul>
-        <li><a href="<?=$root?>">Home</a></li>
+            <li><a href="<?=$root?>">Home</a></li>
+            <hr>
             <?php
             if(isset($_SESSION['user']))
             {
                 ?>
                 <li><a href="<?=$root."checklists/"?>">Checklist</a></li>
+                <hr>
                 <li><a href="<?=$root."drone/"?>">Drone</a></li>
     
                 <?php
             }
             ?>
+            <hr>
             <li><a href="<?=$root."about/"?>">About</a></li>
         </ul>
         </menu>
         <menu id="userMenu">
-        <div>
-            <p>Welcome, <?php 
-                if($userDetailsAvailable)
-                {
-                    echo $userDetails['Name'];
-                }
-                else {
-                    echo "Guest";
-                }
-                ?>
-             </p>
-        </div>
-        <hr>
-        <?php
-        if(isset($_SESSION['user']))
-        {
-        ?>
-                <ul>
-                <li><a href="<?=$root."account/"?>">Account details</a></li>
-                <li><a href="<?=$root."account/logout.php"?>">Logout</a></li>
-                </ul>
-        <?php
-        }
-        else 
-        {?>
-            <ul>
-            <li><a href="#" class="loginLink" id="loginLink">Login</a></li>
-            <li><a href="<?=$root."register/"?>" class="loginLink">register</a></li>
-            </ul>
-               
-            
-        <?php
-        }
-        ?>
+        <ul>
+                <li><a href="<?=$root."account/"?>">Account Details</a></li>
+                <hr>
+                <li><a href="<?=$root."account/logout.php"?>"><i class="fas fa-sign-out-alt fa-lg"></i>Logout</a></li>
+        </ul>
+       
         </menu>
         <section class="popup">
             <div class="popupDialog">

@@ -57,7 +57,7 @@
                             <h3><?=$result['DroneName']?></h3>
                             <button >Edit details</button>
                         </summary>
-                        <br><br><br>
+                        <br><hr><br>
                         <div id="flightList">
                             <h4>Flights</h4>
                                 <?php
