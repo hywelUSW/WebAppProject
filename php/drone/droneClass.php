@@ -26,7 +26,7 @@ class drone{
         $db = new database();
         $conn = $db->dbConnect();
         $query = $conn->prepare("SELECT * FROM Drone WHERE DroneID = ?");
-        $query->bind_param(i,$droneID);
+        $query->bind_param("i",$droneID);
         $query->execute();
         $result = $query->get_result();
         if($result->num_rows > 0)
@@ -39,22 +39,46 @@ class drone{
             return false;    
         }
     }
-    function getDroneHeaders(){
+
+    //
+    //INSERT QUERIES
+    //
+    function insertDroneMainData($userID,$droneName)
+    {
         
+        
+        $query = "INSERT INTO drone (DroneName,UserID) VALUES (?,?)";
+        $types = "si";
+        $params = array("si",&$droneName,&$userID);
         $db = new database();
-        $conn = $db->dbConnect();
-        $query = $conn->prepare("show columns from drone");
-        $query->execute();
+        $conn = $db->exQ($query,$types,$params);
+        echo "<br>";
+        print_r($conn);
         
-        $result = $query->get_result();
-        print_r($result);
-        while($row = $result->fetch_assoc())
+        /*
+        $query = $conn->prepare("INSERT INTO drone (DroneName,UserID) VALUES (?,?)");
+        $query->bind_param("si",$droneName,$userID);
+        $query->execute();
+        if($query->affected_rows >0)
         {
-            print_r($row);
-            echo "<br>";
+           return $query->insert_id;
         }
+        else
+        {
+            return false;
+        }*/
         
     }
+/*
+    function addDesegnation($DroneID,$modelName,$manufacturer,$droneType)
+    {
+        $db = new database();
+        $conn = $db->dbConnect();
+    }*/
+
+
+
+
 }
 
 ?>

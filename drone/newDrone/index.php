@@ -18,12 +18,9 @@
         <main>
             <h3>Add new Drone</h3>
             <section>
-                <form action="" method="POST">
-                   <?php
-                   //generate text inputs
-                    require_once($root."php/drone/getTableHeaders.php");
-                    ?>
-                </form>
+                <?php
+                    require_once("php/getFormElement.php");
+                ?>
             <section>
         </main>
     </body>

@@ -1,0 +1,31 @@
+Model Name,ModelName,text
+Manufacturer,Manufacturer,text
+Drone Type,DroneType,text
+Maximum Operating Speed (m/s),MaxOperatingSpeed,number
+Launch Type,launchType,text
+Maximum Flight Time (mins),maxFlightTime,number
+Maximum Ceiling Height (m),MaxHeight,number
+Maximum Operating Radius (m),MaxRadius,number
+Maximum Take Off  Wind (m/s),MaxWind,number
+Minumum Operating Temperature (°C),TempRangeMin,number
+Maximum Operating Temperature (°C),TempRangeMax,number
+Operating Weather,OperatingWeather,text
+Battery Chemisty,Chemistry,text
+Weight (g),Weight,number
+Power output (mAh),PowerOutput,number
+Height (mm),Height,Number
+Width (mm),Width,number
+Length (mm),Length,number
+Weight (g),Weight,number
+Maximum Take off weight (g),MaxTakeOffWeight,number
+Motor Type,MotorType,number
+Motor Speed (RPM),MotorSpeed,number
+Control Data Link,ControlDataLink,text
+Video Data Link,VideoDataLink,text
+Flight Controller,FlightController,text
+Data Link,DataLink,text
+Video Link,VideoLink,text
+Antenna Type,AntennaType,text
+Payload Name,PayloadName,text
+Minimum Temperature (°C),MinTemp,number
+Maxiumum Tempeature (°C),MaxTemp,number
