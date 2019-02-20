@@ -3,8 +3,23 @@
  if(isset($_SESSION['user']))
  {
     header("Location:". $root);
-    exit;
+    die();
  }
+ include_once($root."user/userClass.php");
+ $user = new user();
+ //Verify values
+ if(isset($_POST['email']) && isset($_POST['name']) && isset($_POST['password']))
+ {
+     if(!$user->newUser($_POST['email'],$_POST['name'],$_POST['password']))
+     {
+        $errMsg = "<p>Email already in use!<p>";
+     }
+    
+ }else
+ {
+     $errMsg = "<p>Please enter all your details!";
+ }
+
 ?>
 <html>
     <head>
@@ -23,7 +38,7 @@
             <h3>Register</h3>
             <p>To register enter your details below</p>
             <hr>
-            <form action="../php/user/newUser.php" method="POST">
+            <form action="" method="POST">
                 <input type="text" name="email" placeholder="Email" required>
                 <br><br>
                 <input type="text" name="name" placeholder="Name" required>
