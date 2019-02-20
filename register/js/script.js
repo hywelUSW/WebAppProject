@@ -1,3 +1,4 @@
+//check that passwords match
 $("#RegSubmit").click(function(){
     if($("#password").val() != $("#passwordConfirm").val())
     {

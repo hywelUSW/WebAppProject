@@ -120,3 +120,6 @@ main{
 .btnMain:active{
     background-color:#223942;
 }
+input,textarea{
+    font-size:20px;
+}

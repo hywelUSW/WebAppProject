@@ -10,16 +10,17 @@
  //Verify values
  if(isset($_POST['email']) && isset($_POST['name']) && isset($_POST['password']))
  {
-     if(!$user->newUser($_POST['email'],$_POST['name'],$_POST['password']))
+     if($user->newUser($_POST['email'],$_POST['name'],$_POST['password']))
      {
+        header("Location:". $root);
+        die();
+        
+     }else{
         $errMsg = "<p>Email already in use!<p>";
      }
     
- }else
- {
-     $errMsg = "<p>Please enter all your details!";
  }
-
+ 
 ?>
 <html>
     <head>
@@ -39,17 +40,17 @@
             <p>To register enter your details below</p>
             <hr>
             <form action="" method="POST">
-                <input type="text" name="email" placeholder="Email" required>
+                <input type="text" name="email" placeholder="Email" maxlength="40" required>
                 <br><br>
-                <input type="text" name="name" placeholder="Name" required>
+                <input type="text" name="name" placeholder="Name" maxlength="40" required>
                 <br><br>
-                <input type="password" name="password" placeholder="Password" id="password" required>
+                <input type="password" name="password" placeholder="Password" id="password" maxlength="40" required>
                 <br><br>
-                <input type="password" name="passwordConfirm" placeholder="Confirm password" id="passwordConfirm" required>
+                <input type="password" name="passwordConfirm" placeholder="Confirm password" id="passwordConfirm" maxlength="40" required>
                 <br>
                 <p id="RegMsg"><?=$errMsg?> </p>
                 <br>
-                <button type="submit" id="RegSubmit" disabled>Register</button>
+                <button type="submit" id="RegSubmit">Register</button>
             </form>
 
         </main>
