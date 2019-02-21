@@ -53,6 +53,9 @@ header menu{
     right:0;
     
 }
+#userInfo{
+    margin-top:10px;
+}
 #userInfo i{
    
     margin:5px;
@@ -88,7 +91,7 @@ menu a{
     background-color:white;
     width:200px;
     border-radius:15px;
-    padding:10px;
+    padding:25px;
 }
 .popupDialog h3{
     padding-top:0px;
@@ -98,6 +101,7 @@ menu a{
 }
 .popupDialog button{
     width:100%;
+    padding:7px 10px;
 }
 main{
     margin: 0 10px;
