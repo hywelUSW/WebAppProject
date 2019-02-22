@@ -6,6 +6,7 @@ class checklistAmenment{
     {
         $db = new database();
         $conn = $db->dbConnect();
+        $amendmendNo = getLatestAmmendment($checklistID);
         $query = $conn->prepare("INSERT INTO ChecklistAmendment VALUES (?,?,?);");
         $query->bind_param("iis",$checklistID,$amendmendNo,date("Y-m-d H:i:s"));
 
@@ -15,25 +16,25 @@ class checklistAmenment{
     {
         $db = new database();
         $conn = $db->dbConnect();
-        $query = $conn->prepare("SELECT MAX(amendmentNo) FROM checklistamendment WHERE amendmentNo = ?");
+        $query = $conn->prepare("SELECT MAX(amendmentNo) as amendNo FROM checklistAmendment WHERE checklistID = ?");
         $query->bind_param("i",$checklistID);
         $query->execute();
-        if($query->num_rows > 0 && $query->errno = 0)
+        $result = $query->get_result();
+        $row = $result->fetch_assoc();
+        if($row['amendNo'])
         {
-            $result = $query->get_result();
-            
+            return $row['ammendNo'] + 1;
+
         }
         else
         {
-            //no value/bad query
-            
-            return 0;  
+            return 1;
         }
 
         
     }
 }
 $a = new checklistAmenment();
-$a->getLatestAmmendment(1);
+$a->getLatestAmmendment(3);
 
 ?>

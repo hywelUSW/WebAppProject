@@ -1,31 +1,32 @@
 <?php
-if(isset($_POST['password']) && isset($_SESSION['user']))
+if(isset($_POST['passwordDelete']) && isset($_SESSION['user']))
 {
     include_once($root."php/user/userClass.php");
     $user = new user();
-    if($user->userVerify($_POST['email'],$_POST['password']))
+    if($user->userVerify($_POST['email'],$_POST['passwordDelete']))
     { 
          if($user->removeUser($_POST['email']))
          {
              session_unset($_SESSION['user']);
+             $userDeleted = true;
          }
          else 
          {
-           //
+           
            //could not delete the user feild
-           //  
+           $errMsg = "<p>There was an error removing the account!</p>";
          }
 
     }
     else 
     {
-        //authenication failed    
+        //authenication failed
+        $errMsg = "<p>Incorrect password!</p>";
     }
 }
 else
 {
-    echo("no values entered");
-    //no values entered
+    $errMsg = "<p>Please complete the form!</p>";
 }
 
 ?>

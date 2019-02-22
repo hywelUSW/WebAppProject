@@ -56,33 +56,74 @@ class checklist{
         }
     }
 
-
-    function newChecklist()
+    //Create new checklist and initalises the subtypes
+    function newChecklist($userID,$droneID,$name,$date,$desc)
     {
+        
+        $db = new database();
         //check that date is correct
         if(date("Y-m-d") < $date)
         {
-            $query = ("INSERT INTO CHECKLIST (UserID,DroneID,ChecklistName,PlannedDate,Descr) VALUES (?,?,?,?,?)");
-            $params = array ("iisss",$userID,$droneID,$name,$date,$desc);
-            $db = new database();
-            $query = $db->exQ($query,$params);
-            if($query->affected_rows > 0)
-            {
-                print_r($query);
+            $query = "INSERT INTO CHECKLIST (UserID,DroneID,ChecklistName,PlannedDate,Descr) VALUES (?,?,?,?,?)";
+            $params = array("iisss",$userID,$droneID,$name,$date,$desc);
+            $result = $db->exQ($query,$params);
+            if($result->affected_rows > 0)
+            {//insert subtypes
+                $checklistID = $result->insert_id;
+                $params = array("i",$checklistID);
+                //LoadingList
+                $query = "INSERT INTO loadinglist (ChecklistID) VALUES (?)";
+                $result = $db->exQ($query,$params);
+                if($result->affected_rows > 0)
+                {//PreFlight
+                    $query = "INSERT INTO preflight (ChecklistID) VALUES (?)";
+                    $result = $db->exQ($query,$params);
+                    if($result->affected_rows > 0)
+                    {//post take off
+                        $query = "INSERT INTO posttakeoff (ChecklistID) VALUES (?)";
+                        $result = $db->exQ($query,$params);
+                        if($result->affected_rows > 0)
+                        {//pre landing
+                            $query = "INSERT INTO prelanding (ChecklistID) VALUES (?)";
+                            $result = $db->exQ($query,$params);
+                            if($result->affected_rows > 0)
+                            {//post landing
+                                $query = "INSERT INTO postlanding (ChecklistID) VALUES (?)";
+                                $result = $db->exQ($query,$params);
+                                if($result->affected_rows > 0)
+                                {
+                                   $inserted = true;
+                                   include_once("checklistAmmendmentClass.php");
+                                   $chkAmmend = new checklistAmenment(); 
+                                   $chkAmmend->newAmendment($checklistID);
+                                   echo "created";
+                                }
+                            }
+                        }
+                    }
+                }
+              print_r($query);
             }
-            else
+            if(!$inserted)
             {
-                return false;
             }
         }
         else
         {
             //wrong date
+            echo "wrong date";
             return false;
         }
         
     }
+    //Delete checklist
+    function deleteChecklist($checklistID)
+    {
+
+    }
 }
 
+$check = new checklist();
+$check->newChecklist(16,44,"test","2019-12-12","This is a description");
 
 ?>

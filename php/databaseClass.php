@@ -15,15 +15,16 @@ class database{
         $x = $this->dbConnect();
         print_r($x);
     }
-    function exQ($query,$params)
+    function exQ($queryString,$params)
     {
         $conn = $this->dbConnect();
-        $query = $conn->prepare($query);
+        $query = $conn->prepare($queryString);
         call_user_func_array(array($query, 'bind_param'), $params);
         $query->execute();
         if($query->affected_rows > 0)
         {
-           return $query;
+            $conn->close();
+            return $query;
         }
         else
         {

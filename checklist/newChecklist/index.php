@@ -24,10 +24,12 @@
         {
             require_once($root."php/checklist/checklistClass.php");
             $checklist = new checklist();
+            $checklist->newChecklist($_SESSION['user'],$_POST['drone'],$_POST['date'],$_POST['descr']);
         }
         else
         {
             //making checklist after date
+            
         }
     }
 ?>

@@ -14,7 +14,7 @@ require_once("php/updateDetails.php");
 //delete account
 if(isset($_POST['passwordDelete']))
 {
-require_once("php/deleteUser/php");
+require_once("php/deleteUser.php");
 }
 ?>
 <html>
@@ -32,6 +32,13 @@ require_once("php/deleteUser/php");
             require_once($header);
         ?>
         <main>
+        <?php
+        if($userDeleted)
+        {
+            echo "<h3 class='Msg'>Account has been deleted!</h3>";
+        }
+        else
+        {?>
             <h3>Account details</h3>
             <ul>
                 <li>Name: <?=$userDetails['Name']?></li>
@@ -49,7 +56,7 @@ require_once("php/deleteUser/php");
                     <input type="password" name="NewPassword" placeholder="New password">
                     <br><br>
                     <input type="password" name="password" placeholder="Current Password (required)" required>
-                    <br><?=$Msg?><br>
+                    <p id="ErrMsg"><?=$Msg?>&nbsp;</p>
                     <button type="submit">Update Details</button>
             </form>
             </section>
@@ -57,13 +64,14 @@ require_once("php/deleteUser/php");
             <section>
                 <h4>Delete Account</h4>
                 <p>Use this to delete your account and any data. This is Irreversable!</p>
-                <form action="DeleteAccount.php" method="POST">
+                <form action="" method="POST">
                     <input type="hidden" name="email" value="<?=$userDetails['Email']?>">
                     <input type="password" name="passwordDelete" placeholder="Password" required>
                     <br><br>
                     <button type="submit">Delete account</button>
                 </form>
             </section>
+        <?php } ?>
         </main>
     </body>
     <footer>

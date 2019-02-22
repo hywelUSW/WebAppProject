@@ -10,18 +10,18 @@ if(isset($_POST['email'],$_POST['name'],$_POST['password']))
     { 
         //details updated
          $user->updateDetails($_POST['email'],$_POST['name'],$_POST['password'],$_POST['NewPassword']);
-         $Msg = '<p class="SuccMsg">password incorrect!</p>';  
+         $Msg = '>password incorrect!';  
     }
     else 
     {
         //authenication failed
-        $Msg = '<p class="ErrMsg">password incorrect!</p>';   
+        $Msg = 'password incorrect!';   
     }
 }
 else
 {
     //no values entered
-    $Msg = '<p class="ErrMsg"> Please complete the from!</p>';
+    $Msg = 'Please complete the from!</p>';
 }
 
 ?>
