@@ -21,13 +21,14 @@ class database{
         $query = $conn->prepare($queryString);
         call_user_func_array(array($query, 'bind_param'), $params);
         $query->execute();
-        if($query->affected_rows > 0)
+        if($query->errno == 0)
         {
-            $conn->close();
+           $conn->close();
             return $query;
         }
         else
         {
+            echo "false";
             return false;
         }
 
