@@ -71,10 +71,6 @@ if(array_filter($_POST) && isset($_SESSION['user']))
 }
 
 
-}
-else
-{
-    echo "false";
-}
+
 
 ?>

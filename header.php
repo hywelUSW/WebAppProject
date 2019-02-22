@@ -38,6 +38,7 @@
                         <p>Welcome, <?=$userDetails['Name']?></p>
                         <p><?=$userDetails['Email']?></p>
                         <?php
+                        print_r($userDetails);
                     }
                     else {
                         echo "<p>Welcome, Guest<p>";

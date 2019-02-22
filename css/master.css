@@ -130,3 +130,6 @@ main{
 input,textarea{
     font-size:20px;
 }
+.msg{
+    text-align: center;
+}

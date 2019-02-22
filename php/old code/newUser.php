@@ -1,4 +1,5 @@
 <?php
+//Old Code
 include_once("userClass.php");
 $user = new user();
 //Verify values First!!

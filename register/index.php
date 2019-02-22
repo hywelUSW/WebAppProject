@@ -12,8 +12,7 @@
  {
      if($user->newUser($_POST['email'],$_POST['name'],$_POST['password']))
      {
-        header("Location:". $root);
-        die();
+        $hasRegistered = true;
         
      }else{
         $errMsg = "<p>Email already in use!<p>";
@@ -37,6 +36,14 @@
         ?>
         <main>
             <h3>Register</h3>
+            <?php
+            if($hasRegistered)
+            {
+                echo "<h4 class='Msg'>Thank you for registering, <a href='".$root."'>Click here</a> to return home</h4>";
+            }
+            else
+            {
+            ?>
             <p>To register enter your details below</p>
             <hr>
             <form action="" method="POST">
@@ -52,7 +59,7 @@
                 <br>
                 <button type="submit" id="RegSubmit">Register</button>
             </form>
-
+            <?php } ?>
         </main>
     </body>
     <footer>

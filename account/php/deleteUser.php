@@ -1,7 +1,7 @@
 <?php
-if(isset($_POST['email'],$_POST['password']))
+if(isset($_POST['password']) && isset($_SESSION['user']))
 {
-    include_once("userClass.php");
+    include_once($root."php/user/userClass.php");
     $user = new user();
     if($user->userVerify($_POST['email'],$_POST['password']))
     { 

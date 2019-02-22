@@ -6,7 +6,16 @@ if(!isset($_SESSION['user']))
     header("Location:". $root);
     die();
 }
-require_once($root."php/user/updateDetails.php");
+//update details
+if(isset($_POST['password']))
+{
+require_once("php/updateDetails.php");
+}
+//delete account
+if(isset($_POST['passwordDelete']))
+{
+require_once("php/deleteUser/php");
+}
 ?>
 <html>
     <head>
@@ -24,13 +33,18 @@ require_once($root."php/user/updateDetails.php");
         ?>
         <main>
             <h3>Account details</h3>
-            <p> </p>
+            <ul>
+                <li>Name: <?=$userDetails['Name']?></li>
+                <li>Email: <?=$userDetails['Email']?></li>
+            </ul>
             <hr>
             <section>
+            <h4>Update Details</h4>
+            <p>Enter new details here to update them</p>
             <form action="" method="POST">
-                    <input type="text" name="email" placeholder="Email" value="<?=$userDetails['email']?>" required>
+                    <input type="text" name="email" placeholder="Email" value="<?=$userDetails['Email']?>" required>
                     <br><br>
-                    <input type="text" name="name" placeholder="Name" value="<?=$userDetails['name']?>" required>
+                    <input type="text" name="name" placeholder="Name" value="<?=$userDetails['Name']?>" required>
                     <br><br>
                     <input type="password" name="NewPassword" placeholder="New password">
                     <br><br>
@@ -38,6 +52,17 @@ require_once($root."php/user/updateDetails.php");
                     <br><?=$Msg?><br>
                     <button type="submit">Update Details</button>
             </form>
+            </section>
+            <hr>
+            <section>
+                <h4>Delete Account</h4>
+                <p>Use this to delete your account and any data. This is Irreversable!</p>
+                <form action="DeleteAccount.php" method="POST">
+                    <input type="hidden" name="email" value="<?=$userDetails['Email']?>">
+                    <input type="password" name="passwordDelete" placeholder="Password" required>
+                    <br><br>
+                    <button type="submit">Delete account</button>
+                </form>
             </section>
         </main>
     </body>
