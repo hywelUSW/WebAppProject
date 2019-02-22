@@ -21,10 +21,6 @@ class database{
         $query = $conn->prepare($query);
         call_user_func_array(array($query, 'bind_param'), $params);
         $query->execute();
-        //print_r($query);
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
         if($query->affected_rows > 0)
         {
            return $query;

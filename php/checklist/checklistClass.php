@@ -62,15 +62,13 @@ class checklist{
         //check that date is correct
         if(date("Y-m-d") < $date)
         {
+            $query = ("INSERT INTO CHECKLIST (UserID,DroneID,ChecklistName,PlannedDate,Descr) VALUES (?,?,?,?,?)");
+            $params = array ("iisss",$userID,$droneID,$name,$date,$desc);
             $db = new database();
-            $conn = $db->dbConnect();
-    
-            $query = $conn->prepare("INSERT INTO CHECKLIST VALUES (?,?,?,?,?");
-            $query->bind_param("iisss",$userID,$droneID,$name,$date,$desc);
-            $query->execute();
+            $query = $db->exQ($query,$params);
             if($query->affected_rows > 0)
             {
-
+                print_r($query);
             }
             else
             {

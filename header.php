@@ -17,7 +17,7 @@
                 if(isset($_SESSION['user']))
                 {
                     ?>
-                    <li><a href="<?=$root."checklists/"?>"><i class="fas fa-tasks"></i>&nbsp;Checklist</a></li>
+                    <li><a href="<?=$root."checklist/"?>"><i class="fas fa-tasks"></i>&nbsp;Checklist</a></li>
                     <hr>
                     <li><a href="<?=$root."drone/"?>"><i class="fas fa-helicopter"></i>&nbsp;Drone</a></li>
                     <hr>

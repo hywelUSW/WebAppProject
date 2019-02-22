@@ -23,7 +23,9 @@
         ?>
         <main>
             <h3>Checklists</h3>
-            <a href="newChecklist/"><button class="btnMain">New Checklist</button></a>
+            <div class="btnWrapper">
+                <a href="newChecklist/"><button class="btnMain">New Checklist</button></a>
+            </div>
             <section>
                 <?php
                 require_once($root."php/checklist/getUserChecklists.php");

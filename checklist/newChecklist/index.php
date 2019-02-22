@@ -17,13 +17,13 @@
    }
    print_r($result);
    //form submitted
-    if(1==1)
+    if(array_filter($_POST) && isset($_SESSION['user']))
     {
-        require_once($root."php/checklist/checklistClass.php");
-       
-        if($_POST['date'] >= date("Y-m-d"))
+        //check paramaters are good
+        if($_POST['date'] >= date("Y-m-d") && $_GET['drone'] != 0)
         {
-           
+            require_once($root."php/checklist/checklistClass.php");
+            $checklist = new checklist();
         }
         else
         {
@@ -38,7 +38,6 @@
         <link rel="stylesheet" type="text/css" href="<?=$root?>css/master.css">
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1'/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
     </head>
     <body>
         <?php
@@ -60,6 +59,7 @@
                     <input type="text" name="name" placeholder="Checklist Name" required>
                     <br><br>
                     <select name="drone">
+                        <option value="0">
                     <?php
                         while($row = $result->fetch_assoc())
                         {

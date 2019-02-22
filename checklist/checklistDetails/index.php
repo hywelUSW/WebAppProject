@@ -8,7 +8,7 @@
  //echck that drone is set
  if($_GET['checklistID'] == null)
  {
-    header("Location:".$root."checklists/");
+    header("Location:".$root."checklist/");
      die();
  }
  

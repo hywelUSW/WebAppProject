@@ -1,0 +1,20 @@
+Weather Checked,WeatherCheck,text
+Site Surveyed,SiteSurveyed,checkbox
+RPASS Service,RPASSService,checkbox
+Take Off Area Established,TakeOffAreaEstablished,checkbox
+Assistant Briefed(if applicable),AssistantBriefed,checkbox
+Controller Wroks & Connects to Drone,ContollerConnects,checkbox
+Drone Checked for Damage,RPADamageCheck,checkbox
+Battery Checked and fitted ,BatteryCompartment,checkbox
+RPA Motors are Functional,RPAMotors,checkbox
+Propellers are Free of Damage,CheckPropellers,checkbox
+Camera is Functional,CheckCamera,checkbox
+Drone Powers On,DronePowered,checkbox
+Home Location is Locked,DroneHomeLocked,checkbox
+Drone Compass is Calibrated,Calibrated,checkbox
+Ground station receives video,CheckGroundStation,checkbox
+Camera is Recording Correctly,VideoCheck,checkbox
+Take Off Area is Clear,TakeOffAreaClear,checkbox
+Take Off Clearence Given,TakeOffClearence,checkbox
+Airspace is Clear,AirspaceClear,checkbox
+Fit to Fly Documents Signed,FitToFly,checkbox

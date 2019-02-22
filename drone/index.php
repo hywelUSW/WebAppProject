@@ -23,7 +23,11 @@ require_once("/students/15080900/projectapp/php/initalise.php");
         ?>
         <main>
             <h3>Drone List</h3>
-            <a href="<?=$root?>drone/newDrone"><button class="btnMain">Add new drone</button></a>
+            <div class="btnWrapper">
+                <a href="<?=$root?>drone/newDrone">
+                    <button class="btnMain">Add new drone</button>
+                </a>
+            </div>
             <section id="droneList">
             <?php
                 require_once($root."php/drone/droneClass.php");
@@ -41,11 +45,7 @@ require_once("/students/15080900/projectapp/php/initalise.php");
                         </div>
                         <hr>
                         <?php
-                    }
-                    
-                   
-                    
-                    
+                    }   
                 }
                 else
                 {

@@ -1,0 +1,5 @@
+Drone Starts at Idle Speed,BothControlSticksInner,checkbox
+Drone Responds to Controller Input,ControllerResponds,checkbox
+Drone Stable at 3m,RPAStable,checkbox
+Take off Time,TakeOffTime,datetime
+Camera functioning correctly,CameraCheck,checkbox
