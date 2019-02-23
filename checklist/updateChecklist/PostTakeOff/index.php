@@ -41,13 +41,13 @@ if($result['userID'] != $_SESSION['user'])
                 <input type='hidden' name='RPAStable' value='0'>
                 <label>Drone Stable at 3m</label><input type="checkbox" name="RPAStable" <?=$checklist->ischecked($result["RPAStable"])?>>
                 <br><br>
-                <label>Take off Time</label><input type="datetime-local" name="TakeOffTime">
+                <label>Take off Time</label><input type="datetime-local" name="TakeOffTime" value="<?=$result['TakeOffTime']?>"><button type="button" id="getTakeOffTime">Get Take Off Time</button>
                 <br><br>
                 <input type='hidden' name='CameraCheck' value='0'>
                 <label>Camera functioning correctly</label><input type="checkbox" name="CameraCheck" <?=$checklist->ischecked($result["CameraCheck"])?>>
                 <br><br>
                 <button type="submit">Update</button>
-                <a href="checklist/checklistdetails/?checklistID="><button>Cancel</button></a>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
             </form>
             
         </main>

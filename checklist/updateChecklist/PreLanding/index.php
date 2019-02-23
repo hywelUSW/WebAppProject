@@ -38,10 +38,10 @@ if($result['userID'] != $_SESSION['user'])
                 <input type='hidden' name='ManualAutoLand' value='0'>
                 <label>Landing Mode Selected</label><input type="checkbox" name="ManualAutoLand" <?=$checklist->ischecked($result["ManualAutoLand"])?>>
                 <br><br>
-                <label>Landing Time Recorded<label><input type='datetime' name='LandingTimeRecorded'>
+                <label>Landing Time Recorded<label><input type='datetime' name='LandingTimeRecorded' value="<?=$result['LandingTimeRecorded']?>"><button type="button" id="getLandingTime">Get Landing Time</button>
                 <br><br>
                 <button type="submit">Update</button>
-                <a href="checklist/checklistdetails/?checklistID="><button>Cancel</button></a>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
             </form>
         </main>
     </body>

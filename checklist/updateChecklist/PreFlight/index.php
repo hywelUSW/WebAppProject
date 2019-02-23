@@ -33,7 +33,7 @@ if($result['userID'] != $_SESSION['user'])
             <h2>Pre-Flight</h2>
             
             <form method='post'>
-                <input type="text" name="WeatherCheck" placeholder="Weather Checked" >
+                <input type="text" name="WeatherCheck" placeholder="Weather Checked" value="<?=$result['WeatherCheck']?>"><button type="button" id="getWeather">Get Weather</button>
                 <br><br>
                 <input type='hidden' name='SiteSurveyed' value='0'>
                 <label>Site Surveyed</label><input type="checkbox" name="SiteSurveyed" <?=$checklist->ischecked($result["SiteSurveyed"])?>>
@@ -93,7 +93,7 @@ if($result['userID'] != $_SESSION['user'])
                 <label>Fit to Fly Documents Signed</label><input type="checkbox" name="FitToFly" <?=$checklist->ischecked($result["FitToFly"])?>>
                 <br><br>
                 <button type="submit">Update</button>
-                <a href="checklist/checklistdetails/?checklistID="><button>Cancel</button></a>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
             </form>
         </main>
     </body>

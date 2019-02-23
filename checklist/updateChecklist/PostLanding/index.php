@@ -67,7 +67,7 @@ if($result['userID'] != $_SESSION['user'])
                 <label>Area Checked</label><input type="checkbox" name="AreaChecked" <?=$checklist->ischecked($result["AreaChecked"])?>>
                 <br><br>
                 <button type="submit">Update</button>
-                <a href="checklist/checklistdetails/?checklistID="><button>Cancel</button></a>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
             </form>
         </main>
     </body>

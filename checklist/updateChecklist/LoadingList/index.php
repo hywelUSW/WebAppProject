@@ -34,10 +34,10 @@ print_r($_POST);
             <h2>Loading List</h2>
             
             <form method='post'>
-                <input type="text" name="WeatherCheck" placeholder="Weather Check" >
+                <input type="text" name="WeatherCheck" placeholder="Weather Check" value="<?=$result['WeatherCheck']?>"> <button type="button" id="getWeather">Get Weather</button>
                 <br><br>
                 <input type='hidden' name='OpsManual' value='0'>
-                <label>Operations Manual</label><input type="checkbox" name="OpsManual" <?=$checklist->ischecked($result["OpsManual"])?>>
+                <label>Operations Manual</label><input type="checkbox" name="OpsManual"  <?=$checklist->ischecked($result["OpsManual"])?>>
                 <br><br>
                 <input type='hidden' name='Maps' value='0'>
                 <label>Maps</label><input type="checkbox" name="Maps" <?=$checklist->ischecked($result["Maps"])?>>
@@ -73,7 +73,7 @@ print_r($_POST);
                 <label>Area Permission Granted</label><input type="checkbox" name="PermissionGranted" <?=$checklist->ischecked($result["PermissionGranted"])?>>
                 <br><br>
                 <button type="submit">Update</button>
-                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button>Cancel</button></a>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
             </form>
         </main>
     </body>
