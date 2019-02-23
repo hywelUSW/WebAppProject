@@ -35,7 +35,7 @@
             require_once($header);
         ?>
         <main>
-            <h3>Register</h3>
+            <h2>Register</h2>
             <?php
             if($hasRegistered)
             {

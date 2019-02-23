@@ -37,7 +37,7 @@
                     if($Nodata)
                     {
                         ?>
-                        <h3>Drone Details</h3>
+                        <h2>Drone Details</h2>
                         <h3 id="message">Checklist does not exist!</h3>
                         <?php
                     }else{

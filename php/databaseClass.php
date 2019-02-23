@@ -5,6 +5,7 @@ class database{
         //connection variables
         require("dbCredentials.php");
         $conn = new mysqli($server,$username,$password,$database);
+        
         if($conn->connect_error){
             die("Unable to connect to Database!");
         }

@@ -39,7 +39,7 @@ require_once("php/deleteUser.php");
         }
         else
         {?>
-            <h3>Account details</h3>
+            <h2>Account details</h2>
             <ul>
                 <li>Name: <?=$userDetails['Name']?></li>
                 <li>Email: <?=$userDetails['Email']?></li>

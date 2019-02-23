@@ -5,7 +5,16 @@
      header("Location:".$root."login/");
      die();
  }
- require_once("php/getFormDetails.php");
+require_once("/students/15080900/projectapp/php/checklist/checklistClass.php");
+$checklist = new checklist();
+$result = $checklist->getLoadingList($_GET['checklistID']);
+//check user owns checklist
+if($result['userID'] != $_SESSION['user'])
+{
+   header("location: ".$root."checklist/");
+   die();
+}
+print_r($_POST);
 ?>
 <html>
     <head>
@@ -22,38 +31,36 @@
             require_once($header);
         ?>
         <main>
-            <h3></h3>
+            <h2>Loading List</h2>
             
-            <form method="post" action="">
-                <input type='text' name='WeatherCheck' placeholder='Weather Check'>
+            <form method='post'>
+                <input type="text" name="WeatherCheck" placeholder="Weather Check" >
                 <br><br>
-                <label>Operations Manual</label><input type='checkbox' name='OpsManual'>
+                <label>Operations Manual</label><input type="checkbox" name="OpsManual" <?=$checklist->ischecked($result["OpsManual"])?>>
                 <br><br>
-                <label>Maps</label><input type='checkbox' name='Maps'>
+                <label>Maps</label><input type="checkbox" name="Maps" <?=$checklist->ischecked($result["Maps"])?>>
                 <br><br>
-                <label>Task Information</label><input type='checkbox' name='TaskInfo'>
+                <label>Task Information</label><input type="checkbox" name="TaskInfo" <?=$checklist->ischecked($result["TaskInfo"])?>>
                 <br><br>
-                <label>Safety Equipment</label><input type='checkbox' name='SafetyEquiment'>
+                <label>Safety Equipment</label><input type="checkbox" name="SafetyEquiment" <?=$checklist->ischecked($result["SafetyEquiment"])?>>
                 <br><br>
-                <label>LiPo Bag</label><input type='checkbox' name='LiPoBag'>
+                <label>LiPo Bag</label><input type="checkbox" name="LiPoBag" <?=$checklist->ischecked($result["LiPoBag"])?>>
                 <br><br>
-                <label>Controller</label><input type='checkbox' name='Controller'>
+                <label>Controller</label><input type="checkbox" name="Controller" <?=$checklist->ischecked($result["Controller"])?>>
                 <br><br>
-                <label>Equipment Charged</label><input type='checkbox' name='EquipmentCharged'>
+                <label>Equipment Charged</label><input type="checkbox" name="EquipmentCharged" <?=$checklist->ischecked($result["EquipmentCharged"])?>>
                 <br><br>
-                <label>Camera</label><input type='checkbox' name='Camera'>
+                <label>Camera</label><input type="checkbox" name="Camera" <?=$checklist->ischecked($result["Camera"])?>>
                 <br><br>
-                <label>RPA Platform</label><input type='checkbox' name='RPAPlatform'>
+                <label>RPA Platform</label><input type="checkbox" name="RPAPlatform" <?=$checklist->ischecked($result["RPAPlatform"])?>>
                 <br><br>
-                <label>Drone Propellers</label><input type='checkbox' name='Propellers'>
+                <label>Drone Propellers</label><input type="checkbox" name="Propellers" <?=$checklist->ischecked($result["Propellers"])?>>
                 <br><br>
-                <label>Carrying Case</label><input type='checkbox' name='CarryingCase'>
+                <label>Carrying Case</label><input type="checkbox" name="CarryingCase" <?=$checklist->ischecked($result["CarryingCase"])?>>
                 <br><br>
-                <label>Area Permission Granted</label><input type='checkbox' name='PermissionGranted'>
-                <br><br>
-                <button type="submit">Update Loading List</button>
-                <a href="<?=$root."checklist/checklistdetails?checklistID=".$_GET['checklistID']?>"><button>Cancel</button></a>
-            </form>
+                <label>Area Permission Granted</label><input type="checkbox" name="PermissionGranted" <?=$checklist->ischecked($result["PermissionGranted"])?>>
+            <br><br>
+</form>
         </main>
     </body>
     <footer>

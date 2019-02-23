@@ -26,7 +26,7 @@ else {
             require_once($header);
         ?>
         <main>
-            <h3>Login</h3>
+            <h2>Login</h2>
             <section>
             <p>Not a user? <a href="<?=$root?>register/">Register here</a></p>
             <form action="<?=$root?>login/" method="post">

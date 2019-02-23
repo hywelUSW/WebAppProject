@@ -51,13 +51,13 @@
                     if($Nodata)
                     {
                         ?>
-                        <h3>Drone Details</h3>
+                        <h2>Drone Details</h2>
                         <h3 id="message">Drone does not exist!</h3>
                         <?php
                     }else{
                         ?>
                         <summary>
-                            <h3><?=$result['DroneName']?></h3>
+                            <h2><?=$result['DroneName']?></h2>
                             <button >Edit details</button>
                         </summary>  
                         <hr>

@@ -1,5 +1,5 @@
 <?php
-include_once("../databaseClass.php");
+include_once("/students/15080900/projectapp/php/databaseClass.php");
 class checklist{
 
     function getUserChecklists($UserID)
@@ -121,29 +121,42 @@ class checklist{
     {
         
     }
-
+    //check if item needs to have checked attribute
+    function isChecked($value)
+    {
+        
+        if($value == 1)
+        {
+            return "checked";
+        }
+        else {
+            return null;
+        }
+       
+    }
     //
     //LoadingList
     //
     function getLoadingList($checklistID)
     {
-        $stmt = "SELECT loadinglist.* FROM loadinglist ";
-        $stmt .= "INNER JOIN checklist ON loadinglist.checlistID WHERE ChecklistID = ? LIMIT 1";
-        $db = new database();
-        $conn = $db->dbConnect();
-        $query = $conn->prepare($stmt);
-        $query->bind_param("i",$checklistID);
         
-        $query->execute();
-        $result = $query->get_result();
-        if($result->num_rows > 0)
-        {
-            return $result;
-        }
-        else
-        {
-            return false;
-        }
+        $stmt = "SELECT loadinglist.*,userID FROM loadinglist ";
+        $stmt .= "INNER JOIN checklist ON loadinglist.checklistID = checklist.checklistID ";
+        $stmt .= "WHERE loadinglist.ChecklistID = ? LIMIT 1";
+       $db = new database();
+       $conn = $db->dbConnect();
+       $query = $conn->prepare($stmt);
+       $query->bind_param("i",$checklistID);
+       $query->execute();
+       $result = $query->get_result();
+       if($result->num_rows > 0)
+       {
+           return $result->fetch_assoc();
+       }
+       else
+       {
+           return false;
+       }
     }
 }
 ?>

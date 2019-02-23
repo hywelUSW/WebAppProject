@@ -22,7 +22,7 @@
             require_once($header);
         ?>
         <main>
-            <h3>Checklists</h3>
+            <h2>Checklists</h2>
             <div class="btnWrapper">
                 <a href="newChecklist/"><button class="btnMain">New Checklist</button></a>
             </div>

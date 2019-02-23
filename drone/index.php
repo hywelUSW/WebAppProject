@@ -22,7 +22,7 @@ require_once("/students/15080900/projectapp/php/initalise.php");
             require_once($header);  
         ?>
         <main>
-            <h3>Drone List</h3>
+            <h2>Drone List</h2>
             <div class="btnWrapper">
                 <a href="<?=$root?>drone/newDrone">
                     <button class="btnMain">Add new drone</button>

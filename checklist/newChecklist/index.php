@@ -47,7 +47,7 @@
             require_once($header);
         ?>
         <main>
-            <h3>Create New Checklist</h3>
+            <h2>Create New Checklist</h2>
             <section>
                 <?php
                 if($noDrones)
