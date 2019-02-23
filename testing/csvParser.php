@@ -1,7 +1,7 @@
 <?php
-$test = array_map('str_getcsv', file('csv/loadinglist.csv'));// str_getcsv("book1.csv",",");
+$test = array_map('str_getcsv', file('csv/postLanding.csv'));// str_getcsv("preLanding.csv",",");
 echo "<form method='post'>";
-
+echo "\r\n";
 foreach($test as $row)
 {
     switch($row[2])
@@ -10,8 +10,12 @@ foreach($test as $row)
             echo '<input type="'.$row[2].'" name="'.$row[1].'" placeholder="'.$row[0].'" >';
             break;
         case "checkbox":
+            echo "<input type='hidden' name='".$row[1]."' value='0'>";
+            echo "\r\n";
             echo '<label>'.$row[0].'</label><input type="'.$row[2].'" name="'.$row[1].'" <'. htmlspecialchars('?').'=$checklist->ischecked($result["'.$row[1].'"])?>'.'>'; 
             break;
+        case "datetime":
+            echo "<label>".$row[0]."<label><input type='".$row[2]."' name='".$row[1]."'>";
         default:
             break;
    
@@ -24,5 +28,7 @@ foreach($test as $row)
     <br>
     <?php*/
 }
-echo "</form>";
 ?>
+<button type="submit">Update</button>
+<a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button>Cancel</button></a>
+</form>

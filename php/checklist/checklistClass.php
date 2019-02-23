@@ -158,5 +158,73 @@ class checklist{
            return false;
        }
     }
+
+    function updateLoadingList()
+    {
+
+    }
+    //
+    //pre-flight
+    //
+    function getPreFlight($checklistID)
+    {
+        $stmt = "SELECT preflight.*,userID FROM preflight ";
+        $stmt .= "INNER JOIN checklist ON preflight.checklistID = checklist.checklistID ";
+        $stmt .= "WHERE preflight.ChecklistID = ? LIMIT 1";
+       $db = new database();
+       $conn = $db->dbConnect();
+       $query = $conn->prepare($stmt);
+       $query->bind_param("i",$checklistID);
+       $query->execute();
+       $result = $query->get_result();
+       if($result->num_rows > 0)
+       {
+           return $result->fetch_assoc();
+       }
+       else
+       {
+           return false;
+       }
+    }
+
+    function updatePreFlight()
+    {
+
+    }
+    //
+    //post take-off
+    //
+    function getPostTakeOff($checklistID)
+    {
+
+    }
+    function updatePostTakeOff()
+    {
+
+    }
+    //
+    //pre landing
+    //
+    function getPreLanding($checklistID)
+    {
+
+    }
+
+    function updatePreLanding()
+    {
+
+    }
+    //
+    //post landing
+    //
+    function getPostLanding($checklistID)
+    {
+
+    }
+
+    function updatePostLanding()
+    {
+
+    }
 }
 ?>

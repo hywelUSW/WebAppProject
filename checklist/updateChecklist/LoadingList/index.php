@@ -36,31 +36,45 @@ print_r($_POST);
             <form method='post'>
                 <input type="text" name="WeatherCheck" placeholder="Weather Check" >
                 <br><br>
+                <input type='hidden' name='OpsManual' value='0'>
                 <label>Operations Manual</label><input type="checkbox" name="OpsManual" <?=$checklist->ischecked($result["OpsManual"])?>>
                 <br><br>
+                <input type='hidden' name='Maps' value='0'>
                 <label>Maps</label><input type="checkbox" name="Maps" <?=$checklist->ischecked($result["Maps"])?>>
                 <br><br>
+                <input type='hidden' name='TaskInfo' value='0'>
                 <label>Task Information</label><input type="checkbox" name="TaskInfo" <?=$checklist->ischecked($result["TaskInfo"])?>>
                 <br><br>
+                <input type='hidden' name='SafetyEquiment' value='0'>
                 <label>Safety Equipment</label><input type="checkbox" name="SafetyEquiment" <?=$checklist->ischecked($result["SafetyEquiment"])?>>
                 <br><br>
+                <input type='hidden' name='LiPoBag' value='0'>
                 <label>LiPo Bag</label><input type="checkbox" name="LiPoBag" <?=$checklist->ischecked($result["LiPoBag"])?>>
                 <br><br>
+                <input type='hidden' name='Controller' value='0'>
                 <label>Controller</label><input type="checkbox" name="Controller" <?=$checklist->ischecked($result["Controller"])?>>
                 <br><br>
+                <input type='hidden' name='EquipmentCharged' value='0'>
                 <label>Equipment Charged</label><input type="checkbox" name="EquipmentCharged" <?=$checklist->ischecked($result["EquipmentCharged"])?>>
                 <br><br>
+                <input type='hidden' name='Camera' value='0'>
                 <label>Camera</label><input type="checkbox" name="Camera" <?=$checklist->ischecked($result["Camera"])?>>
                 <br><br>
+                <input type='hidden' name='RPAPlatform' value='0'>
                 <label>RPA Platform</label><input type="checkbox" name="RPAPlatform" <?=$checklist->ischecked($result["RPAPlatform"])?>>
                 <br><br>
+                <input type='hidden' name='Propellers' value='0'>
                 <label>Drone Propellers</label><input type="checkbox" name="Propellers" <?=$checklist->ischecked($result["Propellers"])?>>
                 <br><br>
+                <input type='hidden' name='CarryingCase' value='0'>
                 <label>Carrying Case</label><input type="checkbox" name="CarryingCase" <?=$checklist->ischecked($result["CarryingCase"])?>>
                 <br><br>
+                <input type='hidden' name='PermissionGranted' value='0'>
                 <label>Area Permission Granted</label><input type="checkbox" name="PermissionGranted" <?=$checklist->ischecked($result["PermissionGranted"])?>>
-            <br><br>
-</form>
+                <br><br>
+                <button type="submit">Update</button>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button>Cancel</button></a>
+            </form>
         </main>
     </body>
     <footer>
