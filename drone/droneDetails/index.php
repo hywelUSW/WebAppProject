@@ -1,5 +1,6 @@
 <?php
  include_once("/students/15080900/projectapp/php/initalise.php");
+ 
  if(!isset($_SESSION['user']))
  { //check if user is logged in
      header("Location:".$root."login/");
@@ -8,13 +9,15 @@
  //echck that drone is set
  if($_GET['DroneID'] == null)
  {
-    header("Location:".$root."drone/");
+    //header("Location:".$root."drone/");
      die();
  }
+ 
  require_once($root."php/drone/getDroneOverview.php");
  if($result)
  {  //user owns data
-     if($result['UserID'] != $_SESSION['user'])
+    
+     if($result['userID'] != $_SESSION['user'])
      {
         header("Location:".$root."drone/");
         die();
@@ -61,10 +64,10 @@
                         <div id="basicDetails">
                             <h4>Basic Specifications</h4>
                             <ul>
-                                <li>Manufacturer:</li>
-                                <li>Manufacturer:</li>
-                                <li>Manufacturer:</li>
-                                <li>Manufacturer:</li>
+                                <li>Model Name: <?=$result['ModelName']?></li>
+                                <li>Manufacturer: <?=$result['ModelName']?></li>
+                                <li>Max Flight Time: <?=$result['MaxFlightTime']?> minuites</li>
+                                <li>Max Operating Speed: <?=$result['MaxOperatingSpeed']?> m/s</li>
                             </ul>
                             <a href="fullSepc?DroneID=<?=$result['DroneID']?>">View full spec</a>
                         </div>              

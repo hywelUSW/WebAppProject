@@ -43,16 +43,16 @@
                     }else{
                         ?>
                         <summary>
-                            <h3><?=$result['Name']?></h3>
+                            <h3><?=$result['ChecklistName']?></h3>
                         </summary>
                         <div id="overview">
                         <ul>
-                            <li>result: <?=$result['PlannedDate']?></li>
-                            <li>result: <?=$result['Description']?></li>
+                            <li>Planned Date: <?=$result['PlannedDate']?></li>
+                            <li>Description: <?=$result['Descr']?></li>
                         </ul>
                         </div>
                         <div id="buttonList">
-                            <a href=""> <button class="btnMain">Loading List</button></a>
+                            <a href="<?=$root."checklist/updatechecklist/loadinglist?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Loading List</button></a>
                             <br><br>
                             <a href=""> <button class="btnMain">Pre-Flight</button></a>
                             <br><br>

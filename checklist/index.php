@@ -28,7 +28,8 @@
             </div>
             <section>
                 <?php
-                require_once($root."php/checklist/getUserChecklists.php");
+                require_once("php/getUserChecklists.php");
+                echo "dn";
                 ?>
             </section>
         </main>

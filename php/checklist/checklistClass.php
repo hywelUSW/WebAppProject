@@ -38,12 +38,12 @@ class checklist{
         } 
     }
     //Get details of specific checklist
-    function getChecklistOverview($ChecklistID)
+    function getChecklistOverview($checklistID)
     {
         $db = new database();
         $conn = $db->dbConnect();
         $query = $conn->prepare("SELECT * FROM checklist WHERE ChecklistID = ? LIMIT 1");
-        $query->bind_param("i",$ChecklistID);
+        $query->bind_param("i",$checklistID);
         $query->execute();
         $result = $query->get_result();
         if($result->num_rows > 0)
@@ -119,11 +119,31 @@ class checklist{
     //Delete checklist
     function deleteChecklist($checklistID)
     {
+        
+    }
 
+    //
+    //LoadingList
+    //
+    function getLoadingList($checklistID)
+    {
+        $stmt = "SELECT loadinglist.* FROM loadinglist ";
+        $stmt .= "INNER JOIN checklist ON loadinglist.checlistID WHERE ChecklistID = ? LIMIT 1";
+        $db = new database();
+        $conn = $db->dbConnect();
+        $query = $conn->prepare($stmt);
+        $query->bind_param("i",$checklistID);
+        
+        $query->execute();
+        $result = $query->get_result();
+        if($result->num_rows > 0)
+        {
+            return $result;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
-
-$check = new checklist();
-$check->newChecklist(16,44,"test","2019-12-12","This is a description");
-
 ?>

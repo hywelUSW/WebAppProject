@@ -48,9 +48,4 @@ class checklistAmenment{
     }
 }
 
-$a = new checklistAmenment();
-$a->selectChecklistAmendments(3);
-//$b = $a->getLatestAmmendment(3);
-echo $b;
-
 ?>

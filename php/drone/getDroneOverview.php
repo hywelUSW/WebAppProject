@@ -4,7 +4,7 @@
     $result = $drone->getDroneOVerview($_GET['DroneID']);
     if($result)
     {
-        return $result;
+       return $result;
     }
     else
     {

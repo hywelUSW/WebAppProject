@@ -2,7 +2,7 @@
 require_once("/students/15080900/projectapp/php/initalise.php");
 require_once($root."php/checklist/checklistClass.php");
 $checklist = new checklist();
-$result = $checklist->getChecklistOverview($_GET['DroneID']);
+$result = $checklist->getChecklistOverview($_GET['checklistID']);
 if($result)
 {
     $result = $result->fetch_assoc();

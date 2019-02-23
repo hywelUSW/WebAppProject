@@ -1,10 +1,24 @@
 <?php
-$test = array_map('str_getcsv', file('book1.csv'));// str_getcsv("book1.csv",",");
+$test = array_map('str_getcsv', file('csv/loadinglist.csv'));// str_getcsv("book1.csv",",");
 echo "<form>";
 
 foreach($test as $row)
 {
-    echo 'isset($_POST["'.$row[1].'"]) && ';
+    switch($row[2])
+    {
+        case "text":
+            echo "<input type='".$row[2]."' name='".$row[1]."' placeholder='".$row[0]."'>";
+            break;
+        case "checkbox":
+            echo "<label>".$row[0]."</label><input type='".$row[2]."' name='".$row[1]."'>";
+            break;
+        default:
+            break;
+   
+    }
+    echo "\r\n";
+    echo "<br><br>";
+    echo "\r\n";
     /*
     <input type="<?=$row[2]?>" name="<?=$row[1]?>" placeholder="<?=$row[0]?>" required>
     <br>

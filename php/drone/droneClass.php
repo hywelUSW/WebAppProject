@@ -23,9 +23,12 @@ class drone{
     }
 
     function GetDroneOverview($droneID){
+        $stmt = "SELECT DroneName,ModelName,manufacturer,MaxFlightTime,maxoperatingspeed,userID FROM Drone ";
+        $stmt .= "INNER JOIN dronecharacteristics ON drone.droneID = dronecharacteristics.droneID ";
+        $stmt .= "INNER JOIN dronedesignation ON drone.droneID = dronedesignation.droneID  WHERE drone.DroneID = ?";
         $db = new database();
         $conn = $db->dbConnect();
-        $query = $conn->prepare("SELECT * FROM Drone WHERE DroneID = ?");
+        $query = $conn->prepare($stmt);
         $query->bind_param("i",$droneID);
         $query->execute();
         $result = $query->get_result();
