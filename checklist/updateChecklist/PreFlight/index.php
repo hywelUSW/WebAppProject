@@ -14,6 +14,17 @@ if($result['userID'] != $_SESSION['user'])
    header("location: ".$root."checklist/");
    die();
 }
+if(array_filter($_POST) && isset($_SESSION['user']))
+{
+    if($checklist->updatePreFlight($_GET['checklistID'],$_POST['WeatherCheck'],$_POST['SiteSurveyed'],$_POST['RPASSService'],$_POST['TakeOffAreaEstablished'],$_POST['AssistantBriefed'],$_POST['ContollerConnects'],$_POST['RPADamageCheck'],$_POST['BatteryCompartment'],$_POST['RPAMotors'],$_POST['CheckPropellers'],$_POST['CheckCamera'],$_POST['DronePowered'],$_POST['DroneHomeLocked'],$_POST['Calibrated'],$_POST['CheckGroundStation'],$_POST['VideoCheck'],$_POST['TakeOffAreaClear'],$_POST['TakeOffClearence'],$_POST['AirspaceClear'],$_POST['FitToFly']))
+    {
+
+    }
+    else
+    {
+        $errMsg = "";
+    }
+}
 ?>
 <html>
     <head>

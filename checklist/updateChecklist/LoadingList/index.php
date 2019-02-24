@@ -14,10 +14,17 @@ if($result['userID'] != $_SESSION['user'])
    header("location: ".$root."checklist/");
    die();
 }
-
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
-    $checklist->updateLoadingList($_GET['checklistID'],$_POST['WeatherCheck'],$_POST['OpsManual'],$_POST['Maps'],$_POST['TaskInfo'],$_POST['SafetyEquipment'],$_POST['LiPoBag'],$_POST['Controller'],$_POST['EqupmentCharged'],$_POST['Camera'],$_POST['RPAPlatform'],$_POST['Propellers'],$_POST['CarryingCase'],$_POST['PermissionGranted']);
+    
+    if($checklist->updateLoadingList($_GET['checklistID'],$_POST['WeatherCheck'],$_POST['OpsManual'],$_POST['Maps'],$_POST['TaskInfo'],$_POST['SafetyEquipment'],$_POST['LiPoBag'],$_POST['Controller'],$_POST['EqupmentCharged'],$_POST['Camera'],$_POST['RPAPlatform'],$_POST['Propellers'],$_POST['CarryingCase'],$_POST['PermissionGranted']))
+    {
+        $result = $checklist->getLoadingList($_GET['checklistID']);
+    }
+    else
+    {
+        $errMsg = "There was an error updaing the checklist!";
+    }
 }
 ?>
 <html>
@@ -76,6 +83,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                 <input type='hidden' name='PermissionGranted' value='0'>
                 <label>Area Permission Granted</label><input type="checkbox" name="PermissionGranted" value='1' <?=$checklist->ischecked($result["PermissionGranted"])?>>
                 <br><br>
+                <p><?=$errMsg?></p>
                 <button type="submit">Update</button>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
             </form>

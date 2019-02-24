@@ -14,6 +14,17 @@ if($result['userID'] != $_SESSION['user'])
    header("location: ".$root."checklist/");
    die();
 }
+if(array_filter($_POST) && isset($_SESSION['user']))
+{
+    if($checklist->updatePreFlight($_GET['checklistID'],$_POST['LandingAreaClear'],$_POST['ManualAutoLand'],$_POST['LandingTimeRecorded']))
+    {
+        $result = $checklist->getLoadingList($_GET['checklistID']);
+    }
+    else
+    {
+        $errMsg = "There was an error updaing the checklist!";
+    }
+}
 ?>
 <html>
     <head>

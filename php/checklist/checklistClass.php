@@ -163,13 +163,20 @@ class checklist{
 
     function updateLoadingList($checklistID,$WeatherCheck,$opsManual,$maps,$TaskInfo,$safetyEquipment,$lipoBag,$controller,$equpmentCharged,$camera,$rpaPlatform,$propellers,$carryingCase,$permissionGranted)
     {
-        $query = "UPDATE loadinglist SET weathercheck = ?, opsmanual = ?, maps = ?, taskinfo = ?, safetyequipment = ?,";
-        $query .=  "lipobag = ?, controller = ?,equipmentcharged = ?,camera = ?, rpaplatform = ?, propellers = ?,";
-        $query .= "carryingcase = ?, permissiongranted = ? WHERE checklist = ?";
+        $query = "UPDATE loadinglist SET WeatherCheck = ?, OpsManual = ?, Maps = ?, TaskInfo = ?, SafetyEquipment = ?,";
+        $query .=  " LiPoBag = ?, Controller = ?,EquipmentCharged = ?,Camera = ?, RPAPlatform = ?, Propellers = ?,";
+        $query .= " CarryingCase = ?, PermissionGranted = ? WHERE checklistID = ?";
         $params = array("siiiiiiiiiiiii",$WeatherCheck,$opsManual,$maps,$TaskInfo,$safetyEquipment,$lipoBag,$controller,$equpmentCharged,$camera,$rpaPlatform,$propellers,$carryingCase,$permissionGranted,$checklistID);
         $db = new database();
+        
         $result = $db->exQ($query,$params);
-        print_r($result);
+        if($result->affected_rows > 0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
     //
     //pre-flight
@@ -179,60 +186,157 @@ class checklist{
         $stmt = "SELECT preflight.*,userID FROM preflight ";
         $stmt .= "INNER JOIN checklist ON preflight.checklistID = checklist.checklistID ";
         $stmt .= "WHERE preflight.ChecklistID = ? LIMIT 1";
-       $db = new database();
-       $conn = $db->dbConnect();
-       $query = $conn->prepare($stmt);
-       $query->bind_param("i",$checklistID);
-       $query->execute();
-       $result = $query->get_result();
-       if($result->num_rows > 0)
-       {
+        $db = new database();
+        $conn = $db->dbConnect();
+        $query = $conn->prepare($stmt);
+        $query->bind_param("i",$checklistID);
+        $query->execute();
+         $result = $query->get_result();
+        if($result->num_rows > 0)
+        {
            return $result->fetch_assoc();
-       }
-       else
-       {
-           return false;
-       }
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    function updatePreFlight()
+    function updatePreFlight($checklistID,$WeatherCheck,$SiteSurveyed,$RPASSService,$TakeOffAreaEstablished,$AssistantBriefed,$ContollerConnects,$RPADamageCheck,$BatteryCompartment,$RPAMotors,$CheckPropellers,$CheckCamera,$DronePowered,$DroneHomeLocked,$Calibrated,$CheckGroundStation,$VideoCheck,$TakeOffAreaClear,$TakeOffClearence,$AirspaceClear,$FitToFly)
     {
-
+        $query = "UPDATE preflight SET WeatherCheck = ?, sitesurveyed = ?, rpassService =?, takeOffAreaEstablished = ?,AssistantBriefed = ?,";
+        $query .= "ControllerConnects = ?,RPADamageCheck = ?,BatteryCompartment = ?,RPAMotors = ?,CheckPropellers = ?,";
+        $query .= "CheckCamera = ?,DronePowered = ?,DroneHomeLocked = ?,Calibrated = ?,CheckGroundStation = ?,";
+        $query .= "VideoCheck = ?,TakeOffAreaClear = ?,TakeOffClearence = ?,AirspaceClear = ?,FitToFly = ? WHERE ChecklistID = ?";
+        $params = array("siiiiiiiiiiiiiiiiiiiii",$WeatherCheck,$SiteSurveyed,$RPASSService,$TakeOffAreaEstablished,$AssistantBriefed,$ContollerConnects,$RPADamageCheck,$BatteryCompartment,$RPAMotors,$CheckPropellers,$CheckCamera,$DronePowered,$DroneHomeLocked,$Calibrated,$CheckGroundStation,$VideoCheck,$TakeOffAreaClear,$TakeOffClearence,$AirspaceClear,$FitToFly,$checklistID);
+        $db = new database();
+        
+        $result = $db->exQ($query,$params);
+        if($result->affected_rows > 0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
     //
     //post take-off
     //
     function getPostTakeOff($checklistID)
     {
-
+        $stmt = "SELECT posttakeoff.*,userID FROM posttakeoff ";
+        $stmt .= "INNER JOIN checklist ON posttakeoff.checklistID = checklist.checklistID ";
+        $stmt .= "WHERE posttakeoff.ChecklistID = ? LIMIT 1";
+        $db = new database();
+        $conn = $db->dbConnect();
+        $query = $conn->prepare($stmt);
+        $query->bind_param("i",$checklistID);
+        $query->execute();
+         $result = $query->get_result();
+        if($result->num_rows > 0)
+        {
+           return $result->fetch_assoc();
+        }
+        else
+        {
+            return false;
+        }
     }
-    function updatePostTakeOff()
+    function updatePostTakeOff($checklistID,$ControlSticksInner,$controllerResponds,$RPAStable,$takeOffTime,$cameraCheck)
     {
-
+        $query = "UPDATE posttakeoff SET BothControlSticksInner = ?, ControllerResponds = ?";
+        $query .= ", RPAStable = ?,TakeOffTime = ?,CameraCheck = ? WHERE checklistID = ?";
+        $params = array("iiisii",$ControlSticksInner,$controllerResponds,$RPAStable,$takeOffTime,$cameraCheck,$checklistID);
+        $db = new database();
+        
+        $result = $db->exQ($query,$params);
+        if($result->affected_rows > 0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
     //
     //pre landing
     //
     function getPreLanding($checklistID)
     {
-
+        $stmt = "SELECT prelanding.*,userID FROM prelanding ";
+        $stmt .= "INNER JOIN checklist ON prelanding.checklistID = checklist.checklistID ";
+        $stmt .= "WHERE prelanding.ChecklistID = ? LIMIT 1";
+        $db = new database();
+        $conn = $db->dbConnect();
+        $query = $conn->prepare($stmt);
+        $query->bind_param("i",$checklistID);
+        $query->execute();
+         $result = $query->get_result();
+        if($result->num_rows > 0)
+        {
+           return $result->fetch_assoc();
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    function updatePreLanding()
+    function updatePreLanding($checklistID,$landingAreaClear,$landType,$landingTime)
     {
-
+        $query = "UPDATE prelanding SET LandingAreaClear = ?, ManualAutoLand = ?,";
+        $query .= " LandingTimeRecorded = ? WHERE ChecklistID = ?";
+        $params = array("iisi",$landingAreaClear,$landType,$landingTime,$checklistID);
+        $db = new database();
+        
+        $result = $db->exQ($query,$params);
+        if($result->affected_rows > 0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
     //
     //post landing
     //
     function getPostLanding($checklistID)
     {
-
+        $stmt = "SELECT postlanding.*,userID FROM postlanding ";
+        $stmt .= "INNER JOIN checklist ON postlanding.checklistID = checklist.checklistID ";
+        $stmt .= "WHERE postlanding.ChecklistID = ? LIMIT 1";
+        $db = new database();
+        $conn = $db->dbConnect();
+        $query = $conn->prepare($stmt);
+        $query->bind_param("i",$checklistID);
+        $query->execute();
+         $result = $query->get_result();
+        if($result->num_rows > 0)
+        {
+           return $result->fetch_assoc();
+        }
+        else
+        {
+            return false;
+        }
     }
 
     function updatePostLanding()
     {
-
+        $query = "";
+        $params = array();
+        $db = new database();
+        
+        $result = $db->exQ($query,$params);
+        if($result->affected_rows > 0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 }
 ?>

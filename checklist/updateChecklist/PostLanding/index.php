@@ -14,6 +14,17 @@ if($result['userID'] != $_SESSION['user'])
    header("location: ".$root."checklist/");
    die();
 }
+if(array_filter($_POST) && isset($_SESSION['user']))
+{
+    if($checklist->updatePostLanding($_POST['PowerDownRPA'],$_POST['RemoveRPABattery'],$_POST['RPABatteryOnCharge'],$_POST['RPADamagedCheck'],$_POST['PropellerCheck'],$_POST['LandingGearCheck'],$_POST['RecordFlightDetails'],$_POST['CameraDataDownloaded'],$_POST['ControllerOff'],$_POST['EquipmentPAcked'],$_POST['AreaChecked']))
+    {
+        $result = $checklist->getLoadingList($_GET['checklistID']);
+    }
+    else
+    {
+        $errMsg = "There was an error updaing the checklist!";
+    }
+}
 ?>
 <html>
     <head>

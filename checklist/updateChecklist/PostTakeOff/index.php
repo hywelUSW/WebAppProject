@@ -14,6 +14,17 @@ if($result['userID'] != $_SESSION['user'])
    header("location: ".$root."checklist/");
    die();
 }
+if(array_filter($_POST) && isset($_SESSION['user']))
+{
+    if($checklist->updatePostTakeOff($_GET['checklistID'],$_POST['BothControlSticksInner'],$_POST['ControllerResponds'],$_POST['RPAStable'],$_POST['TakeOffTime'],$_POST['CameraCheck']))
+    {
+        $result = $checklist->getLoadingList($_GET['checklistID']);
+    }
+    else
+    {
+        $errMsg = "There was an error updaing the checklist!";
+    }
+}
 ?>
 <html>
     <head>

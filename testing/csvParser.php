@@ -1,10 +1,10 @@
 <?php
-$test = array_map('str_getcsv', file('csv/postLanding.csv'));// str_getcsv("preLanding.csv",",");
+$test = array_map('str_getcsv', file('csv/postlanding.csv'));// str_getcsv("preLanding.csv",",");
 echo "<form method='post'>";
 echo "\r\n";
 foreach($test as $row)
 {
-    switch($row[2])
+   /* switch($row[2])
     {
         case "text":
             echo '<input type="'.$row[2].'" name="'.$row[1].'" placeholder="'.$row[0].'" >';
@@ -27,6 +27,7 @@ foreach($test as $row)
     <input type="<?=$row[2]?>" name="<?=$row[1]?>" placeholder="<?=$row[0]?>" required>
     <br>
     <?php*/
+    echo '$_POST[\''.$row[1]. '\'],';
 }
 ?>
 <button type="submit">Update</button>
