@@ -16,15 +16,26 @@ if($result['userID'] != $_SESSION['user'])
 }
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
+    
     if($checklist->updatePostTakeOff($_GET['checklistID'],$_POST['BothControlSticksInner'],$_POST['ControllerResponds'],$_POST['RPAStable'],$_POST['TakeOffTime'],$_POST['CameraCheck']))
     {
-        $result = $checklist->getLoadingList($_GET['checklistID']);
+        $result = $checklist->getPostTakeOff($_GET['checklistID']);
+        
     }
     else
     {
+        
         $errMsg = "There was an error updaing the checklist!";
     }
 }
+
+//parse date to usable format
+if(isset($result['TakeOffTime']))
+{
+    $takeoffTime = date("Y-m-d\TH:i:s",strtotime($result['TakeOffTime']));
+}
+
+
 ?>
 <html>
     <head>
@@ -41,21 +52,21 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             require_once($header);
         ?>
         <main>
-            <h2>Pre-Flight</h2>
+            <h2>Post-Take Off</h2>
             <form method='post'>
                 <input type='hidden' name='BothControlSticksInner' value='0'>
-                <label>Drone Starts at Idle Speed</label><input type="checkbox" name="BothControlSticksInner" <?=$checklist->ischecked($result["BothControlSticksInner"])?>>
+                <label>Drone Starts at Idle Speed</label><input type="checkbox" name="BothControlSticksInner" value='1' <?=$checklist->ischecked($result["BothControlSticksInner"])?>>
                 <br><br>
                 <input type='hidden' name='ControllerResponds' value='0'>
-                <label>Drone Responds to Controller Input</label><input type="checkbox" name="ControllerResponds" <?=$checklist->ischecked($result["ControllerResponds"])?>>
+                <label>Drone Responds to Controller Input</label><input type="checkbox" name="ControllerResponds" value='1' <?=$checklist->ischecked($result["ControllerResponds"])?>>
                 <br><br>
                 <input type='hidden' name='RPAStable' value='0'>
-                <label>Drone Stable at 3m</label><input type="checkbox" name="RPAStable" <?=$checklist->ischecked($result["RPAStable"])?>>
+                <label>Drone Stable at 3m</label><input type="checkbox" name="RPAStable" value='1' <?=$checklist->ischecked($result["RPAStable"])?>>
                 <br><br>
-                <label>Take off Time</label><input type="datetime-local" name="TakeOffTime" value="<?=$result['TakeOffTime']?>"><button type="button" id="getTakeOffTime">Get Take Off Time</button>
+                <label>Take off Time</label><input type="datetime-local" name="TakeOffTime" value="<?=$takeoffTime?>"><button type="button" id="getTakeOffTime">Get Take Off Time</button>
                 <br><br>
                 <input type='hidden' name='CameraCheck' value='0'>
-                <label>Camera functioning correctly</label><input type="checkbox" name="CameraCheck" <?=$checklist->ischecked($result["CameraCheck"])?>>
+                <label>Camera functioning correctly</label><input type="checkbox" name="CameraCheck" value='1' <?=$checklist->ischecked($result["CameraCheck"])?>>
                 <br><br>
                 <button type="submit">Update</button>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
@@ -68,3 +79,4 @@ if(array_filter($_POST) && isset($_SESSION['user']))
     </footer>
 </html>
 <script src="<?=$root?>js/master.js"></script>
+<script src="js/script.js"></script>

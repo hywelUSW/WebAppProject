@@ -54,13 +54,13 @@
                         <div class="btnWrapper">
                             <a href="<?=$root."checklist/updatechecklist/loadinglist?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Loading List</button></a>
                             <br><br>
-                            <a href=""> <button class="btnMain">Pre-Flight</button></a>
+                            <a href="<?=$root."checklist/updatechecklist/PreFlight?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Pre-Flight</button></a>
                             <br><br>
-                            <a href=""> <button class="btnMain">Post-Take Off</button></a>
+                            <a href="<?=$root."checklist/updatechecklist/PostTakeOff?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Post-Take Off</button></a>
                             <br><br>
-                            <a href=""> <button class="btnMain">Pre-Landing</button></a>
+                            <a href="<?=$root."checklist/updatechecklist/PreLanding?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Pre-Landing</button></a>
                             <br><br>
-                            <a href=""> <button class="btnMain">Post-Landing</button></a>
+                            <a href="<?=$root."checklist/updatechecklist/PostLanding?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Post-Landing</button></a>
                             <hr>
                             <a href=""> <button class="btnMain">Download(PDF)</button></a>
                         </div>

@@ -204,11 +204,12 @@ class checklist{
 
     function updatePreFlight($checklistID,$WeatherCheck,$SiteSurveyed,$RPASSService,$TakeOffAreaEstablished,$AssistantBriefed,$ContollerConnects,$RPADamageCheck,$BatteryCompartment,$RPAMotors,$CheckPropellers,$CheckCamera,$DronePowered,$DroneHomeLocked,$Calibrated,$CheckGroundStation,$VideoCheck,$TakeOffAreaClear,$TakeOffClearence,$AirspaceClear,$FitToFly)
     {
+        
         $query = "UPDATE preflight SET WeatherCheck = ?, sitesurveyed = ?, rpassService =?, takeOffAreaEstablished = ?,AssistantBriefed = ?,";
         $query .= "ControllerConnects = ?,RPADamageCheck = ?,BatteryCompartment = ?,RPAMotors = ?,CheckPropellers = ?,";
         $query .= "CheckCamera = ?,DronePowered = ?,DroneHomeLocked = ?,Calibrated = ?,CheckGroundStation = ?,";
         $query .= "VideoCheck = ?,TakeOffAreaClear = ?,TakeOffClearence = ?,AirspaceClear = ?,FitToFly = ? WHERE ChecklistID = ?";
-        $params = array("siiiiiiiiiiiiiiiiiiiii",$WeatherCheck,$SiteSurveyed,$RPASSService,$TakeOffAreaEstablished,$AssistantBriefed,$ContollerConnects,$RPADamageCheck,$BatteryCompartment,$RPAMotors,$CheckPropellers,$CheckCamera,$DronePowered,$DroneHomeLocked,$Calibrated,$CheckGroundStation,$VideoCheck,$TakeOffAreaClear,$TakeOffClearence,$AirspaceClear,$FitToFly,$checklistID);
+        $params = array("siiiiiiiiiiiiiiiiiiii",$WeatherCheck,$SiteSurveyed,$RPASSService,$TakeOffAreaEstablished,$AssistantBriefed,$ContollerConnects,$RPADamageCheck,$BatteryCompartment,$RPAMotors,$CheckPropellers,$CheckCamera,$DronePowered,$DroneHomeLocked,$Calibrated,$CheckGroundStation,$VideoCheck,$TakeOffAreaClear,$TakeOffClearence,$AirspaceClear,$FitToFly,$checklistID);
         $db = new database();
         
         $result = $db->exQ($query,$params);
@@ -245,12 +246,17 @@ class checklist{
     }
     function updatePostTakeOff($checklistID,$ControlSticksInner,$controllerResponds,$RPAStable,$takeOffTime,$cameraCheck)
     {
-        $query = "UPDATE posttakeoff SET BothControlSticksInner = ?, ControllerResponds = ?";
-        $query .= ", RPAStable = ?,TakeOffTime = ?,CameraCheck = ? WHERE checklistID = ?";
+        //makes time value usable
+        $tempDate = strtotime($takeOffTime);
+        $takeOffTime = Date("Y-m-d H:m",$tempDate);
+        echo $takeOffTime;
+        $query = "UPDATE posttakeoff SET BothControlSticksInner = ?, ControllerResponds = ?,";
+        $query .= " RPAStable = ?,TakeOffTime = ?,CameraCheck = ? WHERE checklistID = ?";
         $params = array("iiisii",$ControlSticksInner,$controllerResponds,$RPAStable,$takeOffTime,$cameraCheck,$checklistID);
         $db = new database();
         
         $result = $db->exQ($query,$params);
+        
         if($result->affected_rows > 0)
         {
             return true;
@@ -273,6 +279,7 @@ class checklist{
         $query->bind_param("i",$checklistID);
         $query->execute();
          $result = $query->get_result();
+         
         if($result->num_rows > 0)
         {
            return $result->fetch_assoc();
@@ -285,11 +292,13 @@ class checklist{
 
     function updatePreLanding($checklistID,$landingAreaClear,$landType,$landingTime)
     {
+        //makes time value usable
+        $tempDate = strtotime($landingTime);
+        $landingTime = Date("Y-m-d H:m",$tempDate);
         $query = "UPDATE prelanding SET LandingAreaClear = ?, ManualAutoLand = ?,";
         $query .= " LandingTimeRecorded = ? WHERE ChecklistID = ?";
         $params = array("iisi",$landingAreaClear,$landType,$landingTime,$checklistID);
         $db = new database();
-        
         $result = $db->exQ($query,$params);
         if($result->affected_rows > 0)
         {
@@ -323,13 +332,16 @@ class checklist{
         }
     }
 
-    function updatePostLanding()
+    function updatePostLanding($checklistID,$PowerDownRPA,$RemoveRPABattery,$RPABatteryOnCharge,$RPADamagedCheck,$PropellerCheck,$LandingGearCheck,$RecordFlightDetails,$CameraDataDownloaded,$ControllerOff,$EquipmentPacked,$AreaChecked)
     {
-        $query = "";
-        $params = array();
+        $query = "UPDATE postlanding SET PowerDownRPA = ?, RemoveRPABattery = ?, RPABatteryOnCharge = ?, RPADamagedCheck = ?, ";
+        $query .= "PropellerCheck = ?, LandingGearCheck = ?, RecordFlightDetails = ?, CameraDataDownloaded = ?, ";
+        $query .= "ControllerOff = ?, EquipmentPacked = ?, AreaChecked = ? WHERE checklistID = ?";
+        $params = array("iiiiiiiiiiii",$PowerDownRPA,$RemoveRPABattery,$RPABatteryOnCharge,$RPADamagedCheck,$PropellerCheck,$LandingGearCheck,$RecordFlightDetails,$CameraDataDownloaded,$ControllerOff,$EquipmentPacked,$AreaChecked,$checklistID);
         $db = new database();
-        
+        echo "test";
         $result = $db->exQ($query,$params);
+        echo "end";
         if($result->affected_rows > 0)
         {
             return true;

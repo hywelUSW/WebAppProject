@@ -14,17 +14,21 @@ if($result['userID'] != $_SESSION['user'])
    header("location: ".$root."checklist/");
    die();
 }
+
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
-    if($checklist->updatePreFlight($_GET['checklistID'],$_POST['LandingAreaClear'],$_POST['ManualAutoLand'],$_POST['LandingTimeRecorded']))
+    if($checklist->updatePreLanding($_GET['checklistID'],$_POST['LandingAreaClear'],$_POST['ManualAutoLand'],$_POST['LandingTimeRecorded']))
     {
-        $result = $checklist->getLoadingList($_GET['checklistID']);
+        
+        $result = $checklist->getPreLanding($_GET['checklistID']);
     }
     else
     {
         $errMsg = "There was an error updaing the checklist!";
     }
 }
+//parse date to usable format
+$landingTime = date("Y-m-d\TH:i:s",strtotime($result['LandingTimeRecorded']));
 ?>
 <html>
     <head>
@@ -44,13 +48,13 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             <h2>Pre-Flight</h2>
             <form method='post'>
                 <input type='hidden' name='LandingAreaClear' value='0'>
-                <label>Landing Area Clear</label><input type="checkbox" name="LandingAreaClear" <?=$checklist->ischecked($result["LandingAreaClear"])?>>
+                <label>Landing Area Clear</label><input type="checkbox" name="LandingAreaClear" value='1' <?=$checklist->ischecked($result["LandingAreaClear"])?>>
                 <br><br>
                 <input type='hidden' name='ManualAutoLand' value='0'>
-                <label>Landing Mode Selected</label><input type="checkbox" name="ManualAutoLand" <?=$checklist->ischecked($result["ManualAutoLand"])?>>
+                <label>Landing Mode Selected</label><input type="checkbox" name="ManualAutoLand" value='1' <?=$checklist->ischecked($result["ManualAutoLand"])?>>
                 <br><br>
-                <label>Landing Time Recorded<label><input type='datetime' name='LandingTimeRecorded' value="<?=$result['LandingTimeRecorded']?>"><button type="button" id="getLandingTime">Get Landing Time</button>
-                <br><br>
+                <label>Landing Time Recorded<label><input type='datetime' name='LandingTimeRecorded' value="<?=$landingTime?>"><button type="button" id="getLandingTime">Get Landing Time</button>
+                <p><?=$errMsg?></p>
                 <button type="submit">Update</button>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
             </form>

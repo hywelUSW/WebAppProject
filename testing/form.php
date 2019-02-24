@@ -1,16 +1,10 @@
 <?php
 print_r($_POST);
-$test = "hello";
-
-echo '<<?=helo';
-
+$test =  strtotime($_POST['time']);
+echo date("Y-m-d H:m",$test);
 ?>
 <form action="" method="POST">
-<input type="hidden" name="a" value="0">
-<input type="checkbox" name="a" value="1">
-<input type="hidden" name="b" value="0">
-<input type="checkbox" name="b" value="1">
-<input type="hidden" name="c" value="0">
-<input type="checkbox" name="c" value="1">
+<input type="datetime-local" name="time">
+<input type="datetime-local" value="2017-06-01 08:30">
 <button type="submit">sbu</button>
 </form>

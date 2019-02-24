@@ -24,12 +24,13 @@ class database{
         $query->execute();
         if($query->errno == 0)
         {
+            
            $conn->close();
             return $query;
         }
         else
         {
-            echo "false";
+           
             return false;
         }
 

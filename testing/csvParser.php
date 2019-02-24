@@ -27,7 +27,7 @@ foreach($test as $row)
     <input type="<?=$row[2]?>" name="<?=$row[1]?>" placeholder="<?=$row[0]?>" required>
     <br>
     <?php*/
-    echo '$_POST[\''.$row[1]. '\'],';
+    echo "$".$row[1].",";
 }
 ?>
 <button type="submit">Update</button>
