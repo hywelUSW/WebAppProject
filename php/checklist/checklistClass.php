@@ -92,34 +92,36 @@ class checklist{
                                 $result = $db->exQ($query,$params);
                                 if($result->affected_rows > 0)
                                 {
-                                   $inserted = true;
-                                   include_once("checklistAmmendmentClass.php");
+                                    //insert amendment
+                                   include_once("checklistAmendmentClass.php");
                                    $chkAmmend = new checklistAmenment(); 
                                    $chkAmmend->newAmendment($checklistID);
-                                   echo "created";
+                                   return $checklistID;
                                 }
                             }
                         }
                     }
                 }
-              print_r($query);
             }
             if(!$inserted)
-            {
+            {   //failed to insert subtype
+                $this->deleteChecklist($checklistID);
+                return "There was an error creating the checklist!";
             }
         }
         else
         {
             //wrong date
-            echo "wrong date";
-            return false;
+            return "Invalid date!";
         }
         
     }
     //Delete checklist
     function deleteChecklist($checklistID)
     {
-        
+        $query = "DELETE FROM checklist WHERE checklistID = ?";
+        $params = array("i",$checklistID);
+        $result = $db->exQ($query,$params);
     }
     //check if item needs to have checked attribute
     function isChecked($value)
@@ -159,9 +161,15 @@ class checklist{
        }
     }
 
-    function updateLoadingList()
+    function updateLoadingList($checklistID,$WeatherCheck,$opsManual,$maps,$TaskInfo,$safetyEquipment,$lipoBag,$controller,$equpmentCharged,$camera,$rpaPlatform,$propellers,$carryingCase,$permissionGranted)
     {
-
+        $query = "UPDATE loadinglist SET weathercheck = ?, opsmanual = ?, maps = ?, taskinfo = ?, safetyequipment = ?,";
+        $query .=  "lipobag = ?, controller = ?,equipmentcharged = ?,camera = ?, rpaplatform = ?, propellers = ?,";
+        $query .= "carryingcase = ?, permissiongranted = ? WHERE checklist = ?";
+        $params = array("siiiiiiiiiiiii",$WeatherCheck,$opsManual,$maps,$TaskInfo,$safetyEquipment,$lipoBag,$controller,$equpmentCharged,$camera,$rpaPlatform,$propellers,$carryingCase,$permissionGranted,$checklistID);
+        $db = new database();
+        $result = $db->exQ($query,$params);
+        print_r($result);
     }
     //
     //pre-flight

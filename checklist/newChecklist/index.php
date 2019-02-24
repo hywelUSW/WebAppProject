@@ -8,29 +8,50 @@
      die();
  }
     //get list of drones owned by the user
-    require_once($root."php/drone/droneClass.php");
-   $drone = new drone();
-   $result = $drone->getDroneList($_SESSION['user']);
-   if(!$result)
-   {
-     $noDrones = true; 
-   }
-   print_r($result);
+ require_once($root."php/drone/droneClass.php");
+$drone = new drone();
+$result = $drone->getDroneList($_SESSION['user']);
+if(!$result)
+{
+    $noDrones = true; 
+}
+else
+{
+    while($row = $result->fetch_assoc())
+    {
+        $droneList[] = [$row['DroneID'],$row['DroneName']];
+        if($_POST['drone'] == $row['DroneID'])
+        {   //check that user owns the drone
+            $UserOwnsDrone = true;
+        }
+    }
+}
+
    //form submitted
     if(array_filter($_POST) && isset($_SESSION['user']))
     {
-        //check paramaters are good
-        if($_POST['date'] >= date("Y-m-d") && $_GET['drone'] != 0)
+        //check date
+        if($_POST['date'] >= date("Y-m-d"))
         {
-            require_once($root."php/checklist/checklistClass.php");
-            $checklist = new checklist();
-            $checklist->newChecklist($_SESSION['user'],$_POST['drone'],$_POST['date'],$_POST['descr']);
+            if($_POST['drone'] != 0 && $UserOwnsDrone)
+            {
+               
+                require_once($root."php/checklist/checklistClass.php");
+                $checklist = new checklist();
+                $result = $checklist->newChecklist($_SESSION['user'],$_POST['drone'],$_POST['name'],$_POST['date'],$_POST['Descr']);
+                 
+            }
+            else
+            {
+                $errMsg = "invalid drone selected!";
+            }
         }
         else
         {
             //making checklist after date
-            
+           $errMsg = "Please check the selected date!";
         }
+        
     }
 ?>
 <html>
@@ -47,12 +68,20 @@
             require_once($header);
         ?>
         <main>
+        <?php
+        if(is_int($result))
+        {
+         echo "<h3 id='msgMain'>Checklist created! <a href='$root/checklist/checklistDetails/?checklistID=$result'>Click here</a> to go to checklist</h3>";   
+            
+        }
+        else
+        {?>
             <h2>Create New Checklist</h2>
             <section>
                 <?php
                 if($noDrones)
                 {
-                    echo "<h3 id='msgMain'>You need to add a drone before creating a checklist! <a href=''>Click here</a> to add a drone!</h3>";
+                    echo "<h3 id='msgMain'>You need to add a drone before creating a checklist! <a href='$root/drone/newdrone/'>Click here</a> to add a drone!</h3>";
                 }
                 else
                 {
@@ -61,11 +90,11 @@
                     <input type="text" name="name" placeholder="Checklist Name" required>
                     <br><br>
                     <select name="drone">
-                        <option value="0">
+                
                     <?php
-                        while($row = $result->fetch_assoc())
+                        foreach($droneList as $optDrone)
                         {
-                           echo "<option value='".$row['DroneID']."'>".$row['DroneName']."</option>";
+                           echo "<option value='".$optDrone[0]."'>".$optDrone[1]."</option>";
                         }
                         
                     ?>
@@ -73,13 +102,16 @@
                     <input type="date" name="date" placeholder="Flight Date" required>
                     <br><br>
                     <textarea name="Descr" placeholder="Description.." rows="5" cols="50" required></textarea>
-                    <br><br>
+                    <p><?=$result?></p>
                     <button type="submit">Add Checklist</button>
                 </form>
                 <?php
                 }
                 ?>
             </section>
+            <?php
+        }
+        ?>
         </main>
     </body>
     <footer>

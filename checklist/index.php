@@ -29,7 +29,6 @@
             <section>
                 <?php
                 require_once("php/getUserChecklists.php");
-                echo "dn";
                 ?>
             </section>
         </main>

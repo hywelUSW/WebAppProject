@@ -4,8 +4,12 @@ require_once("droneClass.php");
 //check that all feilds are set and user is logged in
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
+    
+    
     $drone = new drone();
-    $droneID = $drone->AddDrone($_SESSION['user'],$_POST['DroneName']);
+    
+    $droneID = $drone->insertDroneMainData($_SESSION['user'],$_POST['DroneName']);
+    
     //$droneID = $drone->insertDroneMainData(16,"test");
     
     if($droneID)
@@ -69,8 +73,5 @@ if(array_filter($_POST) && isset($_SESSION['user']))
 
     }
 }
-
-
-
 
 ?>

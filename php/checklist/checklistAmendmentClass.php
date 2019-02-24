@@ -5,6 +5,7 @@ class checklistAmenment{
     //create an ammendment
     function newAmendment($checklistID)
     {
+        
         $db = new database();
         //get latest ammendment No
         $amendmendNo = $this->getLatestAmmendment($checklistID);

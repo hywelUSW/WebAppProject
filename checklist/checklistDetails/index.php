@@ -51,7 +51,7 @@
                             <li>Description: <?=$result['Descr']?></li>
                         </ul>
                         </div>
-                        <div id="buttonList">
+                        <div class="btnWrapper">
                             <a href="<?=$root."checklist/updatechecklist/loadinglist?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Loading List</button></a>
                             <br><br>
                             <a href=""> <button class="btnMain">Pre-Flight</button></a>
