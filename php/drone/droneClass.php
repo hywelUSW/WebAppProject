@@ -182,8 +182,22 @@ class drone{
     }
 
 
-
+    function deleteDrone($droneID)
+    {
+        $query = "DELETE FROM Drone WHERE droneID = ?";
+        $params = array("i",$droneID);
+        $db = new database();
+        $query = $db->exQ($query,$params);
+        if($query->affected_rows > 0)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 }
+
 
 ?>

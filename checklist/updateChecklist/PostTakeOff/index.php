@@ -44,6 +44,7 @@ if(isset($result['TakeOffTime']))
         <link rel="stylesheet" type="text/css" href="<?=$root?>css/master.css">
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1'/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://momentjs.com/downloads/moment.js"></script>
         
     </head>
     <body>

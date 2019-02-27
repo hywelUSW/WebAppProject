@@ -1,17 +1,11 @@
 <?php
-require("/students/15080900/projectapp/php/initalise.php");
-require_once("droneClass.php");
+
 //check that all feilds are set and user is logged in
 if(array_filter($_POST) && isset($_SESSION['user']))
-{
-    
-    
+{   
+    require_once($root."php/drone/droneClass.php");
     $drone = new drone();
-    
     $droneID = $drone->insertDroneMainData($_SESSION['user'],$_POST['DroneName']);
-    
-    //$droneID = $drone->insertDroneMainData(16,"test");
-    
     if($droneID)
     {
         //insert drone designation
@@ -31,7 +25,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                             {   //insert payload
                                 if($drone->addPayloadDetails($droneID,$_POST['PayloadName'],$_POST['PayloadMinTemp'],$_POST['PayloadMaxTemp']))
                                 {
-                                  echo "it WORKS";
+                                  $droneAdded = true;
                                 }else
                                 {
                             
@@ -72,6 +66,16 @@ if(array_filter($_POST) && isset($_SESSION['user']))
     {
 
     }
+    //delete records if a partial faliure occoured
+    if(!droneAdded)
+    {
+        if($droneID)
+        {
+            $drone->deleteDrone($droneID);
+        }
+        $errMsg = "there was an error adding the drone!";
+    }
+    
 }
 
 ?>

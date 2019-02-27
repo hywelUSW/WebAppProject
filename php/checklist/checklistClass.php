@@ -172,6 +172,9 @@ class checklist{
         $result = $db->exQ($query,$params);
         if($result->affected_rows > 0)
         {
+            include_once("checklistAmendmentClass.php");
+            $chkAmmend = new checklistAmenment(); 
+            $chkAmmend->newAmendment($checklistID);
             return true;
         }else
         {
@@ -215,6 +218,9 @@ class checklist{
         $result = $db->exQ($query,$params);
         if($result->affected_rows > 0)
         {
+            include_once("checklistAmendmentClass.php");
+            $chkAmmend = new checklistAmenment(); 
+            $chkAmmend->newAmendment($checklistID);
             return true;
         }else
         {
@@ -259,6 +265,9 @@ class checklist{
         
         if($result->affected_rows > 0)
         {
+            include_once("checklistAmendmentClass.php");
+            $chkAmmend = new checklistAmenment(); 
+            $chkAmmend->newAmendment($checklistID);
             return true;
         }else
         {
@@ -282,6 +291,7 @@ class checklist{
          
         if($result->num_rows > 0)
         {
+
            return $result->fetch_assoc();
         }
         else
@@ -302,6 +312,9 @@ class checklist{
         $result = $db->exQ($query,$params);
         if($result->affected_rows > 0)
         {
+            include_once("checklistAmendmentClass.php");
+            $chkAmmend = new checklistAmenment(); 
+            $chkAmmend->newAmendment($checklistID);
             return true;
         }else
         {
@@ -344,6 +357,9 @@ class checklist{
         echo "end";
         if($result->affected_rows > 0)
         {
+            include_once("checklistAmendmentClass.php");
+            $chkAmmend = new checklistAmenment(); 
+            $chkAmmend->newAmendment($checklistID);
             return true;
         }else
         {

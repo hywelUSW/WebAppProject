@@ -1,5 +1,6 @@
 <?php
  include_once("/students/15080900/projectapp/php/initalise.php");
+ require_once("php/addNewDrone.php");
 ?>
 <html>
     <head>
@@ -17,9 +18,18 @@
         ?>
         <main>
             <h3>Add new Drone</h3>
+            <?php
+            if($droneAdded)
+            {
+                echo "<h3 class='msgMain'>Drone Added!</h3>";
+            }
+            else
+            { ?>
             <section>
-                <form method="POST" action="<?=$root?>php/drone/addNewDrone.php">
+                <form method="POST" action="" enctype="multipart/form-data">
                     <input type="text" name="DroneName" placeholder="name" required>
+                    <!--<br><br>
+                    <input type="file" name="DroneImage">-->
                     <hr>
                     <h4>Drone Designation</h4>
                     <input type="text" name="ModelName" placeholder="Model Name" required>
@@ -91,10 +101,11 @@
                     <input type="number" name="PayloadMinTemp" placeholder="Minimum Temperature (°C)" required>
                     <br><br>
                     <input type="number" name="PayloadMaxTemp" placeholder="Maxiumum Tempeature (°C)" required>
-                    <br><br>
+                    <p>$errMsg</p>
                     <button type="submit">Add Drone</button>
                 </form>
             <section>
+            <?php } ?>
         </main>
     </body>
     <footer>
