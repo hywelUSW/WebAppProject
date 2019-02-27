@@ -21,6 +21,8 @@
                     <hr>
                     <li><a href="<?=$root."drone/"?>"><i class="fas fa-helicopter"></i>&nbsp;Drone</a></li>
                     <hr>
+                    <li><a href="<?=$root."Battery/"?>"><i class="fas fa-battery-full"></i>&nbsp;Battery</a></li>
+                    <hr>
                     <?php
                 }
                 ?>

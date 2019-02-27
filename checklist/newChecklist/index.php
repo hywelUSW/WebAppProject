@@ -71,7 +71,7 @@ else
         <?php
         if(is_int($result))
         {
-         echo "<h3 id='msgMain'>Checklist created! <a href='$root/checklist/checklistDetails/?checklistID=$result'>Click here</a> to go to checklist</h3>";   
+         echo "<h3 class='msg'>Checklist created! <a href='$root/checklist/checklistDetails/?checklistID=$result'>Click here</a> to go to checklist</h3>";   
             
         }
         else
@@ -81,7 +81,7 @@ else
                 <?php
                 if($noDrones)
                 {
-                    echo "<h3 id='msgMain'>You need to add a drone before creating a checklist! <a href='$root/drone/newdrone/'>Click here</a> to add a drone!</h3>";
+                    echo "<h3 class='msg'>You need to add a drone before creating a checklist! <a href='$root/drone/newdrone/'>Click here</a> to add a drone!</h3>";
                 }
                 else
                 {
@@ -103,7 +103,7 @@ else
                     <br><br>
                     <textarea name="Descr" placeholder="Description.." rows="5" cols="50" required></textarea>
                     <p><?=$result?></p>
-                    <button type="submit">Add Checklist</button>
+                    <button class="btnMain" type="submit">Add Checklist</button>
                 </form>
                 <?php
                 }

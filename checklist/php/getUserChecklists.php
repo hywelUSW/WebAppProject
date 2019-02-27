@@ -19,7 +19,7 @@ if($result)
 else
 {
     ?>
-    <h3 id="msg" style="text-align:center;">No checklists added!</h3>
+    <h3 class="msg" style="text-align:center;">No checklists added!</h3>
     <?php
 }
 ?>

@@ -21,7 +21,7 @@
             <?php
             if($droneAdded)
             {
-                echo "<h3 class='msgMain'>Drone Added!</h3>";
+                echo "<h3 class='msg'>Drone Added!</h3>";
             }
             else
             { ?>
@@ -101,8 +101,8 @@
                     <input type="number" name="PayloadMinTemp" placeholder="Minimum Temperature (°C)" required>
                     <br><br>
                     <input type="number" name="PayloadMaxTemp" placeholder="Maxiumum Tempeature (°C)" required>
-                    <p>$errMsg</p>
-                    <button type="submit">Add Drone</button>
+                    <p><?=$errMsg?></p>
+                    <button class="btnMain" type="submit">Add Drone</button>
                 </form>
             <section>
             <?php } ?>

@@ -50,7 +50,7 @@ require_once("/students/15080900/projectapp/php/initalise.php");
                 else
                 {
                     ?>
-                    <h3 id="msg" style="text-align:center;">No drones added!</h3>
+                    <h3 class="msg" style="text-align:center;">No drones added!</h3>
                     <?php
                 }
             ?>

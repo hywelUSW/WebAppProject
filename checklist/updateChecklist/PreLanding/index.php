@@ -65,3 +65,4 @@ $landingTime = date("Y-m-d\TH:i:s",strtotime($result['LandingTimeRecorded']));
     </footer>
 </html>
 <script src="<?=$root?>js/master.js"></script>
+<script src="js/script.js"></script>

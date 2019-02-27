@@ -8,7 +8,7 @@ if($result)
     while($row = $result->fetch_assoc())
     {
         ?>
-            <a href="<?=$root."checklist/checklistDetails?checklistID=".$row['ChecklistID']?>"><?=$row['Name']?></a>
+            <a href="<?=$root."checklist/checklistDetails?checklistID=".$row['ChecklistID']?>"><?=$row['ChecklistName']?></a>
             <hr>
         <?php
     }

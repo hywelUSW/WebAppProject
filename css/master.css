@@ -129,7 +129,12 @@ main{
 }
 input,textarea{
     font-size:20px;
+    width: 360px;
 }
 .msg{
+    margin-top:10vh;
     text-align: center;
+}
+p{
+   font-size:18px;
 }
