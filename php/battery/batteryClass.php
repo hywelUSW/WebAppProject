@@ -105,6 +105,5 @@ class battery{
     }
 
 }
-$test = new battery();
-$test->addCharge(1,26);
+
 ?>
