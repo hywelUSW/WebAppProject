@@ -26,7 +26,7 @@
             else
             { ?>
             <section>
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST"  enctype="multipart/form-data">
                     <input type="text" name="DroneName" placeholder="name" required>
                     <!--<br><br>
                     <input type="file" name="DroneImage">-->
@@ -59,13 +59,6 @@
                     <input type="number" name="TempRangeMax" placeholder="Maximum Operating Temperature (°C)" required>
                     <br><br>
                     <input type="text" name="OperatingWeather" placeholder="Operating Weather" required>
-                    <hr>
-                    <h4>Battery Specifications</h4>
-                    <input type="text" name="Chemistry" placeholder="Battery Chemistry" required>
-                    <br><br>
-                    <input type="number" name="BatteryWeight" placeholder="Weight (g)" required>
-                    <br><br>
-                    <input type="number" name="PowerOutput" placeholder="Power output (mAh)" required>
                     <hr>
                     <h4>Technical Specifications</h4>
                     <input type="Number" name="Height" placeholder="Height (mm)" required>

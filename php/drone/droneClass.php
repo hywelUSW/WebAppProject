@@ -42,6 +42,32 @@ class drone{
             return false;    
         }
     }
+    function getFullDetails($droneID,$userID){
+        $stmt = "SELECT * FROM Drone ";
+        $stmt .= "INNER JOIN dronedesignation ON drone.droneID = dronedesignation.droneID ";
+        $stmt .= "INNER JOIN dronecharacteristics ON drone.droneID = dronecharacteristics.droneID ";
+        $stmt .= "INNER JOIN environmentlimits ON drone.droneID = environmentlimits.droneID ";
+        $stmt .= "INNER JOIN  payload ON drone.droneID = payload.droneID ";
+        $stmt .= "INNER JOIN  techspecs ON drone.droneID = techspecs.droneID ";
+        $stmt .= "INNER JOIN rpsspecs ON drone.droneID = rpsspecs.droneID ";
+        $stmt .= "WHERE drone.DroneID = ? AND userID = ?";
+        
+        $db = new database();
+        $conn = $db->dbConnect();
+        $query = $conn->prepare($stmt);
+        $query->bind_param("ii",$droneID,$userID);
+        $query->execute();
+        $result = $query->get_result();
+        if($result->num_rows > 0)
+        {
+           // $conn->close();
+            return $result->fetch_assoc();
+        }
+        else
+        {
+            return false;    
+        }
+    }
 
     //
     //INSERT QUERIES
@@ -106,22 +132,6 @@ class drone{
     {
         $query = "INSERT INTO environmentlimits VALUES (?,?,?,?,?,?,?)";
         $params = array("iiiiiis",&$droneID,&$maxHeight,&$maxRadius,&$maxWind,&$TempRangeMin,&$tempRangeMax,&$opWeather);
-        $db = new database();
-        $query = $db->exQ($query,$params);
-        if($query->affected_rows > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    function addBatterySpecs($droneID,$weight,$chem,$output)
-    {
-        $query = "INSERT INTO batteryspec VALUES (?,?,?,?)";
-        $params = array("iisi",$droneID,$weight,$chem,$output);
         $db = new database();
         $query = $db->exQ($query,$params);
         if($query->affected_rows > 0)
