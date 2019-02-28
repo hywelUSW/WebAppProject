@@ -19,6 +19,7 @@ else
 {
     while($row = $result->fetch_assoc())
     {
+        
         $droneList[] = [$row['DroneID'],$row['DroneName']];
         if($_POST['drone'] == $row['DroneID'])
         {   //check that user owns the drone
@@ -26,7 +27,6 @@ else
         }
     }
 }
-
    //form submitted
     if(array_filter($_POST) && isset($_SESSION['user']))
     {
@@ -89,20 +89,22 @@ else
                 <form method="post" action="">
                     <input type="text" name="name" placeholder="Checklist Name" required>
                     <br><br>
-                    <select name="drone">
+                    <label>Drone ID</label><select name="drone" style="font-size:20px">
                 
                     <?php
                         foreach($droneList as $optDrone)
                         {
+                            
                            echo "<option value='".$optDrone[0]."'>".$optDrone[1]."</option>";
                         }
                         
                     ?>
                     </select>
+                    <br><br>
                     <input type="date" name="date" placeholder="Flight Date" required>
                     <br><br>
                     <textarea name="Descr" placeholder="Description.." rows="5" cols="50" required></textarea>
-                    <p><?=$result?></p>
+                    <p><?=$errMsg?></p>
                     <button class="btnMain" type="submit">Add Checklist</button>
                 </form>
                 <?php

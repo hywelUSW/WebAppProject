@@ -1,19 +1,36 @@
 $("#getWeather").click(function(){
-    $.ajax({
-        url:
-    });
-});
-function constructURL()
-{
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos){
+            getWeather(pos.coords.latitude,pos.coords.longitude);
+        },
+        //failiure
+        getIPWeather());
+      }
+      else 
+      {
+        getIPWeather()
+      }   
+});
+function getIPWeather()
+{
+
+}
+function getWeather(lat, long)
+{
+
+    $.ajax({
+        //api key: 6a234ab97760be692958e294d6cb512f
+        url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=166826fbc7bd89eac6c5fabcde57e926",
+        success: function (weatherResult)
+        {
+            test = weatherResult;
 
         },
-        function(){//Geolocate failed
+        fail:function()
+        {
+            alert("unable to get weather!");
+        }
 
-        });
-      } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-   var url =  "api.openweathermap.org/data/2.5/forecast/daily?lat="+lat+"&lon="+long+"&cnt=1";
+    });
+
 }

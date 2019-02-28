@@ -127,7 +127,7 @@ main{
 .btnMain:active{
     background-color:#223942;
 }
-input,textarea{
+input[type="text"],inputinput[type="timedate-local"],textarea{
     font-size:20px;
     width: 360px;
 }

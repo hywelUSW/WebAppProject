@@ -113,3 +113,4 @@ if(array_filter($_POST) && isset($_SESSION['user']))
     </footer>
 </html>
 <script src="<?=$root?>js/master.js"></script>
+<script src="js/script.js"></script>
