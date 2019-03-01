@@ -128,7 +128,7 @@ main{
 .btnMain:active{
     background-color:#223942;
 }
-label,input[type="email"],input[type="password"],input[type="text"],input[type="timedate-local"],textarea{
+label,input,textarea{
     font-size: 20px;
 }
 input[type="text"],input[type="timedate-local"],textarea{
@@ -137,6 +137,7 @@ input[type="text"],input[type="timedate-local"],textarea{
 }
 input[type="checkbox"]{
     float:right;
+    transform:scale(1.5);
 }
 .msg{
     margin-top:10vh;

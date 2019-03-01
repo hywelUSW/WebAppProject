@@ -1,3 +1,10 @@
 #weatherInfo{
     list-style-type: circle;
 }
+#weatherWarnings{
+    list-style-type: circle;
+    
+}
+#weatherWarnings li{
+    color:red;
+}

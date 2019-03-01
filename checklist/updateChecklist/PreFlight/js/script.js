@@ -1,3 +1,7 @@
+var weatherWarnings= [];
+var temp;
+var weatherCond;
+var droneCond = DroneEnvDetails.operatingWeather.split(",");
 $("#getWeather").click(function(){
     
     if (navigator.geolocation) {
@@ -17,9 +21,7 @@ function getIPWeather()
 {
 
 }
-var weatherWarnings= [];
-var temp;
-var weatherCond;
+
 function getWeather(lat, long)
 {
     
@@ -31,7 +33,7 @@ function getWeather(lat, long)
         {
             if(DroneEnvDetails != null)
             {
-                
+                //coverrt kelvin to celcius 
                 temp = weatherResult.main.temp - 273.15;
                 temp = temp.toFixed(2);
                 if(DroneEnvDetails.maxWind < weatherResult.wind.speed)
@@ -40,25 +42,32 @@ function getWeather(lat, long)
                 }
                 if(temp > DroneEnvDetails.maxTemp)
                 {//too hot
-                    weatherWarnings.push();  
+                    weatherWarnings.push("temperature above drone limits");  
                 }
                 if(temp < DroneEnvDetails.minTemp)
                 {//too hot
-                    weatherWarnings.push();  
+                    weatherWarnings.push("Temperature below drone limits");  
                 }
                 if(temp > DroneEnvDetails.payloadMaxTemp)
                 {
-                    weatherWarnings.push();  
+                    weatherWarnings.push("temperature above payload limits");  
                 }
                 if(temp < DroneEnvDetails.payloadMinTemp)
                 {
-                    weatherWarnings.push();  
+                    weatherWarnings.push("Temperature below payload limits");  
                 }
                 //https://openweathermap.org/weather-conditions
-                
-                if(weatherWarnings.length == 0)
+                if(!droneCond.includes(weatherResult.weather[0].main))
                 {
-                   
+                    weatherWarnings.push("Unsafe weather conditions!");
+                }
+                if(weatherWarnings.length >0)
+                {
+                   $('#weather').append("<ul id='weatherWarnings'></ul>");
+                   for(var i = 0; i < weatherWarnings.length;i++)
+                   {
+                       $("#weatherWarnings").append("<li>"+weatherWarnings[i]+"</li>");
+                   }
                 }
                 else
                 {

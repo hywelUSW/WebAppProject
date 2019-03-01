@@ -1,5 +1,4 @@
 <?php
-
 //check that all feilds are set and user is logged in
 if(array_filter($_POST) && isset($_SESSION['user']))
 {   

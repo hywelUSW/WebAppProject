@@ -58,7 +58,17 @@
                     <br><br>
                     <input type="number" name="TempRangeMax" placeholder="Maximum Operating Temperature (°C)" required>
                     <br><br>
-                    <input type="text" name="OperatingWeather" placeholder="Operating Weather" required>
+                   <!-- <input type="text" name="OperatingWeather" placeholder="Operating Weather" required>-->
+                    <div>
+                        <h4>Operating conditions</h4>
+                        <label>Thunderstorm</label><input type="checkbox" name="OperatingWeather[]" value="Thunderstorm"><br>
+                        <label>Light rain</label><input type="checkbox" name="OperatingWeather[]" value="drizzle"><br>
+                        <label>rain</label><input type="checkbox" name="OperatingWeather[]" value="rain"><br>
+                        <label>snow</label><input type="checkbox" name="OperatingWeather[]" value="snow"><br>
+                        <label>fog</label><input type="checkbox" name="OperatingWeather[]" value="atmosphere"><br>
+                        <label>clear</label><input type="checkbox" name="OperatingWeather[]" value="clear"><br>
+                        <label>cloudy</label><input type="checkbox" name="OperatingWeather[]" value="cloudy"><br>
+                    </div>
                     <hr>
                     <h4>Technical Specifications</h4>
                     <input type="Number" name="Height" placeholder="Height (mm)" required>

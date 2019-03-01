@@ -117,7 +117,6 @@ class drone{
         $params = array("isisi",&$droneID,&$flightModes,&$maxOpSpeed,&$launchType,&$maxFlightTime);
         $db = new database();
         $query = $db->exQ($query,$params);
-        print_r($query);
         if($query->affected_rows > 0)
         {
             return true;
@@ -130,8 +129,14 @@ class drone{
 
     function addEnvLimits($droneID,$maxHeight,$maxRadius,$maxWind,$TempRangeMin,$tempRangeMax,$opWeather)
     {
+        Foreach($opWeather as $cond)
+        {
+            $weather .= $cond . ",";
+        }
+        //remove last character
+        substr_replace($weather, "", -1);
         $query = "INSERT INTO environmentlimits VALUES (?,?,?,?,?,?,?)";
-        $params = array("iiiiiis",&$droneID,&$maxHeight,&$maxRadius,&$maxWind,&$TempRangeMin,&$tempRangeMax,&$opWeather);
+        $params = array("iiiiiis",&$droneID,&$maxHeight,&$maxRadius,&$maxWind,&$TempRangeMin,&$tempRangeMax,&$weather);
         $db = new database();
         $query = $db->exQ($query,$params);
         if($query->affected_rows > 0)

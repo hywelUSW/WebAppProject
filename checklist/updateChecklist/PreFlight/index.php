@@ -47,13 +47,13 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             <p><?=$msg?></p>
             <form method='post'>
                 <input type="hidden" name="WeatherCheck" placeholder="Weather Checked" value="<?=$result['WeatherCheck']?>"><button type="button" id="getWeather">Get Weather</button>
-                
+                <div id="weather">
                     <ul id="weatherInfo">
                         <li id="weatherCond">Weather: </li>
                         <li id="Temp">Temperature: </li>
                         <li id="windSpeed">Wind Speed: </li>
                     </ul>
-                
+                </div>
                 <br><br>
                 <input type='hidden' name='SiteSurveyed' value='0'>
                 <label>Site Surveyed</label><input type="checkbox" name="SiteSurveyed" value='1' <?=$checklist->ischecked($result["SiteSurveyed"])?>>
