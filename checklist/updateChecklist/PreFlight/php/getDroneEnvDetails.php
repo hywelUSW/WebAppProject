@@ -10,14 +10,14 @@ $checklistDetails = $checklist->getChecklistOverview($_GET['checklistID']);
 if($checklistDetails->num_rows > 0)
 {
     $row = $checklistDetails->fetch_assoc();
-    $result = $drone->getFullDetails($row['DroneID'],$_SESSION['user']);
+    $$droneResult = $drone->getFullDetails($row['DroneID'],$_SESSION['user']);
     $envDetails = array(
-        maxWind => $result['MaxWind'],
-        minTemp => $result['TempRangeMin'],
-        maxTemp => $result['TempRangeMax'],
-        operatingWeather => $result['OperatingWeather'],
-        payloadMinTemp => $result['MinTemp'],
-        payloadMaxTemp =>$result['MaxTemp']);
+        maxWind => $$droneResult['MaxWind'],
+        minTemp => $$droneResult['TempRangeMin'],
+        maxTemp => $$droneResult['TempRangeMax'],
+        operatingWeather => $$droneResult['OperatingWeather'],
+        payloadMinTemp => $$droneResult['MinTemp'],
+        payloadMaxTemp =>$$droneResult['MaxTemp']);
     echo("<script> var DroneEnvDetails =". json_encode($envDetails).";</script>");
 }
 ?>

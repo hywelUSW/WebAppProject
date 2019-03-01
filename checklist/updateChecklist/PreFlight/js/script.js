@@ -38,7 +38,7 @@ function getWeather(lat, long)
                 temp = temp.toFixed(2);
                 if(DroneEnvDetails.maxWind < weatherResult.wind.speed)
                 {
-                    weatherWarnings.push("Wind speed is" +(weatherResult.wind.speed - DroneEnvDetails.maxWind)+"m/s above drone limit!");
+                    weatherWarnings.push("Wind speed is above drone limit!");//" +(weatherResult.wind.speed - DroneEnvDetails.maxWind)+"m/s 
                 }
                 if(temp > DroneEnvDetails.maxTemp)
                 {//too hot
@@ -63,7 +63,7 @@ function getWeather(lat, long)
                 }
                 if(weatherWarnings.length >0)
                 {
-                   $('#weather').append("<ul id='weatherWarnings'></ul>");
+                   $('#weather').append("<ul id='weatherWarnings'>Warning: weather unsuitable for drone!<br><br></ul>");
                    for(var i = 0; i < weatherWarnings.length;i++)
                    {
                        $("#weatherWarnings").append("<li>"+weatherWarnings[i]+"</li>");

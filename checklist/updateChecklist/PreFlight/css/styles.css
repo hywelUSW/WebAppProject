@@ -3,8 +3,5 @@
 }
 #weatherWarnings{
     list-style-type: circle;
-    
-}
-#weatherWarnings li{
-    color:red;
+    color:red!important;
 }

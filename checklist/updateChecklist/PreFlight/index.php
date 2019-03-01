@@ -19,6 +19,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
     if($checklist->updatePreFlight($_GET['checklistID'],$_POST['WeatherCheck'],$_POST['SiteSurveyed'],$_POST['RPASSService'],$_POST['TakeOffAreaEstablished'],$_POST['AssistantBriefed'],$_POST['ContollerConnects'],$_POST['RPADamageCheck'],$_POST['BatteryCompartment'],$_POST['RPAMotors'],$_POST['CheckPropellers'],$_POST['CheckCamera'],$_POST['DronePowered'],$_POST['DroneHomeLocked'],$_POST['Calibrated'],$_POST['CheckGroundStation'],$_POST['VideoCheck'],$_POST['TakeOffAreaClear'],$_POST['TakeOffClearence'],$_POST['AirspaceClear'],$_POST['FitToFly']))
     {
         $result = $checklist->getPreFlight($_GET['checklistID']);
+        
         $msg = "Checklist updated!";
     }
     else
@@ -26,13 +27,19 @@ if(array_filter($_POST) && isset($_SESSION['user']))
         $msg = "could not update checklist!";
     }
 }
+$weather = explode(",",$result['WeatherCheck']);
 
+if($weather == null)
+{
+    $weather = ["",0,0];
+}
 ?>
 <html>
     <head>
         <title>App project</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?=$root?>css/master.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1'/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <?php include_once("php/getDroneEnvDetails.php"); ?>
@@ -49,9 +56,9 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                 <input type="hidden" name="WeatherCheck" placeholder="Weather Checked" value="<?=$result['WeatherCheck']?>"><button type="button" id="getWeather">Get Weather</button>
                 <div id="weather">
                     <ul id="weatherInfo">
-                        <li id="weatherCond">Weather: </li>
-                        <li id="Temp">Temperature: </li>
-                        <li id="windSpeed">Wind Speed: </li>
+                        <li id="weatherCond">Weather: <?=$weather[0]?></li>
+                        <li id="Temp">Temperature: <?=$weather[1]?>°C</li>
+                        <li id="windSpeed">Wind Speed: <?=$weather[2]?> M/S</li>
                     </ul>
                 </div>
                 <br><br>
