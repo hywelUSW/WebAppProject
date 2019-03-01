@@ -77,7 +77,7 @@
             <h3>Login</h3>
             <p>Not a user? <a href="<?=$root?>register">Register here</a></p>
             <form action="<?=$root?>login/" method="post">
-                <input name="email" placeholder="email" required>
+                <input name="email" type="email" placeholder="email" required>
                 <br><br>
                 <input name="password" type="password" placeholder="password" required>
                 <br><br>

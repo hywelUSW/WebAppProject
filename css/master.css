@@ -127,8 +127,11 @@ main{
 .btnMain:active{
     background-color:#223942;
 }
-input[type="text"],inputinput[type="timedate-local"],textarea{
-    font-size:20px;
+label,input[type="email"],input[type="password"],input[type="text"],input[type="timedate-local"],textarea{
+    font-size: 20px;
+}
+input[type="text"],input[type="timedate-local"],textarea{
+    
     width: 360px;
 }
 .msg{

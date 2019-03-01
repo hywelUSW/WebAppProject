@@ -32,7 +32,7 @@
         ?>
         <main>
             
-            <section>
+            
                 <?php
                     if($Nodata)
                     {
@@ -67,7 +67,7 @@
                         <?php
                     }
                 ?>
-            </section>
+            
         </main>
     </body>
     <footer>

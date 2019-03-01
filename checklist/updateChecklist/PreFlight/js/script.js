@@ -24,6 +24,11 @@ function getWeather(lat, long)
         success: function (weatherResult)
         {
             test = weatherResult;
+            $.ajax({
+                url:"php/getDroneEnvDetails.php",
+                type:"POST",
+                
+            })
 
         },
         fail:function()

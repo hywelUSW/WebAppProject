@@ -1,0 +1,13 @@
+main{
+    position:relative;
+}
+.btnWrapper{
+    position: absolute;
+    bottom:30px;
+    left:0;
+    width:100%;
+    
+}
+.btnWrapper hr{
+    width:95%;
+}
