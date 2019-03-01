@@ -7,7 +7,7 @@ if(isset($_GET['DroneID']))
 }
 else
 {
-    header("location: " . $root. "checklist/");
+    header("location: ../");
     die();
 }
 ?>

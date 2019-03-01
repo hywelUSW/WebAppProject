@@ -45,15 +45,8 @@ class checklist{
         $query = $conn->prepare("SELECT * FROM checklist WHERE ChecklistID = ? LIMIT 1");
         $query->bind_param("i",$checklistID);
         $query->execute();
-        $result = $query->get_result();
-        if($result->num_rows > 0)
-        {
-            return $result;
-        }
-        else
-        {
-            return false;
-        }
+        return $query->get_result();
+        
     }
 
     //Create new checklist and initalises the subtypes

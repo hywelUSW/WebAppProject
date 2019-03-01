@@ -8,6 +8,7 @@ html,body{
 header{
     position: sticky;
     top:0;
+    z-index: 50;;
 }
 header>nav{
     height:var(--header-height);
@@ -133,6 +134,9 @@ label,input[type="email"],input[type="password"],input[type="text"],input[type="
 input[type="text"],input[type="timedate-local"],textarea{
     
     width: 360px;
+}
+input[type="checkbox"]{
+    float:right;
 }
 .msg{
     margin-top:10vh;

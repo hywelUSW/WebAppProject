@@ -12,7 +12,22 @@
      die();
  }
  
- require_once($root."php/checklist/getChecklistOverview.php");
+ require_once($root."php/checklist/checklistClass.php");
+ $checklist = new checklist();
+ $result = $checklist->getChecklistOverview($_GET['checklistID']);
+ 
+ if($result->num_rows > 0)
+ {
+     $result = $result->fetch_assoc();
+     if($result['UserID'] != $_SESSION['user'])
+     {
+        header("Location:".$root."checklist/");
+        die();
+     }
+ }
+ else{
+     $noData = true; 
+ }
 
 ?>
 <html>
@@ -34,11 +49,12 @@
             
             
                 <?php
-                    if($Nodata)
+                    if($noData)
                     {
                         ?>
+                        
                         <h2>Drone Details</h2>
-                        <h3 id="message">Checklist does not exist!</h3>
+                        <h3 class="msg">Checklist does not exist!</h3>
                         <?php
                     }else{
                         ?>
