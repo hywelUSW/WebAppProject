@@ -161,9 +161,9 @@ class checklist{
        }
     }
 
-    function updateLoadingList($checklistID,$WeatherCheck,$opsManual,$maps,$TaskInfo,$safetyEquipment,$lipoBag,$controller,$equpmentCharged,$camera,$rpaPlatform,$propellers,$carryingCase,$permissionGranted)
+    function updateLoadingList($checklistID,$opsManual,$maps,$TaskInfo,$safetyEquipment,$lipoBag,$controller,$equpmentCharged,$camera,$rpaPlatform,$propellers,$carryingCase,$permissionGranted)
     {
-        $query = "UPDATE loadinglist SET WeatherCheck = ?, OpsManual = ?, Maps = ?, TaskInfo = ?, SafetyEquipment = ?,";
+        $query = "UPDATE loadinglist SET  OpsManual = ?, Maps = ?, TaskInfo = ?, SafetyEquipment = ?,";
         $query .=  " LiPoBag = ?, Controller = ?,EquipmentCharged = ?,Camera = ?, RPAPlatform = ?, Propellers = ?,";
         $query .= " CarryingCase = ?, PermissionGranted = ? WHERE checklistID = ?";
         $params = array("siiiiiiiiiiiii",$WeatherCheck,$opsManual,$maps,$TaskInfo,$safetyEquipment,$lipoBag,$controller,$equpmentCharged,$camera,$rpaPlatform,$propellers,$carryingCase,$permissionGranted,$checklistID);

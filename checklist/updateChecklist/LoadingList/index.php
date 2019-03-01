@@ -17,7 +17,7 @@ if($result['userID'] != $_SESSION['user'])
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
     
-    if($checklist->updateLoadingList($_GET['checklistID'],$_POST['WeatherCheck'],$_POST['OpsManual'],$_POST['Maps'],$_POST['TaskInfo'],$_POST['SafetyEquipment'],$_POST['LiPoBag'],$_POST['Controller'],$_POST['EqupmentCharged'],$_POST['Camera'],$_POST['RPAPlatform'],$_POST['Propellers'],$_POST['CarryingCase'],$_POST['PermissionGranted']))
+    if($checklist->updateLoadingList($_GET['checklistID'],$_POST['OpsManual'],$_POST['Maps'],$_POST['TaskInfo'],$_POST['SafetyEquipment'],$_POST['LiPoBag'],$_POST['Controller'],$_POST['EqupmentCharged'],$_POST['Camera'],$_POST['RPAPlatform'],$_POST['Propellers'],$_POST['CarryingCase'],$_POST['PermissionGranted']))
     {
         $result = $checklist->getLoadingList($_GET['checklistID']);
     }
@@ -45,8 +45,6 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             <h2>Loading List</h2>
             
             <form method='post'>
-                <input type="text" name="WeatherCheck" placeholder="Weather Check" value="<?=$result['WeatherCheck']?>"> <button type="button" id="getWeather">Get Weather</button>
-                <br><br>
                 <input type='hidden' name='OpsManual' value='0'>
                 <label>Operations Manual</label><input type="checkbox" name="OpsManual" value='1'  <?=$checklist->ischecked($result["OpsManual"])?>>
                 <br><br>
