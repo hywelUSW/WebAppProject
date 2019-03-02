@@ -166,7 +166,7 @@ class drone{
             $weather .= $cond . ",";
         }
         //remove last character
-        substr_replace($weather, "", -1);
+        $weather = substr_replace($weather, "", -1);
         $query = "INSERT INTO environmentlimits VALUES (?,?,?,?,?,?,?)";
         $params = array("iiiiiis",&$droneID,&$maxHeight,&$maxRadius,&$maxWind,&$TempRangeMin,&$tempRangeMax,&$weather);
         $db = new database();
@@ -180,16 +180,19 @@ class drone{
             return false;
         }
     }
-    function updateEnvLimits($droneID,$maxHeight,$maxRadius,$maxWind,$TempRangeMin,$tempRangeMax,$opWeather)
+  
+    function updateEnvLimits($droneID,$maxHeight,$maxRadius,$maxWind,$tempRangeMin,$tempRangeMax,$opWeather)
     {
         //clear previous weather types
-        $this->clearWeatherTypes($droneID);
+        //$this->clearWeatherTypes($droneID);
+        
         Foreach($opWeather as $cond)
         {
             $weather .= $cond . ",";
         }
-        $query = "UPDATE Environmentlimits SET MaxHeight = ?, MaxRadius = ?,MaxWind = ? TempRangeMin = ?, TempRangeMax = ?, OperatingWeather = ? WHERE droneID = ?";
-        $params = array("iiiiisi",&$maxHeight,&$maxRadius,&$maxWind,&$TempRangeMin,&$tempRangeMax,&$weather,&$droneID);
+        $weather = substr_replace($weather, "", -1);
+        $query = "UPDATE environmentlimits SET MaxHeight = ?, MaxRadius = ?,MaxWind = ? ,TempRangeMin = ?, TempRangeMax = ?, OperatingWeather = ? WHERE DroneID = ?";
+        $params = array("iiiiisi",&$maxHeight,&$maxRadius,&$maxWind,&$tempRangeMin,&$tempRangeMax,&$weather,&$droneID);
         $db = new database();
         $query = $db->exQ($query,$params);
         if($query->affected_rows > 0)
@@ -197,17 +200,7 @@ class drone{
             return true;
         }
     }
-    function clearWeatherTypes($droneID)
-    {
-        $query = "UPDATE environmentLimits SET OperatingWeather = null WHERE droneID = ?";
-        $params = array("i",$droneID);
-        $db = new database();
-        $query = $db->exQ($query,$params);
-        if($query->affected_rows > 0)
-        {
-            return true;
-        }
-    }
+    
     //
     //Technical specifications
     //
@@ -288,9 +281,10 @@ class drone{
 
     function updatePayload($droneID,$name,$minTemp,$maxTemp)
     {
-        $query = "UPDATE payload SET name = ?,MinTemp = ?,MaxTemp = ? WHERE DroneID = ?";
-        $params = array("siii",$name,$minTemp,$maxTemp);
+        $query = "UPDATE payload SET PayloadName = ?,MinTemp = ?,MaxTemp = ? WHERE DroneID = ?";
+        $params = array("siii",$name,$minTemp,$maxTemp,$droneID);
         $db = new database();
+        echo "t";
         $query = $db->exQ($query,$params);
         if($query->affected_rows > 0)
         {

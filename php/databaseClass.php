@@ -22,6 +22,7 @@ class database{
         $query = $conn->prepare($queryString);
         call_user_func_array(array($query, 'bind_param'), $params);
         $query->execute();
+        
         if($query->errno == 0)
         {
             
@@ -30,7 +31,6 @@ class database{
         }
         else
         {
-           
             return false;
         }
 

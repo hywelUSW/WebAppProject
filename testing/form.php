@@ -12,6 +12,9 @@ if(move_uploaded_file($_FILES["test"]["tmp_name"], $target_file)) {
 }
 */
 print_r($_POST);
+$test = $_POST;
+echo "<br><br>";
+print_r($test);
 ?>
 <form action="" method="POST" enctype="multipart/form-data">
 <input type="file" name="test">
