@@ -14,9 +14,11 @@ Checklist
 
 
 Drone
-    drone overview
-    add basic details from subtypes to dronedetails
-    edit drone
+  
+    
+    
+    edit drone weather
+    edit drone error messages
 
 
     get wind spped check with drone 
@@ -29,4 +31,6 @@ remove battery data from drone.
 
 Drone
 Changed post landing
+
+
 

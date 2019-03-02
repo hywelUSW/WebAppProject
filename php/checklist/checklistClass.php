@@ -40,6 +40,7 @@ class checklist{
     //Get details of specific checklist
     function getChecklistOverview($checklistID)
     {
+       
         $db = new database();
         $conn = $db->dbConnect();
         $query = $conn->prepare("SELECT * FROM checklist WHERE ChecklistID = ? LIMIT 1");
@@ -108,6 +109,23 @@ class checklist{
             return "Invalid date!";
         }
         
+    }
+    //
+    //update
+    //
+    function updateChecklist($droneID,$checklistName,$plannedDate,$descr,$checklistID)
+    {
+       
+        $query = "UPDATE Checklist SET DroneID = ?, Checklistname = ?, PlannedDate = ?, Descr = ? WHERE ChecklistID = ?";
+        $params = array("isssi",$droneID,$checklistName,$plannedDate,$descr,$checklistID);
+        echo $descr;
+        $db = new database();
+        $result = $db->exQ($query,$params);
+        
+        if($result->affected_rows > 0)
+        {
+            return true;
+        }
     }
     //Delete checklist
     function deleteChecklist($checklistID)

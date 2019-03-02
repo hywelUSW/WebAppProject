@@ -28,6 +28,7 @@
  else{
      $noData = true; 
  }
+ 
 
 ?>
 <html>
@@ -59,8 +60,12 @@
                     }else{
                         ?>
                         <summary>
-                            <h3><?=$result['ChecklistName']?></h3>
+                            <h2><?=$result['ChecklistName']?></h2>
+                            <a href="updateChecklist?checklistID=<?=$_GET['checklistID']?>">
+                                <button>Edit Checklist</button>
+                            </a>
                         </summary>
+                        <hr>
                         <div id="overview">
                         <ul>
                             <li>Planned Date: <?=$result['PlannedDate']?></li>
