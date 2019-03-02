@@ -6,10 +6,10 @@
      header("Location:".$root."login/");
      die();
  }
- //echck that drone is set
+ //check that drone is set
  if($_GET['DroneID'] == null)
  {
-    //header("Location:".$root."drone/");
+    header("Location:".$root."drone/");
      die();
  }
  

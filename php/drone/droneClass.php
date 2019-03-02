@@ -50,31 +50,22 @@ class drone{
         $stmt .= "INNER JOIN  payload ON drone.droneID = payload.droneID ";
         $stmt .= "INNER JOIN  techspecs ON drone.droneID = techspecs.droneID ";
         $stmt .= "INNER JOIN rpsspecs ON drone.droneID = rpsspecs.droneID ";
-        $stmt .= "WHERE drone.DroneID = ? AND userID = ?";
+        $stmt .= "WHERE drone.DroneID = ? AND userID = ? LIMIT 1";
         
         $db = new database();
         $conn = $db->dbConnect();
         $query = $conn->prepare($stmt);
         $query->bind_param("ii",$droneID,$userID);
         $query->execute();
-        $result = $query->get_result();
-        if($result->num_rows > 0)
-        {
-           // $conn->close();
-            return $result->fetch_assoc();
-        }
-        else
-        {
-            return false;    
-        }
+        return $query->get_result();
+        
     }
 
     //
-    //INSERT QUERIES
+    //Main Data
     //
     function insertDroneMainData($userID,$droneName)
     {
-        echo "test";
         $query = "INSERT INTO drone (DroneName,UserID) VALUES (?,?)";
         $params = array("si",&$droneName,&$userID);
         
@@ -91,7 +82,21 @@ class drone{
         }
         
     }
-    
+    function updateMainData($droneID,$DroneName)
+    {
+        $query = "UPDATE DRONE SET DroneName = ? WHERE DroneID = ?";
+        $params = array("si",&$DroneName,&$droneID);
+        $db = new database();
+        $query = $db->exQ($query,$params);
+        if($query->affected_rows > 0)
+        {
+            return true;
+        }
+
+    }
+    //
+    //Designation
+    //
     function addDesegnation($droneID,$modelName,$manufacturer,$droneType)
     {
         
@@ -111,6 +116,20 @@ class drone{
             return false;
         }
     }
+    function updateDesegnation($droneID,$modelName,$manufacturer,$droneType)
+    {
+        $query = "UPDATE dronedesignation SET modelname = ?,manufacturer = ?, dronetype = ? WHERE droneID = ? ";
+        $params = array("sssi",$modelName,$manufacturer,$droneType,$droneID);
+        $db = new database();
+        $query = $db->exQ($query,$params);
+        if($query->affected_rows > 0)
+        {
+            return true;
+        }
+    }
+    //
+    //Characteristics
+    //
     function addCharacteristics($droneID,$flightModes,$maxOpSpeed,$launchType,$maxFlightTime)
     {
         $query = "INSERT INTO dronecharacteristics VALUES (?,?,?,?,?)";
@@ -126,7 +145,20 @@ class drone{
             return false;
         }
     }
-
+    function updateCharacteristics($droneID,$flightModes,$maxOpSpeed,$launchType,$maxFlightTime)
+    {
+        $query = "UPDATE dronecharacteristics SET FlightTypes = ?, maxOperatingSpeed = ?, LaunchType = ?, MaxFlightTime = ? WHERE droneID = ?";
+        $params = array("sisii",$flightModes,$maxOpSpeed,$launchType,$maxFlightTime,$droneID);
+        $db = new database();
+        $query = $db->exQ($query,$params);
+        if($query->affected_rows > 0)
+        {
+            return true;
+        }
+    }
+    //
+    //Environment Limits
+    //
     function addEnvLimits($droneID,$maxHeight,$maxRadius,$maxWind,$TempRangeMin,$tempRangeMax,$opWeather)
     {
         Foreach($opWeather as $cond)
@@ -148,7 +180,37 @@ class drone{
             return false;
         }
     }
-
+    function updateEnvLimits($droneID,$maxHeight,$maxRadius,$maxWind,$TempRangeMin,$tempRangeMax,$opWeather)
+    {
+        //clear previous weather types
+        $this->clearWeatherTypes($droneID);
+        Foreach($opWeather as $cond)
+        {
+            $weather .= $cond . ",";
+        }
+        $query = "UPDATE Environmentlimits SET MaxHeight = ?, MaxRadius = ?,MaxWind = ? TempRangeMin = ?, TempRangeMax = ?, OperatingWeather = ? WHERE droneID = ?";
+        $params = array("iiiiisi",&$maxHeight,&$maxRadius,&$maxWind,&$TempRangeMin,&$tempRangeMax,&$weather,&$droneID);
+        $db = new database();
+        $query = $db->exQ($query,$params);
+        if($query->affected_rows > 0)
+        {
+            return true;
+        }
+    }
+    function clearWeatherTypes($droneID)
+    {
+        $query = "UPDATE environmentLimits SET OperatingWeather = null WHERE droneID = ?";
+        $params = array("i",$droneID);
+        $db = new database();
+        $query = $db->exQ($query,$params);
+        if($query->affected_rows > 0)
+        {
+            return true;
+        }
+    }
+    //
+    //Technical specifications
+    //
     function addTechSpecs($droneID,$height,$width,$length,$weight,$maxTakeOffWeight,$motorType,$motorSpeed,$CDL,$VDL,$FC)
     {
         $query = "INSERT INTO techspecs VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -164,7 +226,21 @@ class drone{
             return false;
         }
     }
-
+    function updateTechSpecs($droneID,$height,$width,$length,$weight,$maxTakeOffWeight,$motorType,$motorSpeed,$CDL,$VDL,$FC)
+    {
+        $query = "UPDATE techspecs SET height = ?, width = ?, length = ?, Weight = ?, MaxTakeOffWeight = ?, ";
+        $query .=  "MotorType = ?, MotorSpeed = ?, ControlDataLink = ?, VideoDataLink = ?, FlightController = ? WHERE DroneID = ?";
+        $params = array("iiiiisisssi",$height,$width,$length,$weight,$maxTakeOffWeight,$motorType,$motorSpeed,$CDL,$VDL,$FC,$droneID);
+        $db = new database();
+        $query = $db->exQ($query,$params);
+        if($query->affected_rows > 0)
+        {
+            return true;
+        }
+    }
+    //
+    //RPS Details
+    //
     function addRPSDetails($droneID,$DL,$VL,$AntennaType)
     {
         $query = "INSERT INTO rpsspecs VALUES (?,?,?,?)";
@@ -180,6 +256,20 @@ class drone{
             return false;
         }
     }
+    function updateRPSDetails($droneID,$DL,$VL,$AntennaType)
+    {
+        $query = "UPDATE rpsspecs SET DataLink = ?, VideoLink = ?, AntennaType = ? WHERE droneID = ?";
+        $params = array("sssi",$DL,$VL,$AntennaType,$droneID);
+        $db = new database();
+        $query = $db->exQ($query,$params);
+        if($query->affected_rows > 0)
+        {
+            return true;
+        }
+    }
+    //
+    //payload
+    //
     function addPayloadDetails($droneID,$name,$minTemp,$maxTemp)
     {
         $query = "INSERT INTO payload VALUES (?,?,?,?)";
@@ -196,6 +286,17 @@ class drone{
         }
     }
 
+    function updatePayload($droneID,$name,$minTemp,$maxTemp)
+    {
+        $query = "UPDATE payload SET name = ?,MinTemp = ?,MaxTemp = ? WHERE DroneID = ?";
+        $params = array("siii",$name,$minTemp,$maxTemp);
+        $db = new database();
+        $query = $db->exQ($query,$params);
+        if($query->affected_rows > 0)
+        {
+            return true;
+        }
+    }
 
     function deleteDrone($droneID)
     {

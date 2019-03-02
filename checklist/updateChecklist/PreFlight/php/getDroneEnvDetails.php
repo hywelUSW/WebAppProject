@@ -10,14 +10,18 @@ $checklistDetails = $checklist->getChecklistOverview($_GET['checklistID']);
 if($checklistDetails->num_rows > 0)
 {
     $row = $checklistDetails->fetch_assoc();
-    $$droneResult = $drone->getFullDetails($row['DroneID'],$_SESSION['user']);
-    $envDetails = array(
-        maxWind => $$droneResult['MaxWind'],
-        minTemp => $$droneResult['TempRangeMin'],
-        maxTemp => $$droneResult['TempRangeMax'],
-        operatingWeather => $$droneResult['OperatingWeather'],
-        payloadMinTemp => $$droneResult['MinTemp'],
-        payloadMaxTemp =>$$droneResult['MaxTemp']);
-    echo("<script> var DroneEnvDetails =". json_encode($envDetails).";</script>");
+    $droneResult = $drone->getFullDetails($row['DroneID'],$_SESSION['user']);
+    if($droneResult->num_rows > 0)
+    {
+        $droneResult = $droneResult->fetch_assoc();
+        $envDetails = array(
+            maxWind => $droneResult['MaxWind'],
+            minTemp => $droneResult['TempRangeMin'],
+            maxTemp => $droneResult['TempRangeMax'],
+            operatingWeather => $droneResult['OperatingWeather'],
+            payloadMinTemp => $droneResult['MinTemp'],
+            payloadMaxTemp =>$droneResult['MaxTemp']);
+        echo("<script> var DroneEnvDetails =". json_encode($envDetails).";</script>");
+    }
 }
 ?>
