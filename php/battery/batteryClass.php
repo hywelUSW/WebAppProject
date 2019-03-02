@@ -75,9 +75,7 @@ class battery{
             $query = "INSERT INTO batterycharges (BatteryID,chargeNo,chargeDate) VALUES (?,?,?)";
             $params = array("iis",$batteryID,$chargeNo,date("Y-m-d H:i:s"));
             $db = new database();
-            
             $result = $db->exQ($query,$params);
-            echo("t");
             if($query->affected_rows > 0)
             {
                 return true;

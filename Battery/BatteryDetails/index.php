@@ -20,8 +20,6 @@
     {
         $dataAvailable = true;
     }
-    
-    echo "t";
  }
 
 ?>
@@ -58,14 +56,30 @@
             <section>
             <h3>Charge Cycles</h3>
             <button>Add charge</button>
+            
             <?php
-               $result =  $battery->getBatteryCharges($batteryID);
-               while($row = $result->fetch_assoc())
+               $result =  $battery->getBatteryCharges($_GET['batteryID']);
+               if($result)
                {
-                    print_r($row);
-                    echo "<br>";
-               }
+                   ?>
+                   <table>
+                    <tr>
+                    <th>Charge No.</th>
+                    <th>Date</th>
+                    <tr>
+                    <?php
+                    while($row = $result->fetch_assoc())
+                    {
+                           echo "<tr>";
+                           echo "<td>".$row['ChargeNo']."</td>";
+                           echo "<td>".$row['chargeDate']."</td>";
+                           echo"</tr>\r\n";
+                    }
+                    echo "</table>";
+
+                }
             ?>
+            
             </section>
             <?php } ?>
         </main>
