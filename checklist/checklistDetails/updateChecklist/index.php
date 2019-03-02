@@ -46,8 +46,9 @@ else {
 //deal with form submition
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
-    if(!$noData){
-        if($checklist->updateChecklist($_POST['drone'],$_POST['name'],$_POST['date'],$_POST['descr'],$_GET['checklistID']))
+    if(!$noData)
+    {
+        if($checklist->updateChecklist($_POST['drone'],$_POST['name'],$_POST['date'],$_POST['Descr'],$_GET['checklistID']))
         {
             
             $msg = "Checklist updated!";

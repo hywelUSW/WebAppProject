@@ -31,7 +31,6 @@ class database{
         }
         else
         {
-            print_r($query);
             return false;
         }
 
