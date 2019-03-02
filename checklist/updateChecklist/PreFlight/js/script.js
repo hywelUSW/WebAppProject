@@ -1,8 +1,9 @@
-var weatherWarnings= [];
+
 var temp;
 var weatherCond;
 var droneCond = DroneEnvDetails.operatingWeather.split(",");
 $("#getWeather").click(function(){
+   $("#weatherWarnings").remove();
     
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos){
@@ -17,15 +18,26 @@ $("#getWeather").click(function(){
         getIPWeather()
       }   
 });
+var coords;
 function getIPWeather()
 {
-
+$.ajax({
+    url: "https://ipinfo.io/json",
+    success: function(data){
+        coords = (data.loc).split(",");
+       $("#weather").append("<p id='IPwarning'>Weather measurement may not be accurate</p>");
+        getWeather(coords[0],coords[1]);
+        
+    },
+    fail: function(){
+        $("#weatherWarnings").append("<p id='WeatherWarnings'>Could not get weather. Try again later.</p>");
+    }
+});
 }
 
 function getWeather(lat, long)
 {
-    
-    
+    var weatherWarnings= [];
     $.ajax({
         //api key: 6a234ab97760be692958e294d6cb512f
         url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=166826fbc7bd89eac6c5fabcde57e926",

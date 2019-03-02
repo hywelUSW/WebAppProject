@@ -61,7 +61,7 @@ if($weather == null)
                         <li id="windSpeed">Wind Speed: <?=$weather[2]?> M/S</li>
                     </ul>
                 </div>
-                <br><br>
+                <hr>
                 <input type='hidden' name='SiteSurveyed' value='0'>
                 <label>Site Surveyed</label><input type="checkbox" name="SiteSurveyed" value='1' <?=$checklist->ischecked($result["SiteSurveyed"])?>>
                 <hr>
@@ -119,8 +119,10 @@ if($weather == null)
                 <input type='hidden' name='FitToFly' value='0'>
                 <label>Fit to Fly Documents Signed</label><input type="checkbox" name="FitToFly" value='1' <?=$checklist->ischecked($result["FitToFly"])?>>
                 <br><br>
-                <button type="submit">Update</button>
-                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
+                <div class="btnWrapper">
+                <button class="btnMain" type="submit">Update</button><br><br>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button  class="btnMain" type="button">Cancel</button></a>
+                </div>
             </form>
         </main>
     </body>

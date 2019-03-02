@@ -26,7 +26,7 @@
   else {
       $noData = true;
   }
-  if(array_filter($_POST) && isset($_SESSION['user']))
+if(array_filter($_POST) && isset($_SESSION['user']))
 {
     if(!badUser || !$noData)
     {
@@ -34,17 +34,19 @@
         
         $drone->updateDesegnation($_GET['DroneID'],$_POST['ModelName'],$_POST['Manufacturer'],$_POST['DroneType']);
         $drone->updateCharacteristics($_GET['DroneID'],$_POST['FlightTypes'],$_POST['MaxOperatingSpeed'],$_POST['LaunchType'],$_POST['MaxFlightTime']);
-       $drone->updateEnvLimits($_GET['DroneID'],$_POST['MaxHeight'],$_POST['MaxRadius'],$_POST['MaxWind'],$_POST['TempRangeMin'],$_POST['TempRangeMax'],$_POST['OperatingWeather']);
+        $drone->updateEnvLimits($_GET['DroneID'],$_POST['MaxHeight'],$_POST['MaxRadius'],$_POST['MaxWind'],$_POST['TempRangeMin'],$_POST['TempRangeMax'],$_POST['OperatingWeather']);
         $drone->updateTechSpecs($_GET['DroneID'],$_POST['Height'],$_POST['Width'],$_POST['Length'],$_POST['Weight'],$_POST['MaxTakeOffWeight'],$_POST['MotorType'],$_POST['MotorSpeed'],$_POST['ControlDataLink'],$_POST['VideoDataLink'],$_POST['FlightController']);
         $drone->updateRPSDetails($_GET['DroneID'],$_POST['DataLink'],$_POST['VideoLink'],$_POST['AntennaType']);
-       $drone->updatePayload($_GET['DroneID'],$_POST['PayloadName'],$_POST['MinTemp'],$_POST['MaxTemp']);
+        $drone->updatePayload($_GET['DroneID'],$_POST['PayloadName'],$_POST['MinTemp'],$_POST['MaxTemp']);
         //replace values
         $droneData = $_POST;
-            
+        $msg = "Checklist updated";
+        $weather = explode(",",$_POST['OperatingWeather']);   
         
     }
 }
-
+$weather = explode(",",$droneData['OperatingWeather']);
+print_r($weather)
 ?>
 <html>
     <head>
@@ -62,7 +64,15 @@
         ?>
         <main>
             <h2>Update Drone Details</h2>
+            <?php
+            if($badUser || $noData)
+            {
+                echo "<h3 class='msgMain'>Unable to get data!</h3>";
+            }else {
+                
+            ?>
             <form method="POST"  enctype="multipart/form-data">
+                    <p><?=$msg?></p>
                     <input type="text" name="DroneName" placeholder="name" value="<?=$droneData['DroneName']?>" required>
                     <!--<br><br>
                     <input type="file" name="DroneImage">-->
@@ -97,13 +107,13 @@
                    <!-- <input type="text" name="OperatingWeather" placeholder="Operating Weather" required>-->
                     <div>
                         <h4>Operating conditions</h4>
-                        <label>Thunderstorm</label><input type="checkbox" name="OperatingWeather[]" value="Thunderstorm"><br>
-                        <label>Light rain</label><input type="checkbox" name="OperatingWeather[]" value="drizzle"><br>
-                        <label>rain</label><input type="checkbox" name="OperatingWeather[]" value="rain"><br>
-                        <label>snow</label><input type="checkbox" name="OperatingWeather[]" value="snow"><br>
-                        <label>fog</label><input type="checkbox" name="OperatingWeather[]" value="atmosphere"><br>
-                        <label>clear</label><input type="checkbox" name="OperatingWeather[]" value="clear"><br>
-                        <label>cloudy</label><input type="checkbox" name="OperatingWeather[]" value="cloudy"><br>
+                        <label>Thunderstorm</label><input type="checkbox" name="OperatingWeather[]" value="Thunderstorm" <?=$drone->isWeatherChecked("Thunderstorm",$weather)?>><hr>
+                        <label>Light rain</label><input type="checkbox" name="OperatingWeather[]" value="drizzle" <?=$drone->isWeatherChecked("drizzle",$weather)?>><hr>
+                        <label>rain</label><input type="checkbox" name="OperatingWeather[]" value="rain" <?=$drone->isWeatherChecked("rain",$weather)?>><hr>
+                        <label>snow</label><input type="checkbox" name="OperatingWeather[]" value="snow" <?=$drone->isWeatherChecked("snow",$weather)?>><hr>
+                        <label>fog</label><input type="checkbox" name="OperatingWeather[]" value="atmosphere" <?=$drone->isWeatherChecked("atmosphere",$weather)?>><hr>
+                        <label>clear</label><input type="checkbox" name="OperatingWeather[]" value="clear" <?=$drone->isWeatherChecked("clear",$weather)?>><hr>
+                        <label>cloudy</label><input type="checkbox" name="OperatingWeather[]" value="cloudy" <?=$drone->isWeatherChecked("cloudy",$weather)?>><br><br>
                     </div>
                     <hr>
                     <h4>Technical Specifications</h4>
@@ -140,9 +150,14 @@
                     <input type="number" name="MinTemp" placeholder="Minimum Temperature (°C)" value="<?=$droneData['MinTemp']?>" required>
                     <br><br>
                     <input type="number" name="MaxTemp" placeholder="Maxiumum Tempeature (°C)" value="<?=$droneData['MaxTemp']?>" required>
-                    <p><?=$errMsg?></p>
-                    <button class="btnMain" type="submit">update Drone</button>
+                    <br><br>
+                    <div id="btnWrapper">
+                        <button class="btnMain" type="submit">update Drone</button>
+                        <br><br>
+                        <a href="../?droneID="><button class="btnMain" type="button">cancel</button></a>
+                    </div>
                 </form>
+            <?php } ?>
         </main>
     </body>
     <footer>

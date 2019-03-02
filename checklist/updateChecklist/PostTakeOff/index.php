@@ -57,20 +57,20 @@ if(isset($result['TakeOffTime']))
             <form method='post'>
                 <input type='hidden' name='BothControlSticksInner' value='0'>
                 <label>Drone Starts at Idle Speed</label><input type="checkbox" name="BothControlSticksInner" value='1' <?=$checklist->ischecked($result["BothControlSticksInner"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='ControllerResponds' value='0'>
                 <label>Drone Responds to Controller Input</label><input type="checkbox" name="ControllerResponds" value='1' <?=$checklist->ischecked($result["ControllerResponds"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='RPAStable' value='0'>
                 <label>Drone Stable at 3m</label><input type="checkbox" name="RPAStable" value='1' <?=$checklist->ischecked($result["RPAStable"])?>>
-                <br><br>
+                <hr>
                 <label>Take off Time</label><input type="datetime-local" name="TakeOffTime" value="<?=$takeoffTime?>"><button type="button" id="getTakeOffTime">Get Take Off Time</button>
-                <br><br>
+                <hr>
                 <input type='hidden' name='CameraCheck' value='0'>
                 <label>Camera functioning correctly</label><input type="checkbox" name="CameraCheck" value='1' <?=$checklist->ischecked($result["CameraCheck"])?>>
-                <br><br>
-                <button type="submit">Update</button>
-                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
+                <hr>
+                <button class="btnMain" type="submit">Update</button>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button  class="btnMain" type="button">Cancel</button></a>
             </form>
             
         </main>

@@ -49,14 +49,14 @@ $landingTime = date("Y-m-d\TH:i:s",strtotime($result['LandingTimeRecorded']));
             <form method='post'>
                 <input type='hidden' name='LandingAreaClear' value='0'>
                 <label>Landing Area Clear</label><input type="checkbox" name="LandingAreaClear" value='1' <?=$checklist->ischecked($result["LandingAreaClear"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='ManualAutoLand' value='0'>
                 <label>Landing Mode Selected</label><input type="checkbox" name="ManualAutoLand" value='1' <?=$checklist->ischecked($result["ManualAutoLand"])?>>
-                <br><br>
+                <hr>
                 <label>Landing Time Recorded<label><input type='datetime' name='LandingTimeRecorded' value="<?=$landingTime?>"><button type="button" id="getLandingTime">Get Landing Time</button>
                 <p><?=$errMsg?></p>
-                <button type="submit">Update</button>
-                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
+                <button class="btnMain" type="submit">Update</button>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button class="btnMain" type="button">Cancel</button></a>
             </form>
         </main>
     </body>

@@ -47,39 +47,39 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             <form method='post'>
                 <input type='hidden' name='PowerDownRPA' value='0'>
                 <label>Drone Powered Down</label><input type="checkbox" name="PowerDownRPA" value='1' <?=$checklist->ischecked($result["PowerDownRPA"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='ControllerOff' value='0'>
                 <label>Controller Powered Down</label><input type="checkbox" name="ControllerOff" value='1' <?=$checklist->ischecked($result["ControllerOff"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='RemoveRPABattery' value='0'>
                 <label>Batteries Removed</label><input type="checkbox" name="RemoveRPABattery" value='1' <?=$checklist->ischecked($result["RemoveRPABattery"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='RPADamagedCheck' value='0'>
                 <label>Drone Checked for Damage</label><input type="checkbox" name="RPADamagedCheck" value='1' <?=$checklist->ischecked($result["RPADamagedCheck"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='PropellerCheck' value='0'>
                 <label>Propellers Checked for Damage</label><input type="checkbox" name="PropellerCheck" value='1' <?=$checklist->ischecked($result["PropellerCheck"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='LandingGearCheck' value='0'>
                 <label>Landing Gear Checked for Damage</label><input type="checkbox" name="LandingGearCheck" value='1' <?=$checklist->ischecked($result["LandingGearCheck"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='RecordFlightDetails' value='0'>
                 <label>Flight Details Recorded</label><input type="checkbox" name="RecordFlightDetails" value='1' <?=$checklist->ischecked($result["RecordFlightDetails"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='EquipmentPacked' value='0'>
                 <label>Equipment Packed</label><input type="checkbox" name="EquipmentPacked" value='1' <?=$checklist->ischecked($result["EquipmentPAcked"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='AreaChecked' value='0'>
                 <label>Area Checked</label><input type="checkbox" name="AreaChecked" value='1' <?=$checklist->ischecked($result["AreaChecked"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='RPABatteryOnCharge' value='0'>
                 <label>Batteries on Charge</label><input type="checkbox" name="RPABatteryOnCharge" value='1' <?=$checklist->ischecked($result["RPABatteryOnCharge"])?>>
-                <br><br>
+                <hr>
                 <input type='hidden' name='CameraDataDownloaded' value='0'>
                 <label>Camera Data Downloaded</label><input type="checkbox" name="CameraDataDownloaded" value='1' <?=$checklist->ischecked($result["CameraDataDownloaded"])?>>
-                <br><br>
-                <button type="submit">Update</button>
-                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button type="button">Cancel</button></a>
+                <hr>
+                <button class="btnMain" type="submit">Update</button>
+                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button class="btnMain" type="button">Cancel</button></a>
             </form>
         </main>
     </body>

@@ -58,7 +58,7 @@
                         ?>
                         <summary>
                             <h2><?=$result['DroneName']?></h2>
-                            <a href="updateDetails/?DroneID=<?=$_GET['droneID']?>"><button>Edit details</button></a>
+                            <a href="updateDetails/?DroneID=<?=$_GET['DroneID']?>"><button>Edit details</button></a>
                         </summary>  
                         <hr>
                         <div id="basicDetails">

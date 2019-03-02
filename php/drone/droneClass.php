@@ -284,12 +284,22 @@ class drone{
         $query = "UPDATE payload SET PayloadName = ?,MinTemp = ?,MaxTemp = ? WHERE DroneID = ?";
         $params = array("siii",$name,$minTemp,$maxTemp,$droneID);
         $db = new database();
-        echo "t";
         $query = $db->exQ($query,$params);
         if($query->affected_rows > 0)
         {
             return true;
         }
+    }
+    function isWeatherChecked($cond,$weather)
+    {
+        for($i = 0;$i < sizeof($weather);$i++)
+        {
+            if($cond == $weather[$i])
+            {
+                return "checked";
+            }
+        }
+        
     }
 
     function deleteDrone($droneID)
@@ -308,6 +318,5 @@ class drone{
     }
 
 }
-
 
 ?>
