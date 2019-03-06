@@ -21,6 +21,7 @@ class database{
         $conn = $this->dbConnect();
         $query = $conn->prepare($queryString);
         call_user_func_array(array($query, 'bind_param'), $params);
+        
         $query->execute();
         
         if($query->errno == 0)

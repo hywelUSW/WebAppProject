@@ -130,9 +130,12 @@ class checklist{
     //Delete checklist
     function deleteChecklist($checklistID)
     {
+        
         $query = "DELETE FROM checklist WHERE checklistID = ?";
         $params = array("i",$checklistID);
+        $db = new database();
         $result = $db->exQ($query,$params);
+        
         if($result->affected_rows > 0)
         {
             return true;

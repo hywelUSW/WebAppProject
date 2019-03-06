@@ -5,7 +5,10 @@
      header("Location:".$root."login/");
      die();
  }
-
+if(!isset($_GET['checklistID']))
+{
+    header("Location: ".$root."checklist/");
+}
 require_once($root."php/drone/droneClass.php");
 $drone = new drone();
 $rDrone = $drone->getDroneList($_SESSION['user']);
@@ -32,16 +35,19 @@ else
 require_once($root."php/checklist/checklistClass.php");
 $checklist = new checklist();
 $rChecklist = $checklist->getChecklistOverview($_GET['checklistID']);
+
 if($rChecklist->num_rows > 0)
 {
     $checklistData = $rChecklist->fetch_assoc();
     if($checklistData['UserID'] != $_SESSION['user'])
     {
         header("Location:".$root."checklist/");
+        die();
     }
 }
 else {
-    $noData = true;
+    header("Location:".$root."checklist/");
+    die();
 }
 //deal with form submition
 if(array_filter($_POST) && isset($_SESSION['user']))

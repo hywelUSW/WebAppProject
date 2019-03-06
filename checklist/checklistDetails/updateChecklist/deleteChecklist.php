@@ -10,7 +10,7 @@
      header("location: " . $root);
  }
  require_once($root."php/checklist/checklistClass.php");
- $checklist = new checklist();
+
 
  require_once($root."php/user/userClass.php");
 $user = new user();
@@ -23,10 +23,9 @@ if($user->userVerify($userDetails['Email'],$_POST['password']))
     if($rChecklist->num_rows > 0)
     {
         $data = $rChecklist->fetch_assoc();
-        if($data['UserID'] != $_SESSION['user'])
+        if($data['UserID'] == $_SESSION['user'])
         {
-            $deleteChecklist = $checklist->deleteChecklist($_POST['checklistID']);
-            if($deleteChecklist->affected_rows > 0)
+            if($checklist->deleteChecklist($_POST['checklistID']))
             {
                 $msg = "Checklist Deleted!";
             }
@@ -65,7 +64,7 @@ else
             require_once($header);
         ?>
         <main>
-            <h2></h2>
+            <h2 class="msgMain"><?=$msg?></h2>
         </main>
     </body>
     <footer>
