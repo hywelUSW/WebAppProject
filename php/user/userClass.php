@@ -1,8 +1,6 @@
 <?php
     session_start();
     include_once("/students/15080900/projectapp/php/databaseClass.php");
-    
-     
     class user{
         //user register
         function newUser($email,$name,$password){
