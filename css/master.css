@@ -8,7 +8,7 @@ html,body{
 header{
     position: sticky;
     top:0;
-    z-index: 50;;
+    z-index: 50;
 }
 header>nav{
     height:var(--header-height);
@@ -36,10 +36,12 @@ header>nav>h1{
     right:0;
 }
 header menu{
+	z-index:-1;
     margin-top: 0;
     margin-bottom:0;
+	top:0;
     background-color: #819ca9;
-    height: 94.6vh;
+	height: 100vh;
     padding: 0;
     position: absolute;
     display:none;
@@ -67,10 +69,14 @@ header menu{
 }
 
 menu ul{
+	
     list-style-type: none;
     padding: 0 20px;
-    
+    padding-top:10px;
     word-break:none;
+}
+#mainMenu ul{
+	padding-top:60px;
 }
 .btnWrapper{
     text-align:center;
