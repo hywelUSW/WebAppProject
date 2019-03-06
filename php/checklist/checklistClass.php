@@ -133,6 +133,10 @@ class checklist{
         $query = "DELETE FROM checklist WHERE checklistID = ?";
         $params = array("i",$checklistID);
         $result = $db->exQ($query,$params);
+        if($result->affected_rows > 0)
+        {
+            return true;
+        }
     }
     //check if item needs to have checked attribute
     function isChecked($value)
