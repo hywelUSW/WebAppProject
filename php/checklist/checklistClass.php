@@ -127,6 +127,21 @@ class checklist{
             return true;
         }
     }
+    //Search checklists
+    function searchChecklists($userID,$query)
+    {
+        $db = new database();
+        $conn = $db->dbConnect();
+        
+       // $query =  '%'.$query.'%';
+        $query = $conn->prepare('SELECT * FROM checklist WHERE UserID = ? AND ChecklistName = ?');
+        $query->bind_param("is",$userID,$query);
+        $query->execute(array($userID,$query));
+       $result = $query->get_result();
+        echo "<br>";
+        print_r($result);
+        return $query->get_result();
+    }
     //Delete checklist
     function deleteChecklist($checklistID)
     {
