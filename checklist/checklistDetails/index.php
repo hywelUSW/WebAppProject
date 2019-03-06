@@ -83,7 +83,7 @@
                             <br><br>
                             <a href="<?=$root."checklist/updatechecklist/PostLanding?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Post-Landing</button></a>
                             <hr>
-                            <a href=""> <button class="btnMain">Download(PDF)</button></a>
+                            <a href="<?=$root."checklist/Download?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Download(PDF)</button></a>
                         </div>
                         <?php
                     }

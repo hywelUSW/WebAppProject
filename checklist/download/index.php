@@ -261,7 +261,7 @@ EOD;
     }
     $html .= "</table>";
     $pdf->writeHTML($html, true, false, true, false, '');
-    $pdf->AddPage();
+   
 
     //output file 
     $pdf->Output('example_001.pdf', 'I');

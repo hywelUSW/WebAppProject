@@ -80,11 +80,11 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             <?php
             if($noData)
             {
-                echo "aaa";
+                $msg = "Please enter all details";
             }
             else 
             { ?>
-                <form method="post">
+                <form action="" method="post">
                     <p><?=$msg?></p>
                     <input type="text" name="name" placeholder="Checklist Name" value="<?=$checklistData['ChecklistName']?>" required>
                     <br><br>
@@ -107,8 +107,21 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                     <input type="date" name="date" placeholder="Flight Date" value="<?=$checklistData['PlannedDate']?>" required>
                     <br><br>
                     <textarea name="Descr" placeholder="Description.." rows="5" cols="50"  required><?=$checklistData['Descr']?></textarea>
-                    <br>
+
+                    <br><br>
                     <button class="btnMain" type="submit">Update Checklist</button>
+                    </form>
+                    <hr>
+                    <section>
+                        <h3>Delete Checklist</h3>
+                        <p>To delete a checklist, please use the form below. Warning: This is irreversable!</p>
+                        <form action="deleteChecklist.php" method="POST">
+                            <input type="password" name="password">
+                            <input type="hidden" name="checklistID" value="<?=$_GET['checklistID']?>">
+                            <br><br>
+                            <button class="btnMain">Delete Checklist</button>
+                        </form>
+                    </section>
 
             <?php } ?>
         </main>
