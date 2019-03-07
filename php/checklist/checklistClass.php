@@ -128,18 +128,14 @@ class checklist{
         }
     }
     //Search checklists
-    function searchChecklists($userID,$query)
+    function searchChecklists($userID,$searchTerms)
     {
         $db = new database();
         $conn = $db->dbConnect();
-        
-       // $query =  '%'.$query.'%';
-        $query = $conn->prepare('SELECT * FROM checklist WHERE UserID = ? AND ChecklistName = ?');
-        $query->bind_param("is",$userID,$query);
-        $query->execute(array($userID,$query));
-       $result = $query->get_result();
-        echo "<br>";
-        print_r($result);
+        $searchTerms = "%".$searchTerms."%";
+        $query = $conn->prepare("SELECT * FROM checklist where UserID = ? and ChecklistName LIKE ?");
+        $query->bind_param("is",$userID,$searchTerms);
+        $query->execute();
         return $query->get_result();
     }
     //Delete checklist

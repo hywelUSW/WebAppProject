@@ -1,5 +1,6 @@
 <?php
  include_once("/students/15080900/projectapp/php/initalise.php");
+ $noResult = false;
  if(!isset($_SESSION['user']))
  {
      header("Location:".$root."login/");
@@ -10,14 +11,18 @@
      $noResult = true;
      
  }
- include_once($root."php/checklist/checklistClass.php");
- $checklist = new checklist();
-$result = $checklist->searchChecklists($_SESSION['user'],$_GET['q']);
-print_R($result);
- if($result->num_rows == 0)
-{
-     $noResult = true;
+ else 
+ {
+    include_once($root."php/checklist/checklistClass.php");
+    $checklist = new checklist();
+    $result = $checklist->searchChecklists($_SESSION['user'],$_GET['q']);
+    if($result->num_rows < 1)
+    {    
+        echo "tt";
+        $noResult = true;
+    }    
  }
+
 ?>
 <html>
     <head>
@@ -35,7 +40,14 @@ print_R($result);
             require_once($header);
         ?>
         <main>
-            <h2>Search - <?=$_GET['q']?></h2>
+            <h2>Search - <?=$_GET['q']?> (<?php 
+            echo $result->num_rows;
+            if($result->num_rows == 1)
+                echo " result";
+            else {
+                echo " results";
+            }
+            ?>)</h2>
             <br>
            <?php
             if($noResult)
