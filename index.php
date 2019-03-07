@@ -16,6 +16,20 @@
         ?>
         <main>
         <h2>Home</h2>
+        <summary>
+            This web application is designed to help professional drone pilots create and maintain checklists.
+            As well as this, you can also store drone data and keep track of battery usage.
+        </summary>
+        <section>
+        <?php
+        if(isset($_SESSION['user']))
+        { ?>
+            
+        <?php }
+        else {
+            ?><p>to create checklists, please create an account <a href="register/">Here</a></p><?php
+        }?>
+        </section>
         </main>
     </body>
     <footer>

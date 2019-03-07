@@ -119,19 +119,25 @@ main{
     min-height: 90vh;
     padding:1% 2%;
 }
-
+button{
+    padding: 5px 10px;  
+    border-radius: 15px;
+    background-color: #29434e;
+    color:#ffffff;
+    font-size:20px;
+    border:none;
+}
 .btnMain{
-    padding:10px;
+    padding:10px!important;
     width:95%;
     border-radius:15px;
-    font-size:20px;
-    color:white;
-    background-color:#29434e;
-    border:none;
+   
+   
     
 
 }
-.btnMain:active{
+
+button:active{
     background-color:#223942;
 }
 label,input,textarea{
@@ -139,7 +145,6 @@ label,input,textarea{
 }
 input[type="text"],input[type="timedate-local"],textarea{
     
-    width: 360px;
 }
 input[type="checkbox"]{
     float:right;
