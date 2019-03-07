@@ -5,7 +5,6 @@ class database{
         //connection variables
         require("dbCredentials.php");
         $conn = new mysqli($server,$username,$password,$database);
-        
         if($conn->connect_error){
             die("Unable to connect to Database!");
         }
@@ -20,10 +19,9 @@ class database{
     {
         $conn = $this->dbConnect();
         $query = $conn->prepare($queryString);
+        //bind params
         call_user_func_array(array($query, 'bind_param'), $params);
-        
         $query->execute();
-        
         if($query->errno == 0)
         {
             
@@ -34,9 +32,7 @@ class database{
         {
             return false;
         }
-
-    }
-    
+    }   
 }
 
 
