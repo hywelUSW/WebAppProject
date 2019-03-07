@@ -57,7 +57,7 @@ header menu{
     
 }
 #userInfo{
-    margin-top:10px;
+    margin-top:60px;
 }
 #userInfo i{
    
@@ -154,6 +154,6 @@ input[type="checkbox"]{
     margin-top:10vh;
     text-align: center;
 }
-p{
+p, summary{
    font-size:18px;
 }
