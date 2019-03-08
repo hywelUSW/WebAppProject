@@ -43,7 +43,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
         ?>
         <main>
             <h2>Loading List</h2>
-            
+            <p><?=$errMsg?></p>
             <form method='post'>
                 <input type='hidden' name='OpsManual' value='0'>
                 <label>Operations Manual</label><input type="checkbox" name="OpsManual" value='1'  <?=$checklist->ischecked($result["OpsManual"])?>>
@@ -81,8 +81,8 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                 <input type='hidden' name='PermissionGranted' value='0'>
                 <label>Area Permission Granted</label><input type="checkbox" name="PermissionGranted" value='1' <?=$checklist->ischecked($result["PermissionGranted"])?>>
                 <hr>
-                <p><?=$errMsg?></p>
-                <button  class="btnMain" type="submit">Update</button>
+                
+                <button  class="btnMain" type="submit">Update</button><br><br>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button class="btnMain" type="button">Cancel</button></a>
             </form>
         </main>

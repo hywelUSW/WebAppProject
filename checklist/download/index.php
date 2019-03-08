@@ -34,7 +34,7 @@ if($rOverview->num_rows > 0)
     $pdf->SetCreator($userDetails['Name']);
     $pdf->SetAuthor($userDetails['Name']);
     $pdf->SetTitle($overview['ChecklistName']);
-    $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+    
     // set header/footer
     $pdf->SetHeaderData(null, 0, $overview['ChecklistName'], $userDetails['Name'], array(0,64,255), array(0,64,128));
     $pdf->setFooterData(array(0,64,0), array(0,64,128));
@@ -56,7 +56,7 @@ if($rOverview->num_rows > 0)
     // set default font subsetting mode
     $pdf->setFontSubsetting(true);
     
-    $pdf->SetFont('helvetica', '', 14, '', true);
+    $pdf->SetFont('DejaVuSerif', '', 14);
     // Add a page
     // This method has several options, check the source code documentation for more information.
     $pdf->AddPage();
@@ -153,9 +153,21 @@ EOD;
         {
             if($header != "userID")
             {
+                if($result[$header] == 1)
+                {
+                    $check = "checked";
+                }
+                else if($result[$header] == 0 || $result[$header] == null)
+                {
+                    $check = "";
+                }
+                else {
+                    $check = $result[$header];
+                }
+                
                 $html .= "<tr>";
                 $html .= "<td>".$header."</td>";
-                $html .= "<td>".$result[$header]."</td>";
+                $html .= "<td>".$check."</td>";
                 $html .= "</tr>";
             }
         }
@@ -177,14 +189,27 @@ EOD;
         {
             if($header != "userID")
             {
+                if($result[$header] == 1)
+                {
+                    $check = "checked";
+                }
+                else if($result[$header] == 0 || $result[$header] == null)
+                {
+                    $check = "";
+                }
+                else {
+                    $check = $result[$header];
+                }
+                
                 $html .= "<tr>";
                 $html .= "<td>".$header."</td>";
-                $html .= "<td>".$result[$header]."</td>";
+                $html .= "<td>".$check."</td>";
                 $html .= "</tr>";
             }
         }
     }
     $html .= "</table>";
+    
     $pdf->writeHTML($html, true, false, true, false, '');
     $pdf->AddPage();
 
@@ -202,9 +227,21 @@ EOD;
         {
             if($header != "userID")
             {
+                if($result[$header] == 1)
+                {
+                    $check = "checked";
+                }
+                else if($result[$header] == 0 || $result[$header] == null)
+                {
+                    $check = "";
+                }
+                else {
+                    $check = $result[$header];
+                }
+                
                 $html .= "<tr>";
                 $html .= "<td>".$header."</td>";
-                $html .= "<td>".$result[$header]."</td>";
+                $html .= "<td>".$check."</td>";
                 $html .= "</tr>";
             }
         }
@@ -227,9 +264,21 @@ EOD;
         {
             if($header != "userID")
             {
+                if($result[$header] == 1)
+                {
+                    $check = "checked";
+                }
+                else if($result[$header] == 0 || $result[$header] == null)
+                {
+                    $check = "";
+                }
+                else {
+                    $check = $result[$header];
+                }
+                
                 $html .= "<tr>";
                 $html .= "<td>".$header."</td>";
-                $html .= "<td>".$result[$header]."</td>";
+                $html .= "<td>".$check."</td>";
                 $html .= "</tr>";
             }
         }
@@ -252,9 +301,21 @@ EOD;
         {
             if($header != "userID")
             {
+                if($result[$header] == 1)
+                {
+                    $check = "checked";
+                }
+                else if($result[$header] == 0 || $result[$header] == null)
+                {
+                    $check = "";
+                }
+                else {
+                    $check = $result[$header];
+                }
+                
                 $html .= "<tr>";
                 $html .= "<td>".$header."</td>";
-                $html .= "<td>".$result[$header]."</td>";
+                $html .= "<td>".$check."</td>";
                 $html .= "</tr>";
             }
         }

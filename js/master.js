@@ -1,3 +1,15 @@
+$("document").ready(function() {/*Code goes here*/
+    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        isDesktop = true;
+        
+        $("#btnMain").css("display","none");
+        $("#mainMenu").css("display","block");
+        $("#mainMenu").css("width","185px");
+        $("main").css("margin-left","235px");
+    }
+    $("body").css("display","block");
+    });
+
 $("#btnMain").click(function(){
     toggleMenu("#mainMenu","#userMenu");
    
@@ -9,14 +21,17 @@ function toggleMenu(selectedMenu,otherMenu){
     //disable other menu if active
     if($(otherMenu).css("display") != "none")
     {
-        $(otherMenu).animate({width:'toggle'},350);
+        if(!isDesktop)
+        {
+            $(otherMenu).animate({width:'toggle'},350);
+        }
     }
+    
     $(selectedMenu).animate({width:'toggle'},350);
 }
 $("main").click(function(e){
     //disable other menu if active
-    
-    if($("#mainMenu").css("display") != "none")
+    if($("#mainMenu").css("display") != "none" && !isDesktop)
     {
         $("#mainMenu").animate({width:'toggle'},350);
     }
@@ -40,3 +55,4 @@ $(".popup").click(function(e){
         $(".popup").fadeToggle();
     }
 });
+
