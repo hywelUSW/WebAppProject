@@ -42,6 +42,7 @@ if(isset($result['TakeOffTime']))
         <title>App project</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?=$root?>css/master.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1'/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://momentjs.com/downloads/moment.js"></script>
@@ -54,6 +55,7 @@ if(isset($result['TakeOffTime']))
         ?>
         <main>
             <h2>Post-Take Off</h2>
+            <p><?=$errMsg?></p>
             <form method='post'>
                 <input type='hidden' name='BothControlSticksInner' value='0'>
                 <label>Drone Starts at Idle Speed</label><input type="checkbox" name="BothControlSticksInner" value='1' <?=$checklist->ischecked($result["BothControlSticksInner"])?>>
@@ -64,13 +66,21 @@ if(isset($result['TakeOffTime']))
                 <input type='hidden' name='RPAStable' value='0'>
                 <label>Drone Stable at 3m</label><input type="checkbox" name="RPAStable" value='1' <?=$checklist->ischecked($result["RPAStable"])?>>
                 <hr>
-                <label>Take off Time</label><input type="datetime-local" name="TakeOffTime" value="<?=$takeoffTime?>"><button type="button" id="getTakeOffTime">Get Take Off Time</button>
+                
+                <label>Take off Time</label>
+                <div id="timeDate">
+                <input type="datetime-local" name="TakeOffTime" value="<?=$takeoffTime?>">
+                <button type="button" id="getTakeOffTime">Get Take Off Time</button><br><br>
+</div>
+                
                 <hr>
                 <input type='hidden' name='CameraCheck' value='0'>
                 <label>Camera functioning correctly</label><input type="checkbox" name="CameraCheck" value='1' <?=$checklist->ischecked($result["CameraCheck"])?>>
-                <hr>
-                <button class="btnMain" type="submit">Update</button>
+                <br><br>
+                <div class="btnWrapper">
+                <button class="btnMain" type="submit">Update</button><br><br>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button  class="btnMain" type="button">Cancel</button></a>
+                </div>
             </form>
             
         </main>

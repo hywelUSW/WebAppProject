@@ -35,9 +35,10 @@ $landingTime = date("Y-m-d\TH:i:s",strtotime($result['LandingTimeRecorded']));
         <title>App project</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?=$root?>css/master.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1'/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
+        <script src="https://momentjs.com/downloads/moment.js"></script>
     </head>
     <body>
         <?php
@@ -46,6 +47,7 @@ $landingTime = date("Y-m-d\TH:i:s",strtotime($result['LandingTimeRecorded']));
         ?>
         <main>
             <h2>Pre-Flight</h2>
+            <p><?=$errMsg?></p>
             <form method='post'>
                 <input type='hidden' name='LandingAreaClear' value='0'>
                 <label>Landing Area Clear</label><input type="checkbox" name="LandingAreaClear" value='1' <?=$checklist->ischecked($result["LandingAreaClear"])?>>
@@ -53,10 +55,17 @@ $landingTime = date("Y-m-d\TH:i:s",strtotime($result['LandingTimeRecorded']));
                 <input type='hidden' name='ManualAutoLand' value='0'>
                 <label>Landing Mode Selected</label><input type="checkbox" name="ManualAutoLand" value='1' <?=$checklist->ischecked($result["ManualAutoLand"])?>>
                 <hr>
-                <label>Landing Time Recorded<label><input type='datetime' name='LandingTimeRecorded' value="<?=$landingTime?>"><button type="button" id="getLandingTime">Get Landing Time</button>
-                <p><?=$errMsg?></p>
-                <button class="btnMain" type="submit">Update</button>
+                <label>Landing Time Recorded</label>
+                    <div id="timeDate">
+                        <input type='datetime-local' name='LandingTimeRecorded' value="<?=$landingTime?>">
+                        <button type="button" id="getLandingTime">Get Landing Time</button>
+                        <br><br>
+                    </div>
+                <br><br>
+                <div class="btnWrapper">
+                <button class="btnMain" type="submit">Update</button><br><br>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button class="btnMain" type="button">Cancel</button></a>
+                </div>
             </form>
         </main>
     </body>

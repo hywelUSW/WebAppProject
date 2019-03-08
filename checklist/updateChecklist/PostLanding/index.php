@@ -77,9 +77,11 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                 <hr>
                 <input type='hidden' name='CameraDataDownloaded' value='0'>
                 <label>Camera Data Downloaded</label><input type="checkbox" name="CameraDataDownloaded" value='1' <?=$checklist->ischecked($result["CameraDataDownloaded"])?>>
-                <hr>
-                <button class="btnMain" type="submit">Update</button>
-                <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button class="btnMain" type="button">Cancel</button></a>
+                <br><br>
+                <div class="btnWrapper">
+                    <button class="btnMain" type="submit">Update</button><br><br>
+                    <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button class="btnMain" type="button">Cancel</button></a>
+                </div>
             </form>
         </main>
     </body>
