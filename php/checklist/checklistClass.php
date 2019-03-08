@@ -195,10 +195,11 @@ class checklist{
         $query = "UPDATE loadinglist SET  OpsManual = ?, Maps = ?, TaskInfo = ?, SafetyEquipment = ?,";
         $query .=  " LiPoBag = ?, Controller = ?,EquipmentCharged = ?,Camera = ?, RPAPlatform = ?, Propellers = ?,";
         $query .= " CarryingCase = ?, PermissionGranted = ? WHERE checklistID = ?";
-        $params = array("siiiiiiiiiiiii",$WeatherCheck,$opsManual,$maps,$TaskInfo,$safetyEquipment,$lipoBag,$controller,$equpmentCharged,$camera,$rpaPlatform,$propellers,$carryingCase,$permissionGranted,$checklistID);
+        $params = array("iiiiiiiiiiiii",$opsManual,$maps,$TaskInfo,$safetyEquipment,$lipoBag,$controller,$equpmentCharged,$camera,$rpaPlatform,$propellers,$carryingCase,$permissionGranted,$checklistID);
         $db = new database();
         
         $result = $db->exQ($query,$params);
+        
         if($result->affected_rows > 0)
         {
             include_once("checklistAmendmentClass.php");
