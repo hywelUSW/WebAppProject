@@ -4,7 +4,7 @@
         <div id="btnMain" class="btnMenu">
             <i class="fas fa-bars fa-2x"></i>
         </div>
-        <h1 class="mainHeading">Drone Checklist</h1>
+        <h1 class="mainHeading"><a href="<?=$root?>">Drone Checklist</a></h1>
         <div id="btnUser" class="btnMenu">
             <i class="far fa-user fa-2x"></i>
         </div>

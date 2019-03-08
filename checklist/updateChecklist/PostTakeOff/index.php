@@ -71,7 +71,7 @@ if(isset($result['TakeOffTime']))
                 <div id="timeDate">
                 <input type="datetime-local" name="TakeOffTime" value="<?=$takeoffTime?>">
                 <button type="button" id="getTakeOffTime">Get Take Off Time</button><br><br>
-</div>
+                </div>
                 
                 <hr>
                 <input type='hidden' name='CameraCheck' value='0'>

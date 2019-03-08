@@ -48,6 +48,7 @@ require_once("php/deleteUser.php");
             <section>
             <h4>Update Details</h4>
             <p>Enter new details here to update them</p>
+            <p><?=$errMsg?></p>
             <form action="" method="POST">
                     <input type="text" name="email" placeholder="Email" value="<?=$userDetails['Email']?>" required>
                     <br><br>
@@ -56,7 +57,7 @@ require_once("php/deleteUser.php");
                     <input type="password" name="NewPassword" placeholder="New password">
                     <br><br>
                     <input type="password" name="password" placeholder="Current Password (required)" required>
-                    <p id="ErrMsg"><?=$Msg?>&nbsp;</p>
+                    <br><br>
                     <button type="submit">Update Details</button>
             </form>
             </section>
