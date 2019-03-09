@@ -160,9 +160,6 @@ label,input,textarea{
     font-size: 20px;
 }
 
-input[type="text"],input[type="timedate-local"],textarea{
-    
-}
 input[type="checkbox"]{
     float:right;
     transform:scale(1.5);
@@ -175,6 +172,6 @@ input[type="checkbox"]{
 p, summary{
    font-size:18px;
 }
-hr{
-    
+h4{
+    font-size:20px;
 }

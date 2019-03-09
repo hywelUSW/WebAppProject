@@ -25,7 +25,7 @@
         <?php
         if(isset($_SESSION['user']))
         { ?>
-            
+            <a href="checklist/newChecklist"><button class="btnMain" type="button">Create checklist</button></a>
         <?php }
         else {
             ?><p>to create checklists, please create an account <a href="register/">Here</a></p><?php

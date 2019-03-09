@@ -53,7 +53,7 @@ class battery{
     {
         $db = new database();
         $conn =$db->dbConnect();
-        $query = $conn->prepare("SELECT * FROM batterycharges WHERE batteryID = ?");
+        $query = $conn->prepare("SELECT * FROM batterycharges WHERE batteryID = ? ORDER BY chargeDate DESC");
         $query->bind_param("i",$batteryID);
         $query->execute();
         $result = $query->get_result();
