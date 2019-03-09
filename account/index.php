@@ -22,6 +22,7 @@ require_once("php/deleteUser.php");
         <title>App project</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?=$root?>css/master.css">
+        <link rel="stylesheet" type="text/css"  href="css/styles.css">
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1'/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
@@ -50,15 +51,15 @@ require_once("php/deleteUser.php");
             <p>Enter new details here to update them</p>
             <p><?=$errMsg?></p>
             <form action="" method="POST">
-                    <input type="text" name="email" placeholder="Email" value="<?=$userDetails['Email']?>" required>
+                    <input type="text" name="email" placeholder="Email" maxLength="40" value="<?=$userDetails['Email']?>" required>
                     <br><br>
-                    <input type="text" name="name" placeholder="Name" value="<?=$userDetails['Name']?>" required>
+                    <input type="text" name="name" placeholder="Name"   maxLength="40" value="<?=$userDetails['Name']?>" required>
                     <br><br>
-                    <input type="password" name="NewPassword" placeholder="New password">
+                    <input type="password" name="NewPassword"  maxLength="40" placeholder="New password">
                     <br><br>
-                    <input type="password" name="password" placeholder="Current Password (required)" required>
+                    <input type="password" name="password"  maxLength="40" placeholder="Current Password (required)" required>
                     <br><br>
-                    <button type="submit">Update Details</button>
+                    <button class="btnMain" type="submit">Update Details</button>
             </form>
             </section>
             <hr>
@@ -67,9 +68,9 @@ require_once("php/deleteUser.php");
                 <p>Use this to delete your account and any data. This is Irreversable!</p>
                 <form action="" method="POST">
                     <input type="hidden" name="email" value="<?=$userDetails['Email']?>">
-                    <input type="password" name="passwordDelete" placeholder="Password" required>
+                    <input type="password" name="passwordDelete"  maxLength="40" placeholder="Password" required>
                     <br><br>
-                    <button type="submit">Delete account</button>
+                    <button class="btnMain" type="submit">Delete account</button>
                 </form>
             </section>
         <?php } ?>

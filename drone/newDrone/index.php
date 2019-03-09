@@ -27,24 +27,25 @@
             else
             { ?>
             <section>
+            <p><?=$errMsg?></p>
                 <form method="POST"  enctype="multipart/form-data">
-                    <input type="text" name="DroneName" placeholder="name" required>
+                    <input type="text" name="DroneName"  maxLength="40" placeholder="name" required>
                     <!--<br><br>
                     <input type="file" name="DroneImage">-->
                     <hr>
                     <h4>Drone Designation</h4>
-                    <input type="text" name="ModelName" placeholder="Model Name" required>
+                    <input type="text" name="ModelName"  maxLength="40" placeholder="Model Name" required>
                     <br><br>
-                    <input type="text" name="Manufacturer" placeholder="Manufacturer" required>
+                    <input type="text" name="Manufacturer"  maxLength="40" placeholder="Manufacturer" required>
                     <br><br>
-                    <input type="text" name="DroneType" placeholder="Drone Type" required>
+                    <input type="text" name="DroneType"   maxLength="40"placeholder="Drone Type" required>
                     <hr>
                     <h4>Flight Characteristics</h4>
-                    <input type="text" name="FlightModes" placeholder="Flight Modes" required>
+                    <input type="text" name="FlightModes"  maxLength="40" placeholder="Flight Modes" required>
                     <br><br>
                     <input type="number" name="MaxOperatingSpeed" placeholder="Max Speed(m/s)" required>
                     <br><br>
-                    <input type="text" name="LaunchType" placeholder="Launch Type" required>
+                    <input type="text" name="LaunchType"  maxLength="40" placeholder="Launch Type" required>
                     <br><br>
                     <input type="number" name="maxFlightTime" placeholder="Flight Time(mins)" required>
                     <hr>
@@ -86,26 +87,26 @@
                     <br><br>
                     <input type="number" name="MotorSpeed" placeholder="Motor Speed(RPM)" required>
                     <br><br>
-                    <input type="text" name="ControlDataLink" placeholder="Control Data Link" required>
+                    <input type="text" name="ControlDataLink"  maxLength="40" placeholder="Control Data Link" required>
                     <br><br>
-                    <input type="text" name="VideoDataLink" placeholder="Video Data Link" required>
+                    <input type="text" name="VideoDataLink"  maxLength="40" placeholder="Video Data Link" required>
                     <br><br>
-                    <input type="text" name="FlightController" placeholder="Flight Controller" required>
+                    <input type="text" name="FlightController"  maxLength="40" placeholder="Flight Controller" required>
                     <hr>
                     <h4>Remote Pilot Station Specifications</h4>
-                    <input type="text" name="DataLink" placeholder="Data Link" required>
+                    <input type="text" name="DataLink"  maxLength="40" placeholder="Data Link" required>
                     <br><br>
-                    <input type="text" name="VideoLink" placeholder="Video Link" required>
+                    <input type="text" name="VideoLink"  maxLength="40" placeholder="Video Link" required>
                     <br><br>
-                    <input type="text" name="AntennaType" placeholder="Antenna Type" required>
+                    <input type="text" name="AntennaType"  maxLength="40" placeholder="Antenna Type" required>
                     <hr>
                     <h4>Payload Details</h4>
-                    <input type="text" name="PayloadName" placeholder="Payload Name" required>
+                    <input type="text" name="PayloadName"  maxLength="40" placeholder="Payload Name" required>
                     <br><br>
                     <input type="number" name="PayloadMinTemp" placeholder="Minimum Temperature(°C)" required>
                     <br><br>
                     <input type="number" name="PayloadMaxTemp" placeholder="Maxiumum Tempeature(°C)" required>
-                    <p><?=$errMsg?></p>
+                    
                     <br>
                     <button class="btnMain" type="submit">Add Drone</button><br><br>
                     <a href="../"><button class="btnMain" type="button">Cancel</button></a>

@@ -88,7 +88,7 @@ else
                 {
                 ?>
                 <form method="post" action="">
-                    <input type="text" name="name" placeholder="Checklist Name" required>
+                    <input type="text" name="name" maxLength="40" placeholder="Checklist Name" required>
                     <br><br>
                     <label>Drone </label><select name="drone" style="font-size:20px">
                 
@@ -104,7 +104,7 @@ else
                     <br><br>
                     <label>Planned Flight Date </label><input type="date" name="date" placeholder="Flight Date" required>
                     <br><br>
-                    <textarea name="Descr" placeholder="Description.." rows="5" cols="50" required></textarea>
+                    <textarea name="Descr" placeholder="Description.."  maxLength="300" rows="5" cols="50" required></textarea>
                     <p><?=$errMsg?></p>
                     <button class="btnMain" type="submit">Add Checklist</button>
                 </form>

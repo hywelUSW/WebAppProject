@@ -78,27 +78,27 @@ $weather = explode(",",$droneData['OperatingWeather']);
                     <hr>
                     <h4>Drone Designation</h4>
                     
-                    <input type="text" name="ModelName" placeholder="Model Name" value="<?=$droneData['ModelName']?>" required>
+                    <input type="text" name="ModelName" maxLength="40" placeholder="Model Name" value="<?=$droneData['ModelName']?>" required>
                     <br><br>
-                    <input type="text" name="Manufacturer" placeholder="Manufacturer" value="<?=$droneData['Manufacturer']?>" required>
+                    <input type="text" name="Manufacturer" maxLength="40" placeholder="Manufacturer" value="<?=$droneData['Manufacturer']?>" required>
                     <br><br>
-                    <input type="text" name="DroneType" placeholder="Drone Type" value="<?=$droneData['DroneType']?>" required>
+                    <input type="text" name="DroneType" maxLength="40" placeholder="Drone Type" value="<?=$droneData['DroneType']?>" required>
                     <hr>
                     <h4>Flight Characteristics</h4>
-                    <input type="text" name="FlightModes" placeholder="Flight Modes" value="<?=$droneData['FlightTypes']?>" required>
+                    <input type="text" name="FlightModes" maxLength="40" placeholder="Flight Modes" value="<?=$droneData['FlightTypes']?>" required>
                     <br><br>
-                    <input type="number" name="MaxOperatingSpeed" placeholder="Max Speed(m/s)"value="<?=$droneData['MaxOperatingSpeed']?>"  required>
+                    <input type="number" name="MaxOperatingSpeed"  placeholder="Max Speed(m/s)"value="<?=$droneData['MaxOperatingSpeed']?>"  required>
                     <br><br>
-                    <input type="text" name="LaunchType" placeholder="Launch Type" value="<?=$droneData['LaunchType']?>" required>
+                    <input type="text" name="LaunchType" maxLength="40" placeholder="Launch Type" value="<?=$droneData['LaunchType']?>" required>
                     <br><br>
                     <input type="number" name="maxFlightTime" placeholder="Flight Time(mins)" value="<?=$droneData['MaxFlightTime']?>" required>
                     <hr>
                     <h4>Airframe Specifications</h4>
-                    <input type="number" name="MaxHeight" placeholder="Max Ceiling Height(m)" value="<?=$droneData['MaxHeight']?>"  required>
+                    <input type="number" name="MaxHeight"  placeholder="Max Ceiling Height(m)" value="<?=$droneData['MaxHeight']?>"  required>
                     <br><br>
-                    <input type="number" name="MaxRadius" placeholder="Operating Radius(m)" value="<?=$droneData['MaxRadius']?>" required>
+                    <input type="number" name="MaxRadius"  placeholder="Operating Radius(m)" value="<?=$droneData['MaxRadius']?>" required>
                     <br><br>
-                    <input type="number" name="MaxWind" placeholder="Max Surface Wind(m/s)" value="<?=$droneData['MaxWind']?>"  required>
+                    <input type="number" name="MaxWind"   placeholder="Max Surface Wind(m/s)" value="<?=$droneData['MaxWind']?>"  required>
                     <br><br>
                     <input type="number" name="TempRangeMin" placeholder="Min Operating Temperature(°C)" value="<?=$droneData['TempRangeMin']?>"  required>
                     <br><br>
@@ -131,21 +131,21 @@ $weather = explode(",",$droneData['OperatingWeather']);
                     <br><br>
                     <input type="number" name="MotorSpeed" placeholder="Motor Speed(RPM)" value="<?=$droneData['MotorSpeed']?>" required>
                     <br><br>
-                    <input type="text" name="ControlDataLink" placeholder="Control Data Link" value="<?=$droneData['ControlDataLink']?>" required>
+                    <input type="text" name="ControlDataLink" maxLength="40" placeholder="Control Data Link" value="<?=$droneData['ControlDataLink']?>" required>
                     <br><br>
-                    <input type="text" name="VideoDataLink" placeholder="Video Data Link" value="<?=$droneData['VideoDataLink']?>" required>
+                    <input type="text" name="VideoDataLink" maxLength="40" placeholder="Video Data Link" value="<?=$droneData['VideoDataLink']?>" required>
                     <br><br>
-                    <input type="text" name="FlightController" placeholder="Flight Controller" value="<?=$droneData['FlightController']?>" required>
+                    <input type="text" name="FlightController" maxLength="40" placeholder="Flight Controller" value="<?=$droneData['FlightController']?>" required>
                     <hr>
                     <h4>Remote Pilot Station Specifications</h4>
-                    <input type="text" name="DataLink" placeholder="Data Link" value="<?=$droneData['DataLink']?>" required>
+                    <input type="text" name="DataLink" maxLength="40" placeholder="Data Link" value="<?=$droneData['DataLink']?>" required>
                     <br><br>
-                    <input type="text" name="VideoLink" placeholder="Video Link" value="<?=$droneData['VideoLink']?>" required>
+                    <input type="text" name="VideoLink" maxLength="40" placeholder="Video Link" value="<?=$droneData['VideoLink']?>" required>
                     <br><br>
-                    <input type="text" name="AntennaType" placeholder="Antenna Type" value="<?=$droneData['AntennaType']?>" required>
+                    <input type="text" name="AntennaType" maxLength="40" placeholder="Antenna Type" value="<?=$droneData['AntennaType']?>" required>
                     <hr>
                     <h4>Payload Details</h4>
-                    <input type="text" name="PayloadName" placeholder="Payload Name" value="<?=$droneData['PayloadName']?>" required>
+                    <input type="text" name="PayloadName" maxLength="40" placeholder="Payload Name" value="<?=$droneData['PayloadName']?>" required>
                     <br><br>
                     <input type="number" name="PayloadMinTemp" placeholder="Minimum Temperature(°C)" value="<?=$droneData['MinTemp']?>" required>
                     <br><br>

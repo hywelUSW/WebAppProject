@@ -47,11 +47,11 @@
             ?>    
             
             <form method="POST">
-                <input type="text" name="Name" placeholder="name" required>
+                <input type="text" name="Name"  maxLength="40" placeholder="name" required>
                 <br><br>
                 <input type="number" name="Weight" placeholder="Weight(g)" required>
                 <br><br>
-                <input type="text" name="Chemistry" placeholder="Chemistry" required>
+                <input type="text" name="Chemistry"  maxLength="20" placeholder="Chemistry" required>
                 <br><br>
                 <input type="number" name="powerOutput" placeholder="Power output(mAh)" required>
                 <p><?=$errMsg?></p>

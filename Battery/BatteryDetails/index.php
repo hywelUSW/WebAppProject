@@ -49,9 +49,9 @@
             <h2><?=$data['Name']?></h2>
             <section>
             <ul>
-                <li>Weight: <?=$data['Weight']?></li>
+                <li>Weight: <?=$data['Weight']?> g</li>
                 <li>Chemistry: <?=$data['Chemistry']?></li>
-                <li>Power output: <?=$data['PowerOutput']?></li>
+                <li>Power output: <?=$data['PowerOutput']?> mAh</li>
             </ul>
             </section>
             <section>

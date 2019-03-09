@@ -93,7 +93,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             { ?>
                 <form action="" method="post">
                     <p><?=$msg?></p>
-                    <input type="text" name="name" placeholder="Checklist Name" value="<?=$checklistData['ChecklistName']?>" required>
+                    <input type="text" name="name" placeholder="Checklist Name"  maxLength="40" value="<?=$checklistData['ChecklistName']?>" required>
                     <br><br>
                     <label>Drone ID </label><select name="drone" value="3" style="font-size:20px">
                 
@@ -113,8 +113,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                     <br><br>
                     <input type="date" name="date" placeholder="Flight Date" value="<?=$checklistData['PlannedDate']?>" required>
                     <br><br>
-                    <textarea name="Descr" placeholder="Description.." rows="5" cols="50"  required><?=$checklistData['Descr']?></textarea>
-
+                    <textarea name="Descr" placeholder="Description.." rows="5" cols="50"  maxLength="300" required><?=$checklistData['Descr']?></textarea>
                     <br><br>
                     <button class="btnMain" type="submit">Update Checklist</button>
                     </form>

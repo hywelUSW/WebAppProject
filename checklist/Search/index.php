@@ -18,7 +18,6 @@
     $result = $checklist->searchChecklists($_SESSION['user'],$_GET['q']);
     if($result->num_rows < 1)
     {    
-        echo "tt";
         $noResult = true;
     }    
  }
