@@ -43,7 +43,7 @@ class checklist{
        
         $db = new database();
         $conn = $db->dbConnect();
-        $query = $conn->prepare("SELECT * FROM checklist WHERE ChecklistID = ? LIMIT 1");
+        $query = $conn->prepare("SELECT checklist.*,DroneName FROM checklist INNER JOIN Drone ON checklist.droneID = drone.DroneID  WHERE ChecklistID = ? LIMIT 1");
         $query->bind_param("i",$checklistID);
         $query->execute();
         return $query->get_result();
@@ -206,7 +206,12 @@ class checklist{
             $chkAmmend = new checklistAmenment(); 
             $chkAmmend->newAmendment($checklistID);
             return true;
-        }else
+        }
+        else if ($result->errno == 0)
+        {
+            return true;
+        }
+        else
         {
             return false;
         }
@@ -229,6 +234,7 @@ class checklist{
         {
            return $result->fetch_assoc();
         }
+        
         else
         {
             return false;
@@ -252,7 +258,12 @@ class checklist{
             $chkAmmend = new checklistAmenment(); 
             $chkAmmend->newAmendment($checklistID);
             return true;
-        }else
+        }
+        else if ($result->errno == 0)
+        {
+            return true;
+        }
+        else
         {
             return false;
         }
@@ -284,23 +295,27 @@ class checklist{
     {
         //makes time value usable
         $tempDate = strtotime($takeOffTime);
-        $takeOffTime = Date("Y-m-d H:m",$tempDate);
+        $takeOffTime = Date("Y-m-d H:i:s",$tempDate);
         
         $query = "UPDATE posttakeoff SET BothControlSticksInner = ?, ControllerResponds = ?,";
         $query .= " RPAStable = ?,TakeOffTime = ?,CameraCheck = ? WHERE checklistID = ?";
-       echo $takeOffTime;
         $params = array("iiisii",$ControlSticksInner,$controllerResponds,$RPAStable,$takeOffTime,$cameraCheck,$checklistID);
         $db = new database();
         
         $result = $db->exQ($query,$params);
-       print_r($result);
+       
         if($result->affected_rows > 0)
         {
             include_once("checklistAmendmentClass.php");
             $chkAmmend = new checklistAmenment(); 
             $chkAmmend->newAmendment($checklistID);
             return true;
-        }else
+        }
+        else if ($result->errno == 0)
+        {
+            return true;
+        }
+        else
         {
             return false;
         }
@@ -333,28 +348,27 @@ class checklist{
 
     function updatePreLanding($checklistID,$landingAreaClear,$landType,$landingTime)
     {
-        //makes time value usable
-        echo $checklistID;
-        echo $landingAreaClear;
-        echo $landType;
-        //echo $landingTime;
+        //Coverts the post value to the correct format
         $tempDate = strtotime($landingTime);
+        $landingTime = Date("Y-m-d H:i:s",$tempDate);
         
-        $landingTime = Date("Y-m-d H:m:s",$tempDate);
-        
-        $query = "UPDATE prelanding SET LandingAreaClear = ?, ManualAutoLand = ?";
+        $query = "UPDATE prelanding SET LandingAreaClear = ?, ManualAutoLand = ?, LandingTimeRecorded = ?";
         $query .= " WHERE ChecklistID = ?";
-        $params = array("iii",$landingAreaClear,$landType,$checklistID);
+        $params = array("iisi",$landingAreaClear,$landType,$landingTime, $checklistID);
         $db = new database();
         $result = $db->exQ($query,$params);
-        print_R($result);
         if($result->affected_rows > 0)
         {
             include_once("checklistAmendmentClass.php");
             $chkAmmend = new checklistAmenment(); 
             $chkAmmend->newAmendment($checklistID);
             return true;
-        }else
+        }
+        else if ($result->errno == 0)
+        {
+            return true;
+        }
+        else
         {
             return false;
         }
@@ -399,7 +413,12 @@ class checklist{
             $chkAmmend = new checklistAmenment(); 
             $chkAmmend->newAmendment($checklistID);
             return true;
-        }else
+        }
+        else if ($result->errno == 0)
+        {
+            return true;
+        }
+        else
         {
             return false;
         }

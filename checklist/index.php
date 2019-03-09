@@ -25,7 +25,7 @@
             <h2>Checklists</h2>
             <form action="search/" method="GET">
             <input type="text" name="q" placeholder="Search...">
-            <button>Search</button>
+            <button><i class="fas fa-search"></i></button>
             </form>
             <div class="btnWrapper">
                 <a href="newChecklist/"><button class="btnMain">New Checklist</button></a>

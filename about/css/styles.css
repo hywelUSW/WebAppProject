@@ -4,3 +4,6 @@
 #contact form textarea {
     font-family: Helvetica, Arial, sans-serif;
  }
+ #contact input[type="email"], #contact textarea{
+     width: 90%;
+ }

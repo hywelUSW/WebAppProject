@@ -6,9 +6,10 @@
     margin-top: 21.280px;
 }
 main h2{
-    
+    float:left;
 }
 main form{
+    margin-top:20px;
     float:right;
 }
 main form button{

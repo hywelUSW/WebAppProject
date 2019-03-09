@@ -13,6 +13,7 @@
  }
  
  require_once($root."php/checklist/checklistClass.php");
+ 
  $checklist = new checklist();
  $result = $checklist->getChecklistOverview($_GET['checklistID']);
  
@@ -69,7 +70,9 @@
                         <div id="overview">
                         <ul>
                             <li>Planned Date: <?=$result['PlannedDate']?></li>
+                            <li>Drone used: <?=$result['DroneName']?></li>
                             <li>Description: <?=$result['Descr']?></li>
+                            
                         </ul>
                         </div>
                         <div class="btnWrapper">

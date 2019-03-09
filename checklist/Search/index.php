@@ -48,6 +48,10 @@
                 echo " results";
             }
             ?>)</h2>
+            <form action="search/" method="GET">
+                <input type="text" name="q" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </form>
             <br>
            <?php
             if($noResult)

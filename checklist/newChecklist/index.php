@@ -90,7 +90,7 @@ else
                 <form method="post" action="">
                     <input type="text" name="name" placeholder="Checklist Name" required>
                     <br><br>
-                    <label>Drone</label><select name="drone" style="font-size:20px">
+                    <label>Drone </label><select name="drone" style="font-size:20px">
                 
                     <?php
                         foreach($droneList as $optDrone)
@@ -102,7 +102,7 @@ else
                     ?>
                     </select>
                     <br><br>
-                    <label>planned flight date<input type="date" name="date" placeholder="Flight Date" required>
+                    <label>Planned Flight Date </label><input type="date" name="date" placeholder="Flight Date" required>
                     <br><br>
                     <textarea name="Descr" placeholder="Description.." rows="5" cols="50" required></textarea>
                     <p><?=$errMsg?></p>
