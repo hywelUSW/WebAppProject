@@ -17,14 +17,16 @@ if($result['userID'] != $_SESSION['user'])
 
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
+   
     if($checklist->updatePreLanding($_GET['checklistID'],$_POST['LandingAreaClear'],$_POST['ManualAutoLand'],$_POST['LandingTimeRecorded']))
     {
         
         $result = $checklist->getPreLanding($_GET['checklistID']);
+        $msg = "Checklist updated!";
     }
     else
     {
-        $errMsg = "There was an error updaing the checklist!";
+        $msg = "There was an error updaing the checklist!";
     }
 }
 //parse date to usable format
@@ -46,8 +48,8 @@ $landingTime = date("Y-m-d\TH:i:s",strtotime($result['LandingTimeRecorded']));
             require_once($header);
         ?>
         <main>
-            <h2>Pre-Flight</h2>
-            <p><?=$errMsg?></p>
+            <h2>Pre-Landing</h2>
+            <p><?=$msg?></p>
             <form method='post'>
                 <input type='hidden' name='LandingAreaClear' value='0'>
                 <label>Landing Area Clear</label><input type="checkbox" name="LandingAreaClear" value='1' <?=$checklist->ischecked($result["LandingAreaClear"])?>>
@@ -61,7 +63,7 @@ $landingTime = date("Y-m-d\TH:i:s",strtotime($result['LandingTimeRecorded']));
                         <button type="button" id="getLandingTime">Get Landing Time</button>
                         <br><br>
                     </div>
-                <br><br>
+                <br><br><br>
                 <div class="btnWrapper">
                 <button class="btnMain" type="submit">Update</button><br><br>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button class="btnMain" type="button">Cancel</button></a>

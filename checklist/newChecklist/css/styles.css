@@ -1,0 +1,11 @@
+input[type="text"],input[type="number"],textarea{
+    width:90%;
+    margin:0 auto;
+}
+select,input[type="date"]{
+    
+    margin:0 auto;
+}
+main form{
+    text-align: center;
+}

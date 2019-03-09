@@ -76,7 +76,7 @@ if(isset($result['TakeOffTime']))
                 <hr>
                 <input type='hidden' name='CameraCheck' value='0'>
                 <label>Camera functioning correctly</label><input type="checkbox" name="CameraCheck" value='1' <?=$checklist->ischecked($result["CameraCheck"])?>>
-                <br><br>
+                <br><br><br>
                 <div class="btnWrapper">
                 <button class="btnMain" type="submit">Update</button><br><br>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button  class="btnMain" type="button">Cancel</button></a>

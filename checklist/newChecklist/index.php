@@ -59,6 +59,7 @@ else
         <title>App project</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?=$root?>css/master.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1'/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
@@ -89,7 +90,7 @@ else
                 <form method="post" action="">
                     <input type="text" name="name" placeholder="Checklist Name" required>
                     <br><br>
-                    <label>Drone ID</label><select name="drone" style="font-size:20px">
+                    <label>Drone</label><select name="drone" style="font-size:20px">
                 
                     <?php
                         foreach($droneList as $optDrone)
@@ -101,7 +102,7 @@ else
                     ?>
                     </select>
                     <br><br>
-                    <input type="date" name="date" placeholder="Flight Date" required>
+                    <label>planned flight date<input type="date" name="date" placeholder="Flight Date" required>
                     <br><br>
                     <textarea name="Descr" placeholder="Description.." rows="5" cols="50" required></textarea>
                     <p><?=$errMsg?></p>

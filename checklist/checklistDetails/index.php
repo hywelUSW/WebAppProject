@@ -61,7 +61,7 @@
                         ?>
                         <summary>
                             <h2><?=$result['ChecklistName']?></h2>
-                            <a href="updateChecklist?checklistID=<?=$_GET['checklistID']?>">
+                            <a href="updateDetails?checklistID=<?=$_GET['checklistID']?>">
                                 <button>Edit Checklist</button>
                             </a>
                         </summary>

@@ -159,6 +159,7 @@ button:active{
 label,input,textarea{
     font-size: 20px;
 }
+
 input[type="text"],input[type="timedate-local"],textarea{
     
 }
@@ -174,5 +175,5 @@ p, summary{
    font-size:18px;
 }
 hr{
-    height:20px;
+    
 }

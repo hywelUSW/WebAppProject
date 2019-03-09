@@ -20,6 +20,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
     if($checklist->updatePostLanding($_GET['checklistID'],$_POST['PowerDownRPA'],$_POST['RemoveRPABattery'],$_POST['RPABatteryOnCharge'],$_POST['RPADamagedCheck'],$_POST['PropellerCheck'],$_POST['LandingGearCheck'],$_POST['RecordFlightDetails'],$_POST['CameraDataDownloaded'],$_POST['ControllerOff'],$_POST['EquipmentPacked'],$_POST['AreaChecked']))
     {
         $result = $checklist->getPostLanding($_GET['checklistID']);
+        $msg = "CHecklist updated!";
     }
     else
     {
@@ -43,7 +44,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
         ?>
         <main>
             <h2>Post-Landing</h2>
-            
+            <p><?=$msg?></p>
             <form method='post'>
                 <input type='hidden' name='PowerDownRPA' value='0'>
                 <label>Drone Powered Down</label><input type="checkbox" name="PowerDownRPA" value='1' <?=$checklist->ischecked($result["PowerDownRPA"])?>>
@@ -67,7 +68,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                 <label>Flight Details Recorded</label><input type="checkbox" name="RecordFlightDetails" value='1' <?=$checklist->ischecked($result["RecordFlightDetails"])?>>
                 <hr>
                 <input type='hidden' name='EquipmentPacked' value='0'>
-                <label>Equipment Packed</label><input type="checkbox" name="EquipmentPacked" value='1' <?=$checklist->ischecked($result["EquipmentPAcked"])?>>
+                <label>Equipment Packed</label><input type="checkbox" name="EquipmentPacked" value='1' <?=$checklist->ischecked($result["EquipmentPacked"])?>>
                 <hr>
                 <input type='hidden' name='AreaChecked' value='0'>
                 <label>Area Checked</label><input type="checkbox" name="AreaChecked" value='1' <?=$checklist->ischecked($result["AreaChecked"])?>>
@@ -77,7 +78,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                 <hr>
                 <input type='hidden' name='CameraDataDownloaded' value='0'>
                 <label>Camera Data Downloaded</label><input type="checkbox" name="CameraDataDownloaded" value='1' <?=$checklist->ischecked($result["CameraDataDownloaded"])?>>
-                <br><br>
+                <br><br><br>
                 <div class="btnWrapper">
                     <button class="btnMain" type="submit">Update</button><br><br>
                     <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button class="btnMain" type="button">Cancel</button></a>

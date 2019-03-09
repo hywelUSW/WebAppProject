@@ -28,7 +28,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
     }
 }
 $weather = explode(",",$result['WeatherCheck']);
-
+print_R($result);
 if($weather == null)
 {
     $weather = ["",0,0];
@@ -74,8 +74,8 @@ if($weather == null)
                 <input type='hidden' name='AssistantBriefed' value='0'>
                 <label>Assistant Briefed(if applicable)</label><input type="checkbox" name="AssistantBriefed" value='1' <?=$checklist->ischecked($result["AssistantBriefed"])?>>
                 <hr>
-                <input type='hidden' name='ContollerConnects' value='0'>
-                <label>Controller Wroks & Connects to Drone</label><input type="checkbox" name="ContollerConnects" value='1' <?=$checklist->ischecked($result["ContollerConnects"])?>>
+                <input type='hidden' name='ControllerConnects' value='0'>
+                <label>Controller Works & Connects to Drone</label><input type="checkbox" name="ControllerConnects" value='1' <?=$checklist->ischecked($result["ControllerConnects"])?>>
                 <hr>
                 <input type='hidden' name='RPADamageCheck' value='0'>
                 <label>Drone Checked for Damage</label><input type="checkbox" name="RPADamageCheck" value='1' <?=$checklist->ischecked($result["RPADamageCheck"])?>>
@@ -118,7 +118,7 @@ if($weather == null)
                 <hr>
                 <input type='hidden' name='FitToFly' value='0'>
                 <label>Fit to Fly Documents Signed</label><input type="checkbox" name="FitToFly" value='1' <?=$checklist->ischecked($result["FitToFly"])?>>
-                <br><br>
+                <br><br><br>
                 <div class="btnWrapper">
                 <button class="btnMain" type="submit">Update</button><br><br>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button  class="btnMain" type="button">Cancel</button></a>

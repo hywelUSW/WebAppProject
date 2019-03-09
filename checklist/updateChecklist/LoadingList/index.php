@@ -80,7 +80,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                 <hr>
                 <input type='hidden' name='PermissionGranted' value='0'>
                 <label>Area Permission Granted</label><input type="checkbox" name="PermissionGranted" value='1' <?=$checklist->ischecked($result["PermissionGranted"])?>>
-                
+                <br><br><br>
                 <div class="btnWrapper">
                 <button  class="btnMain" type="submit">Update</button><br><br>
                 <a href="<?=$root."checklist/checklistdetails/?checklistID=".$_GET['checklistID']?>"><button class="btnMain" type="button">Cancel</button></a>

@@ -285,14 +285,15 @@ class checklist{
         //makes time value usable
         $tempDate = strtotime($takeOffTime);
         $takeOffTime = Date("Y-m-d H:m",$tempDate);
-        echo $takeOffTime;
+        
         $query = "UPDATE posttakeoff SET BothControlSticksInner = ?, ControllerResponds = ?,";
         $query .= " RPAStable = ?,TakeOffTime = ?,CameraCheck = ? WHERE checklistID = ?";
+       echo $takeOffTime;
         $params = array("iiisii",$ControlSticksInner,$controllerResponds,$RPAStable,$takeOffTime,$cameraCheck,$checklistID);
         $db = new database();
         
         $result = $db->exQ($query,$params);
-        
+       print_r($result);
         if($result->affected_rows > 0)
         {
             include_once("checklistAmendmentClass.php");
@@ -333,13 +334,20 @@ class checklist{
     function updatePreLanding($checklistID,$landingAreaClear,$landType,$landingTime)
     {
         //makes time value usable
+        echo $checklistID;
+        echo $landingAreaClear;
+        echo $landType;
+        //echo $landingTime;
         $tempDate = strtotime($landingTime);
-        $landingTime = Date("Y-m-d H:m",$tempDate);
-        $query = "UPDATE prelanding SET LandingAreaClear = ?, ManualAutoLand = ?,";
-        $query .= " LandingTimeRecorded = ? WHERE ChecklistID = ?";
-        $params = array("iisi",$landingAreaClear,$landType,$landingTime,$checklistID);
+        
+        $landingTime = Date("Y-m-d H:m:s",$tempDate);
+        
+        $query = "UPDATE prelanding SET LandingAreaClear = ?, ManualAutoLand = ?";
+        $query .= " WHERE ChecklistID = ?";
+        $params = array("iii",$landingAreaClear,$landType,$checklistID);
         $db = new database();
         $result = $db->exQ($query,$params);
+        print_R($result);
         if($result->affected_rows > 0)
         {
             include_once("checklistAmendmentClass.php");

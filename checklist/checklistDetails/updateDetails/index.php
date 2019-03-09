@@ -122,8 +122,8 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                         <h3>Delete Checklist</h3>
                         <p>To delete a checklist, please use the form below. Warning: This is irreversable!</p>
                         <form action="deleteChecklist.php" method="POST">
-                            <input type="password" name="password">
-                            <input type="hidden" name="checklistID" placeholder="Password" value="<?=$_GET['checklistID']?>">
+                            <input type="password" name="password" placeholder="Password">
+                            <input type="hidden" name="checklistID" value="<?=$_GET['checklistID']?>">
                             <br><br>
                             <button class="btnMain">Delete Checklist</button>
                         </form>
