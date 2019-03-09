@@ -169,9 +169,13 @@ input[type="checkbox"]{
     text-align: center;
     float:none!important;
 }
-p, summary{
+p, summary,ul{
    font-size:18px;
 }
 h4{
     font-size:20px;
+}
+
+textarea{
+    resize:none;
 }

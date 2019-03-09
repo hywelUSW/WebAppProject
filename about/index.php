@@ -28,7 +28,16 @@
         <main>
         <section>
             <h3>About</h3>
-            <p>This app is used to help proffesional drone users send</p>
+            <p>
+            This app is used to help proffesional drone users manage their drone data. from this website. you can
+            <ul>
+                <li>Create checklists</li>
+                <li>Manage drones</li>
+                <li>Keep track of batteries</li>
+            </ul>
+            
+            
+            </p>
         </section>
         <hr>
         <section id="contact">

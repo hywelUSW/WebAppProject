@@ -107,7 +107,7 @@
                     <br><br>
                     <input type="number" name="PayloadMaxTemp" placeholder="Maxiumum Tempeature(°C)" required>
                     
-                    <br>
+                    <br><br>
                     <button class="btnMain" type="submit">Add Drone</button><br><br>
                     <a href="../"><button class="btnMain" type="button">Cancel</button></a>
                 </form>
