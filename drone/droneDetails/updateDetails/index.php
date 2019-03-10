@@ -40,11 +40,17 @@ if(array_filter($_POST) && isset($_SESSION['user']))
         //replace values
         $droneData = $_POST;
         $msg = "Checklist updated";
-        $weather = explode(",",$_POST['OperatingWeather']);   
+        $weather = $_POST['OperatingWeather'];
+       
+       
         
     }
 }
-$weather = explode(",",$droneData['OperatingWeather']);
+//check that weather isnt already an array from post values
+if(!isset($weather))
+{
+    $weather = explode(",",$droneData['OperatingWeather']);
+}
 
 ?>
 <html>
@@ -71,6 +77,7 @@ $weather = explode(",",$droneData['OperatingWeather']);
             }else {
                 
             ?>
+            <p><?=$msg?></p>
             <form method="POST"  enctype="multipart/form-data">
                     <input type="text" name="DroneName" placeholder="name" value="<?=$droneData['DroneName']?>" required>
                     <!--<br><br>
@@ -85,13 +92,13 @@ $weather = explode(",",$droneData['OperatingWeather']);
                     <input type="text" name="DroneType" maxLength="40" placeholder="Drone Type" value="<?=$droneData['DroneType']?>" required>
                     <hr>
                     <h4>Flight Characteristics</h4>
-                    <input type="text" name="FlightModes" maxLength="40" placeholder="Flight Modes" value="<?=$droneData['FlightTypes']?>" required>
+                    <input type="text" name="FlightTypes" maxLength="40" placeholder="Flight Modes" value="<?=$droneData['FlightTypes']?>" required>
                     <br><br>
                     <input type="number" name="MaxOperatingSpeed"  placeholder="Max Speed(m/s)"value="<?=$droneData['MaxOperatingSpeed']?>"  required>
                     <br><br>
                     <input type="text" name="LaunchType" maxLength="40" placeholder="Launch Type" value="<?=$droneData['LaunchType']?>" required>
                     <br><br>
-                    <input type="number" name="maxFlightTime" placeholder="Flight Time(mins)" value="<?=$droneData['MaxFlightTime']?>" required>
+                    <input type="number" name="MaxFlightTime" placeholder="Flight Time(mins)" value="<?=$droneData['MaxFlightTime']?>" required>
                     <hr>
                     <h4>Airframe Specifications</h4>
                     <input type="number" name="MaxHeight"  placeholder="Max Ceiling Height(m)" value="<?=$droneData['MaxHeight']?>"  required>
@@ -147,9 +154,9 @@ $weather = explode(",",$droneData['OperatingWeather']);
                     <h4>Payload Details</h4>
                     <input type="text" name="PayloadName" maxLength="40" placeholder="Payload Name" value="<?=$droneData['PayloadName']?>" required>
                     <br><br>
-                    <input type="number" name="PayloadMinTemp" placeholder="Minimum Temperature(°C)" value="<?=$droneData['MinTemp']?>" required>
+                    <input type="number" name="MinTemp" placeholder="Minimum Temperature(°C)" value="<?=$droneData['MinTemp']?>" required>
                     <br><br>
-                    <input type="number" name="PayloadMaxTemp" placeholder="Maxiumum Tempeature(°C)" value="<?=$droneData['MaxTemp']?>" required>
+                    <input type="number" name="MaxTemp" placeholder="Maxiumum Tempeature(°C)" value="<?=$droneData['MaxTemp']?>" required>
                     <p><?=$errMsg?></p>
                     <br>
                     <button class="btnMain" type="submit">update Drone</button><br><br>
