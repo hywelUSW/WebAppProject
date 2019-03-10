@@ -1,3 +1,4 @@
+var isDesktop = false;
 $("document").ready(function() {/*Code goes here*/
     if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
         isDesktop = true;
@@ -7,6 +8,7 @@ $("document").ready(function() {/*Code goes here*/
         $("#mainMenu").css("width","185px");
         $("main").css("margin-left","235px");
     }
+  
     $("body").css("display","block");
     });
 

@@ -62,12 +62,14 @@
                         ?>
                         <summary>
                             <h2><?=$result['ChecklistName']?></h2>
-                            <a href="updateDetails?checklistID=<?=$_GET['checklistID']?>">
-                                <button>Edit Checklist</button>
-                            </a>
+                            
                         </summary>
                         <hr>
                         <div id="overview">
+                        <h3>Details</h3>
+                        <a href="updateDetails?checklistID=<?=$_GET['checklistID']?>">
+                                <button>Edit Checklist</button>
+                            </a>
                         <ul>
                             <li>Planned Date: <?=$result['PlannedDate']?></li>
                             <li>Drone used: <?=$result['DroneName']?></li>
@@ -75,6 +77,7 @@
                             
                         </ul>
                         </div>
+                        <hr style="clear:both">
                         <div class="btnWrapper">
                             <a href="<?=$root."checklist/updatechecklist/loadinglist?checklistID=".$_GET['checklistID']?>"> <button class="btnMain">Loading List</button></a>
                             <br><br>

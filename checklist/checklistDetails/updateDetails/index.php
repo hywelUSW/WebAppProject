@@ -54,7 +54,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
 {
     if(!$noData)
     {
-        if($checklist->updateChecklist($_POST['drone'],$_POST['name'],$_POST['date'],$_POST['Descr'],$_GET['checklistID']))
+        if($checklist->updateChecklist($_POST['DroneID'],$_POST['ChecklistName'],$_POST['PlannedDate'],$_POST['Descr'],$_GET['checklistID']))
         {
             
             $msg = "Checklist updated!";
@@ -93,9 +93,9 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             { ?>
                 <form action="" method="post">
                     <p><?=$msg?></p>
-                    <input type="text" name="name" placeholder="Checklist Name"  maxLength="40" value="<?=$checklistData['ChecklistName']?>" required>
+                    <input type="text" name="ChecklistName" placeholder="Checklist Name"  maxLength="40" value="<?=$checklistData['ChecklistName']?>" required>
                     <br><br>
-                    <label>Drone ID </label><select name="drone" value="3" style="font-size:20px">
+                    <label>Drone ID </label><select name="DroneID" value="3" style="font-size:20px">
                 
                     <?php
                         foreach($droneList as $optDrone)
@@ -111,7 +111,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
                     ?>
                     </select>
                     <br><br>
-                    <input type="date" name="date" placeholder="Flight Date" value="<?=$checklistData['PlannedDate']?>" required>
+                    <input type="date" name="PlannedDate" placeholder="Flight Date" value="<?=$checklistData['PlannedDate']?>" required>
                     <br><br>
                     <textarea name="Descr" placeholder="Description.." rows="5" cols="50"  maxLength="300" required><?=$checklistData['Descr']?></textarea>
                     <br><br>

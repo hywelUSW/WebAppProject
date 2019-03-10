@@ -25,12 +25,14 @@
         <?php
         if(isset($_SESSION['user']))
         { ?>
+        <div class="btnWrapper">
             <br><br>
             <a href="checklist/newChecklist"><button class="btnMain" type="button">Create checklist</button></a>
             <br><br>
             <a href="checklist/newChecklist"><button class="btnMain" type="button">Add Drone</button></a>
             <br><br>
             <a href="checklist/newChecklist"><button class="btnMain" type="button">Add Batter</button></a>
+        </div>
         <?php }
         else {
             ?><p>to create checklists, please create an account <a href="register/">Here</a></p><?php

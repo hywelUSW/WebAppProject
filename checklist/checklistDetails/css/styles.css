@@ -2,12 +2,19 @@ main{
     position:relative;
 }
 summary h2{
-display:inline-block;
+text-align:center;
 }
-summary a{
+#overview a{
     float:right;
+    margin-bottom:10px;
 }
-summary button{
+#overview ul{
+    clear:both;
+}
+#overview h3{
+    float:left;
+}
+#overview button{
     margin-top: 13.720;
     border-radius: 7px;
     color: white;
@@ -17,12 +24,9 @@ summary button{
     padding: 5px;
 }
 .btnWrapper{
-    position: absolute;
+    /*position: absolute;
     bottom:30px;
-    left:0;
+    left:0;*/
     width:100%;
     
-}
-.btnWrapper hr{
-    width:95%;
 }

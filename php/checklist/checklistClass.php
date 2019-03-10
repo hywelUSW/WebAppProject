@@ -118,11 +118,14 @@ class checklist{
        
         $query = "UPDATE Checklist SET DroneID = ?, Checklistname = ?, PlannedDate = ?, Descr = ? WHERE ChecklistID = ?";
         $params = array("isssi",$droneID,$checklistName,$plannedDate,$descr,$checklistID);
-        echo $descr;
         $db = new database();
         $result = $db->exQ($query,$params);
         
         if($result->affected_rows > 0)
+        {
+            return true;
+        }
+        else if($result->errno == 0)
         {
             return true;
         }
@@ -404,9 +407,9 @@ class checklist{
         $query .= "ControllerOff = ?, EquipmentPacked = ?, AreaChecked = ? WHERE checklistID = ?";
         $params = array("iiiiiiiiiiii",$PowerDownRPA,$RemoveRPABattery,$RPABatteryOnCharge,$RPADamagedCheck,$PropellerCheck,$LandingGearCheck,$RecordFlightDetails,$CameraDataDownloaded,$ControllerOff,$EquipmentPacked,$AreaChecked,$checklistID);
         $db = new database();
-        echo "test";
+       
         $result = $db->exQ($query,$params);
-        echo "end";
+        
         if($result->affected_rows > 0)
         {
             include_once("checklistAmendmentClass.php");
