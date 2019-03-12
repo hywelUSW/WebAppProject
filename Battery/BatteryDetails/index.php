@@ -18,6 +18,10 @@
     $data = $result->fetch_assoc();
     if($data['UserID'] == $_SESSION['user'])
     {
+        if(isset($_POST['addCharge']))
+        {
+            $battery->addCharge($_GET['batteryID'],$_SESSION['user']);
+        }
         $dataAvailable = true;
     }
  }
@@ -49,6 +53,8 @@
             <h2><?=$data['Name']?></h2>
             <section>
             <ul>
+                <li>Model No: <?=$data['ModelNo']?></li>
+                <li>Serial No: <?=$data['SerialNo']?></li>
                 <li>Weight: <?=$data['Weight']?> g</li>
                 <li>Chemistry: <?=$data['Chemistry']?></li>
                 <li>Power output: <?=$data['PowerOutput']?> mAh</li>
@@ -56,9 +62,12 @@
             </section>
             <section>
             <h3>Charge Cycles</h3>
+            <form method="POST">
             <div class="btnWrapper">
+            <input type="hidden" name="addCharge" value="1">
                 <button class="btnMain">Add charge</button>
             </div>
+            </form>
             <br><br>
             <?php
                $result =  $battery->getBatteryCharges($_GET['batteryID']);

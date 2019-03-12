@@ -9,7 +9,7 @@
  {
      require_once($root."php/battery/batteryclass.php");
      $battery = new battery();
-     if($battery->newBattery($_SESSION['user'],$_POST['Name'],$_POST['Weight'],$_POST['Chemistey'],$_POST['powerOutput']))
+     if($battery->newBattery($_SESSION['user'],$_POST['Name'],$_POST['ModelNo'],$_POST['SerialNo'],$_POST['Weight'],$_POST['Chemistey'],$_POST['powerOutput']))
       {
           $querysuccess = true;
       }
@@ -48,6 +48,10 @@
             
             <form method="POST">
                 <input type="text" name="Name"  maxLength="40" placeholder="name" required>
+                <br><br>
+                <input type="text" name="ModelNo"  maxLength="20" placeholder="name" required>
+                <br><br>
+                <input type="text" name="SerialNo"  maxLength="20" placeholder="name" required>
                 <br><br>
                 <input type="number" name="Weight" placeholder="Weight(g)" required>
                 <br><br>

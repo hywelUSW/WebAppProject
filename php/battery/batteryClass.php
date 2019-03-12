@@ -19,10 +19,10 @@ class battery{
         }
     }
 
-    function newBattery($userID,$name,$weight,$chemistry,$powerOutput)
+    function newBattery($userID,$name,$modelNo,$serialNo,$weight,$chemistry,$powerOutput)
     {
-        $query = "INSERT INTO battery (UserID,Name,Weight,Chemistry,PowerOutput) VALUES (?,?,?,?,?)";
-        $params = array("isisi",$userID,$name,$weight,$chemistry,$powerOutput);
+        $query = "INSERT INTO battery (UserID,Name,ModelNo,SerialNo,Weight,Chemistry,PowerOutput) VALUES (?,?,?,?,?)";
+        $params = array("isisi",$userID,$name,$modelNo,$serialNo,$weight,$chemistry,$powerOutput);
         $db = new database();
         $result = $db->exQ($query,$params);
         if($result->affected_rows > 0)

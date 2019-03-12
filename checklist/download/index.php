@@ -31,37 +31,21 @@ if($rOverview->num_rows > 0)
     $userDetails = $user->getUserDetails($_SESSION['user']);
     
     $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-    $pdf->SetCreator($userDetails['Name']);
     $pdf->SetAuthor($userDetails['Name']);
     $pdf->SetTitle($overview['ChecklistName']);
-    
-    // set header/footer
+    // set page data
     $pdf->SetHeaderData(null, 0, $overview['ChecklistName'], $userDetails['Name'], array(0,64,255), array(0,64,128));
     $pdf->setFooterData(array(0,64,0), array(0,64,128));
-    $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-    $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    $pdf->setHeaderFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+   $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
     $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
     $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-    // set auto page breaks
     $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-    // set default monospaced font
-    $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-    // set some language-dependent strings (optional)
-    if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-        require_once(dirname(__FILE__).'/lang/eng.php');
-        $pdf->setLanguageArray($l);
-    }
-    // ---------------------------------------------------------
-    // set default font subsetting mode
-    $pdf->setFontSubsetting(true);
-    
-    $pdf->SetFont('DejaVuSerif', '', 14);
-    // Add a page
-    // This method has several options, check the source code documentation for more information.
+    $pdf->SetFont('helvetica', '', 14);
+    //add page
     $pdf->AddPage();
-    // set text shadow effect
-    $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
+    
     //
     //Page 1
     //
@@ -87,7 +71,7 @@ EOD;
     $html = "<h2 align='center'>Amendment record</h2>";
     
     $html .='<table border="1" cellspacing="0" cellpadding="4">';
-    $html .="<tr><th style='border:1px solid black;'>Amendment No.</th><th>Amendment Date</th></tr>";
+    $html .="<tr><th><b>Amendment No.</b></th><th><b>Amendment Date</b></th></tr>";
     while($amendment = $amendmentList->fetch_assoc())
     {
         $html .="<tr>";
@@ -117,7 +101,7 @@ EOD;
     //HTML
     
     $html .='<table border="1" cellspacing="0" cellpadding="4">';
-    $html .='<tr><th>Item</th><th>specification</th></tr>';
+    $html .='<tr><th><b>Item</b></th><th><b>specification</b></th></tr>';
     foreach ($droneHeaders as $header) {
         if($header != 'imgSrc' || $header != 'DroneID')
         {
@@ -146,7 +130,7 @@ EOD;
     $headers = array_keys($result);
     $html = '<h3>Section 1 - loading list</h3>';
     $html .= '<table border="1" cellspacing="0" cellpadding="4">';
-    $html .= '<tr><th>item</th><th>Checked</th></tr>';
+    $html .= '<tr><th><b>item</b></th><th><b>status</b></th></tr>';
     foreach($headers as $header)
     {
         if($header != "ChecklistID")
@@ -182,7 +166,7 @@ EOD;
     $headers = array_keys($result);
     $html = '<h3>Section 2 - preFlight</h3>';
     $html .= '<table border="1" cellspacing="0" cellpadding="4">';
-    $html .= '<tr><th>item</th><th>Checked</th></tr>';
+    $html .= '<tr><th><b>item</b></th><th><b>status</b></th></tr>';
     foreach($headers as $header)
     {
         if($header != "ChecklistID")
@@ -220,7 +204,7 @@ EOD;
     $headers = array_keys($result);
     $html = '<h3>Section 3 - Post Take Off</h3>';
     $html .= '<table border="1" cellspacing="0" cellpadding="4">';
-    $html .= '<tr><th>item</th><th>Checked</th></tr>';
+    $html .= '<tr><th><b>item</b></th><th><b>status</b></th></tr>';
     foreach($headers as $header)
     {
         if($header != "ChecklistID")
@@ -257,7 +241,7 @@ EOD;
     $headers = array_keys($result);
     $html = '<h3>Section 4 - Pre-Landing</h3>';
     $html .= '<table border="1" cellspacing="0" cellpadding="4">';
-    $html .= '<tr><th>item</th><th>Checked</th></tr>';
+    $html .= '<tr><th><b>item</b></th><th><b>status</b></th></tr>';
     foreach($headers as $header)
     {
         if($header != "ChecklistID")
@@ -288,13 +272,13 @@ EOD;
     $pdf->AddPage();
 
      //
-    //PreTakeOff
+    //postLanding
     //
     $result = $checklist->getPostLanding($_GET['checklistID']);
     $headers = array_keys($result);
     $html = '<h3>Section 5 - Post Landing</h3>';
     $html .= '<table border="1" cellspacing="0" cellpadding="4">';
-    $html .= '<tr><th>item</th><th>Checked</th></tr>';
+    $html .= '<tr><th><b>item</b></th><th><b>status</b></th></tr>';
     foreach($headers as $header)
     {
         if($header != "ChecklistID")

@@ -30,18 +30,32 @@ if(array_filter($_POST) && isset($_SESSION['user']))
 {
     if(!badUser || !$noData)
     {
-        $drone->updateMainData($_GET['DroneID'],$_POST['DroneName']);
-        $drone->updateDesegnation($_GET['DroneID'],$_POST['ModelName'],$_POST['Manufacturer'],$_POST['DroneType']);
-        $drone->updateCharacteristics($_GET['DroneID'],$_POST['FlightTypes'],$_POST['MaxOperatingSpeed'],$_POST['LaunchType'],$_POST['MaxFlightTime']);
-        $drone->updateEnvLimits($_GET['DroneID'],$_POST['MaxHeight'],$_POST['MaxRadius'],$_POST['MaxWind'],$_POST['TempRangeMin'],$_POST['TempRangeMax'],$_POST['OperatingWeather']);
-        $drone->updateTechSpecs($_GET['DroneID'],$_POST['Height'],$_POST['Width'],$_POST['Length'],$_POST['Weight'],$_POST['MaxTakeOffWeight'],$_POST['MotorType'],$_POST['MotorSpeed'],$_POST['ControlDataLink'],$_POST['VideoDataLink'],$_POST['FlightController']);
-        $drone->updateRPSDetails($_GET['DroneID'],$_POST['DataLink'],$_POST['VideoLink'],$_POST['AntennaType']);
-        $drone->updatePayload($_GET['DroneID'],$_POST['PayloadName'],$_POST['MinTemp'],$_POST['MaxTemp']);
+        
+        if(!$drone->updateMainData($_GET['DroneID'],$_POST['DroneName']))
+            echo "1";
+        if(!$drone->updateDesegnation($_GET['DroneID'],$_POST['ModelName'],$_POST['Manufacturer'],$_POST['DroneType']))
+        echo "2";
+        if(!$drone->updateCharacteristics($_GET['DroneID'],$_POST['FlightTypes'],$_POST['MaxOperatingSpeed'],$_POST['LaunchType'],$_POST['MaxFlightTime']))
+        echo "3";
+        if(! $drone->updateEnvLimits($_GET['DroneID'],$_POST['MaxHeight'],$_POST['MaxRadius'],$_POST['MaxWind'],$_POST['TempRangeMin'],$_POST['TempRangeMax'],$_POST['OperatingWeather']))
+        echo "4";
+        if(! $drone->updateTechSpecs($_GET['DroneID'],$_POST['Height'],$_POST['Width'],$_POST['Length'],$_POST['Weight'],$_POST['MaxTakeOffWeight'],$_POST['MotorType'],$_POST['MotorSpeed'],$_POST['ControlDataLink'],$_POST['VideoDataLink'],$_POST['FlightController']))
+        echo "5";
+        if(!$drone->updateRPSDetails($_GET['DroneID'],$_POST['DataLink'],$_POST['VideoLink'],$_POST['AntennaType']))
+        echo "6";
+        if(! $drone->updatePayload($_GET['DroneID'],$_POST['PayloadName'],$_POST['MinTemp'],$_POST['MaxTemp']))
+        echo "7";   
         //replace values
         $droneData = $_POST;
-        $msg = "Checklist updated";
+        if(!$updateFailed)
+        {
+            $msg = "Checklist updated";
+        }
+        else {
+            $msg = "Could not update all sections, please try again";
+        }
         $weather = $_POST['OperatingWeather'];
-       
+    
        
         
     }
@@ -159,7 +173,7 @@ if(!isset($weather))
                     <input type="number" name="MaxTemp" placeholder="Maxiumum Tempeature(°C)" value="<?=$droneData['MaxTemp']?>" required>
                     <p><?=$errMsg?></p>
                     <br>
-                    <button class="btnMain" type="submit">update Drone</button><br><br>
+                    <button class="btnMain" type="submit">Update Drone</button><br><br>
                     <a href="../"><button class="btnMain" type="button">Cancel</button></a>
                 </form>
             <?php } ?>

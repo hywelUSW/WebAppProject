@@ -1,4 +1,3 @@
-
 var temp;
 var weatherCond;
 var droneCond = DroneEnvDetails.operatingWeather.split(",");
@@ -9,10 +8,8 @@ $("#getWeather").click(function(){
         navigator.geolocation.getCurrentPosition(function(pos){
             
             getWeather(pos.coords.latitude,pos.coords.longitude);
-        },
-        //failiure
-        getIPWeather());
-      }
+        });
+    }
       else 
       {
         getIPWeather()
@@ -27,14 +24,13 @@ $.ajax({
         coords = (data.loc).split(",");
        $("#weather").append("<p id='IPwarning'>Weather measurement may not be accurate</p>");
         getWeather(coords[0],coords[1]);
-        
     },
     fail: function(){
         $("#weatherWarnings").append("<p id='WeatherWarnings'>Could not get weather. Try again later.</p>");
     }
 });
 }
-
+var tt;
 function getWeather(lat, long)
 {
     var weatherWarnings= [];
@@ -43,6 +39,7 @@ function getWeather(lat, long)
         url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=166826fbc7bd89eac6c5fabcde57e926",
         success: function (weatherResult)
         {
+            tt = weatherResult;
             if(DroneEnvDetails != null)
             {
                 //coverrt kelvin to celcius 

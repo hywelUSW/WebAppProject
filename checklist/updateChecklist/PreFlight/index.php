@@ -28,7 +28,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
     }
 }
 $weather = explode(",",$result['WeatherCheck']);
-print_R($result);
+
 if($weather == null)
 {
     $weather = ["",0,0];

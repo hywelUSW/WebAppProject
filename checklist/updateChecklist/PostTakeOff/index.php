@@ -14,7 +14,7 @@ if($result['userID'] != $_SESSION['user'])
    header("location: ".$root."checklist/");
    die();
 }
-print_r($_POST);
+
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
     

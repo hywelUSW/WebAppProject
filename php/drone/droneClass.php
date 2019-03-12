@@ -92,6 +92,10 @@ class drone{
         {
             return true;
         }
+        else if($query->errno == 0)
+        {
+            return true;
+        }
 
     }
     //
@@ -126,6 +130,10 @@ class drone{
         {
             return true;
         }
+        else if($query->errno == 0)
+        {
+            return true;
+        }
     }
     //
     //Characteristics
@@ -136,10 +144,12 @@ class drone{
         $params = array("isisi",&$droneID,&$flightModes,&$maxOpSpeed,&$launchType,&$maxFlightTime);
         $db = new database();
         $query = $db->exQ($query,$params);
+        
         if($query->affected_rows > 0)
         {
             return true;
         }
+        
         else
         {
             return false;
@@ -155,18 +165,18 @@ class drone{
         {
             return true;
         }
+        else if($query->errno == 0)
+        {
+            return true;
+        }
+        
     }
     //
     //Environment Limits
     //
     function addEnvLimits($droneID,$maxHeight,$maxRadius,$maxWind,$TempRangeMin,$tempRangeMax,$opWeather)
     {
-        Foreach($opWeather as $cond)
-        {
-            $weather .= $cond . ",";
-        }
-        //remove last character
-        $weather = substr_replace($weather, "", -1);
+       $weather = implode(",",$opWeather);
         $query = "INSERT INTO environmentlimits VALUES (?,?,?,?,?,?,?)";
         $params = array("iiiiiis",&$droneID,&$maxHeight,&$maxRadius,&$maxWind,&$TempRangeMin,&$tempRangeMax,&$weather);
         $db = new database();
@@ -186,16 +196,17 @@ class drone{
         //clear previous weather types
         //$this->clearWeatherTypes($droneID);
         
-        Foreach($opWeather as $cond)
-        {
-            $weather .= $cond . ",";
-        }
-        $weather = substr_replace($weather, "", -1);
+        $opWeather = implode(",",$opWeather);
+        
         $query = "UPDATE environmentlimits SET MaxHeight = ?, MaxRadius = ?,MaxWind = ? ,TempRangeMin = ?, TempRangeMax = ?, OperatingWeather = ? WHERE DroneID = ?";
-        $params = array("iiiiisi",&$maxHeight,&$maxRadius,&$maxWind,&$tempRangeMin,&$tempRangeMax,&$weather,&$droneID);
+        $params = array("iiiiisi",&$maxHeight,&$maxRadius,&$maxWind,&$tempRangeMin,&$tempRangeMax,&$opWeather,&$droneID);
         $db = new database();
         $query = $db->exQ($query,$params);
         if($query->affected_rows > 0)
+        {
+            return true;
+        }
+        else if($query->errno == 0)
         {
             return true;
         }
@@ -230,6 +241,10 @@ class drone{
         {
             return true;
         }
+        else if($query->errno == 0)
+        {
+            return true;
+        }
     }
     //
     //RPS Details
@@ -256,6 +271,10 @@ class drone{
         $db = new database();
         $query = $db->exQ($query,$params);
         if($query->affected_rows > 0)
+        {
+            return true;
+        }
+        else if($query->errno == 0)
         {
             return true;
         }
@@ -286,6 +305,10 @@ class drone{
         $db = new database();
         $query = $db->exQ($query,$params);
         if($query->affected_rows > 0)
+        {
+            return true;
+        }
+        else if($query->errno == 0)
         {
             return true;
         }

@@ -255,6 +255,7 @@ class checklist{
         $db = new database();
         
         $result = $db->exQ($query,$params);
+        
         if($result->affected_rows > 0)
         {
             include_once("checklistAmendmentClass.php");

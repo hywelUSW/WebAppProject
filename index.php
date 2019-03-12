@@ -31,7 +31,7 @@
             <br><br>
             <a href="checklist/newChecklist"><button class="btnMain" type="button">Add Drone</button></a>
             <br><br>
-            <a href="checklist/newChecklist"><button class="btnMain" type="button">Add Batter</button></a>
+            <a href="checklist/newChecklist"><button class="btnMain" type="button">Add Battery</button></a>
         </div>
         <?php }
         else {
