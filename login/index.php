@@ -2,13 +2,17 @@
  include_once("/students/15080900/projectapp/php/initalise.php");
  require_once($root."php/user/userClass.php");
  $User = new user();
-If($User->userVerify($_POST['email'],$_POST['password']))
+if(isset($_POST['email']) && isset($_POST['password']))
 {
-    header("Location:". $root);
-    die();
-}
-else {
-    $errmsg = '<p class="ErrMsg">Invalid login details!</p>';
+    
+    if($User->userVerify($_POST['email'],$_POST['password']))
+    {
+        header("Location:". $root);
+        die();
+    }
+    else {
+        $errmsg = '<p class="ErrMsg">Invalid login details!</p>';
+    }
 }
 ?>
 <html>

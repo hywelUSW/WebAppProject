@@ -6,9 +6,8 @@ if(isset($_POST['email'],$_POST['name'],$_POST['password']))
 {
     include_once("userClass.php");
     $user = new user();
-    if($user->userVerify($_POST['email'],$_POST['password']))
-    { 
-        //details updated
+    if($user->verifyPassword($_SESSION['user'],$_POST['password']))
+    { //details updated
          $user->updateDetails($_POST['email'],$_POST['name'],$_POST['password'],$_POST['NewPassword']);
          $Msg = '>password incorrect!';  
     }
@@ -21,7 +20,7 @@ if(isset($_POST['email'],$_POST['name'],$_POST['password']))
 else
 {
     //no values entered
-    $Msg = 'Please complete the from!</p>';
+    $Msg = 'Please complete the from!';
 }
 
 ?>

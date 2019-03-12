@@ -67,7 +67,6 @@ require_once("php/deleteUser.php");
                 <h4>Delete Account</h4>
                 <p>Use this to delete your account and any data. This is Irreversable!</p>
                 <form action="" method="POST">
-                    <input type="hidden" name="email" value="<?=$userDetails['Email']?>">
                     <input type="password" name="passwordDelete"  maxLength="40" placeholder="Password" required>
                     <br><br>
                     <button class="btnMain" type="submit">Delete account</button>

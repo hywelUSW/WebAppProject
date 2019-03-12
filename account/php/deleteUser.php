@@ -3,7 +3,7 @@ if(isset($_POST['passwordDelete']) && isset($_SESSION['user']))
 {
     include_once($root."php/user/userClass.php");
     $user = new user();
-    if($user->userVerify($_POST['email'],$_POST['passwordDelete']))
+    if($user->verifyPassword($_SESSION['user'],$_POST['passwordDelete']))
     { 
          if($user->removeUser($_POST['email']))
          {

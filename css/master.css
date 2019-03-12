@@ -110,7 +110,8 @@ menu a{
 .popupDialog{
     margin: 20vh auto;
     background-color:white;
-    width:200px;
+    width: 40vw; 
+    max-width: 250px;
     border-radius:15px;
     padding:25px;
 }
