@@ -104,7 +104,6 @@
             {   //checks if new password was entered
                 $newPassword = $password;
             }
-            
             $newPassword = password_hash($newPassword,PASSWORD_BCRYPT);
             $query = $conn->prepare("UPDATE user SET email = ?, name = ?, password = ? WHERE email = ?");
             $query->bind_param("ssss",$email,$name,$newPassword,$email);
