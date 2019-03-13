@@ -5,7 +5,10 @@
 summary h2{
    display: inline-block;
 }
-summary button{
+#basicDetails h4{
+    display: inline-block;
+}
+#basicDetails button{
     float:right;
     margin-top:13.720;
     border-radius:7px;

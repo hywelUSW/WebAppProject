@@ -33,19 +33,15 @@ require_once("/students/15080900/projectapp/php/initalise.php");
                 require_once($root."php/drone/droneClass.php");
                 $drone = new drone();
                 $result = $drone->getDroneList($_SESSION['user']);
-                
-                if($result)
+                if($result->num_rows > 0)
                 {
                     while($row = $result->fetch_assoc())
-                    {
-                        ?>
+                    {?>
                         <div class="droneList">
-                            
                             <h4><a href="<?="droneDetails?DroneID=".$row['DroneID']?>"><?=$row['DroneName']?></a></h4>
                         </div>
                         <hr>
-                        <?php
-                    }   
+            <?php   }   
                 }
                 else
                 {

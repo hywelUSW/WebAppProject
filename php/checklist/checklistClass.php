@@ -115,17 +115,11 @@ class checklist{
     //
     function updateChecklist($droneID,$checklistName,$plannedDate,$descr,$checklistID)
     {
-       
         $query = "UPDATE Checklist SET DroneID = ?, Checklistname = ?, PlannedDate = ?, Descr = ? WHERE ChecklistID = ?";
         $params = array("isssi",$droneID,$checklistName,$plannedDate,$descr,$checklistID);
         $db = new database();
         $result = $db->exQ($query,$params);
-        
-        if($result->affected_rows > 0)
-        {
-            return true;
-        }
-        else if($result->errno == 0)
+        if($result->affected_rows > 0 || $result->errno == 0)
         {
             return true;
         }

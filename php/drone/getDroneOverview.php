@@ -1,4 +1,7 @@
 <?php
+//
+//no longer needed?
+//
     require_once("droneClass.php");
     $drone = new drone();
     $result = $drone->getDroneOVerview($_GET['DroneID']);

@@ -13,10 +13,12 @@
      die();
  }
  
- require_once($root."php/drone/getDroneOverview.php");
+ require_once($root."php/drone/droneClass.php");
+ $drone = new drone();
+ $result = $drone->getDroneOverview($_GET['DroneID']);
+
  if($result)
  {  //user owns data
-    
      if($result['userID'] != $_SESSION['user'])
      {
         header("Location:".$root."drone/");
@@ -58,11 +60,12 @@
                         ?>
                         <summary>
                             <h2><?=$result['DroneName']?></h2>
-                            <a href="updateDetails/?DroneID=<?=$_GET['DroneID']?>"><button>Edit details</button></a>
+                            
                         </summary>  
                         <hr>
                         <div id="basicDetails">
                             <h4>Basic Specifications</h4>
+                            <a href="updateDetails/?DroneID=<?=$_GET['DroneID']?>"><button>Edit details</button></a>
                             <ul>
                                 <li>Model Name: <?=$result['ModelName']?></li>
                                 <li>Manufacturer: <?=$result['ModelName']?></li>
