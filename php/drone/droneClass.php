@@ -2,8 +2,6 @@
 session_start();
 include_once("/students/15080900/projectapp/php/databaseClass.php");
 class drone{
-
-
     function getDroneList($userID){
         
         $db = new database();

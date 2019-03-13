@@ -10,14 +10,31 @@
  //Verify values
  if(isset($_POST['email']) && isset($_POST['name']) && isset($_POST['password']))
  {
-     if($user->newUser($_POST['email'],$_POST['name'],$_POST['password']))
+     if(!empty($_POST['email']) && !empty($_POST['name']) && !empty($_POST['password']))
      {
-        $hasRegistered = true;
-        
-     }else{
-        $errMsg = "<p>Email already in use!<p>";
+         if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
+         {
+            if($user->newUser($_POST['email'],$_POST['name'],$_POST['password']))
+            {
+                $hasRegistered = true;
+                
+            }
+            else
+            {
+                $errMsg = "<p>Email already in use!<p>";
+            }
+        }
+        else {
+            $errMsg = "<p>Invalid Email!</p>";
+        }
+
+     }
+     else {
+         $errMsg = "<p>Please complete the form!</p>";
      }
     
+     
+   
  }
  
 ?>
@@ -58,7 +75,7 @@
                 <br>
                 <p id="RegMsg"><?=$errMsg?> </p>
                 <br>
-                <button type="submit" class="btnMain">Register</button>
+                <button type="submit" id="RegSubmit" class="btnMain">Register</button>
             </form>
             <?php } ?>
         </main>

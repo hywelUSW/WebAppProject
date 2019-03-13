@@ -68,8 +68,8 @@
                             <a href="updateDetails/?DroneID=<?=$_GET['DroneID']?>"><button>Edit details</button></a>
                             <ul>
                                 <li>Model Name: <?=$result['ModelName']?></li>
-                                <li>Manufacturer: <?=$result['ModelName']?></li>
-                                <li>Max Flight Time: <?=$result['MaxFlightTime']?> minuites</li>
+                                <li>Manufacturer: <?=$result['Manufacturer']?></li>
+                                <li>Max Flight Time: <?=$result['MaxFlightTime']?> minutes</li>
                                 <li>Max Operating Speed: <?=$result['maxoperatingspeed']?> m/s</li>
                             </ul>
                             <a href="fullSpec?DroneID=<?=$result['DroneID']?>">View full spec</a>
