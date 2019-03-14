@@ -50,6 +50,7 @@ else
         {
             //making checklist after date
            $errMsg = "Please check the selected date!";
+           
         }
         
     }
@@ -88,7 +89,7 @@ else
                 {
                 ?>
                 <form method="post" action="">
-                    <input type="text" name="name" maxLength="40" placeholder="Checklist Name" required>
+                    <input type="text" name="name" maxLength="40" placeholder="Checklist Name" value="<?=$_POST['name']?>" required>
                     <br><br>
                     <label>Drone </label><select name="drone" style="font-size:20px">
                 
@@ -102,9 +103,9 @@ else
                     ?>
                     </select>
                     <br><br>
-                    <label>Planned Flight Date </label><input type="date" name="date" placeholder="Flight Date" required>
+                    <label>Planned Flight Date </label><input type="date" name="date" placeholder="Flight Date" value="<?=$_POST['date']?>" required>
                     <br><br>
-                    <textarea name="Descr" placeholder="Description.."  maxLength="300" rows="5" cols="50" required></textarea>
+                    <textarea name="Descr" placeholder="Description.."  maxLength="300" rows="5" cols="50" value="<?=$_POST['Descr']?>" required></textarea>
                     <p><?=$errMsg?></p>
                     <button class="btnMain" type="submit">Add Checklist</button>
                 </form>

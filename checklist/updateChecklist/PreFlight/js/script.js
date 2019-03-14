@@ -1,5 +1,6 @@
 var temp;
 var weatherCond;
+var coords;
 var droneCond = DroneEnvDetails.operatingWeather.split(",");
 $("#getWeather").click(function(){
    $("#weatherWarnings").remove();
@@ -8,27 +9,45 @@ $("#getWeather").click(function(){
         navigator.geolocation.getCurrentPosition(function(pos){
             
             getWeather(pos.coords.latitude,pos.coords.longitude);
-        });
+        },
+        function(){
+            
+            getIPWeather();
+        }
+        );
     }
       else 
       {
-        getIPWeather()
+        getIPWeather();
       }   
 });
 var coords;
 function getIPWeather()
 {
+    
 $.ajax({
     url: "https://ipinfo.io/json",
+    timeout: 3000,
     success: function(data){
+        
         coords = (data.loc).split(",");
        $("#weather").append("<p id='IPwarning'>Weather measurement may not be accurate</p>");
         getWeather(coords[0],coords[1]);
     },
     fail: function(){
+        
+        $("#weather").append("<div id='weatherWarnings'></div>");
         $("#weatherWarnings").append("<p id='WeatherWarnings'>Could not get weather. Try again later.</p>");
+    },
+    error: function(){
+        
+        $("#weather").append("<div id='weatherWarnings'></div>");
+        $("#weatherWarnings").append("<p id='WeatherWarnings'>Could not get weather. Try again later.</p>");
+ 
     }
+
 });
+
 }
 var tt;
 function getWeather(lat, long)
@@ -100,8 +119,15 @@ function getWeather(lat, long)
         },
         fail:function()
         {
-            alert("unable to get weather!");
-        }
+            $("#weather").append("<div id='weatherWarnings'></div>");
+            $("#weatherWarnings").append("<p id='WeatherWarnings'>Could not get weather. Try again later.</p>");
+        },
+        error: function()
+        {
+            $("#weather").append("<div id='weatherWarnings'></div>");
+            $("#weatherWarnings").append("<p id='WeatherWarnings'>Could not get weather. Try again later.</p>");
+        },
+        
 
     });
     

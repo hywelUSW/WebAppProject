@@ -208,6 +208,7 @@ class drone{
         {
             return true;
         }
+        return false;
     }
     
     //
@@ -227,6 +228,7 @@ class drone{
         {
             return false;
         }
+        
     }
     function updateTechSpecs($droneID,$height,$width,$length,$weight,$maxTakeOffWeight,$motorType,$motorSpeed,$CDL,$VDL,$FC)
     {
@@ -243,6 +245,7 @@ class drone{
         {
             return true;
         }
+        return false;
     }
     //
     //RPS Details
@@ -276,6 +279,7 @@ class drone{
         {
             return true;
         }
+        return false;
     }
     //
     //payload
@@ -310,6 +314,7 @@ class drone{
         {
             return true;
         }
+        return false;
     }
     function isWeatherChecked($cond,$weather)
     {

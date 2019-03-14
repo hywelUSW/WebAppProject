@@ -1,23 +1,12 @@
 <?php
-if($_FILES)
+if(array_filter($_POST))
 {
-    echo "hello!";
-    $name = $_FILES['filename']['name'];
-    echo $name;
-    echo $_FILES['filename']['type'];
-    $ext = "txt";
-    if(move_uploaded_file($_FILES['filename']['tmp_name'],"/students/15080900/testtest.txt"))
-    {
-    echo "yes";
-    }
-    else {
-        echo "no";
-    }
+  print_r(array_filter($_POST));
 }
-
 ?>
 <form action="" method="POST" enctype="multipart/form-data">
-<input type="file" name="filename">
+<input type="text" name="test">
+<input type="text" name ="test2">
 
 
 <button type="submit">upload</button>

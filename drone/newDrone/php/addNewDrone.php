@@ -1,25 +1,35 @@
 <?php
 //check that all feilds are set and user is logged in
+$droneData = array_filter($_POST);
 if(array_filter($_POST) && isset($_SESSION['user']))
 {   
+    foreach($_POST as $val)
+    {
+        if(empty($val))
+        {
+            $emptyVal = true;
+        }
+    }
+    if(!emptyVal)
+    {
     require_once($root."php/drone/droneClass.php");
     $drone = new drone();
-    $droneID = $drone->insertDroneMainData($_SESSION['user'],$_POST['DroneName']);
+    $droneID = $drone->insertDroneMainData($_SESSION['user'],$droneData['DroneName']);
     if($droneID)
     {
         //insert drone designation
-        if($drone->addDesegnation($droneID,$_POST['ModelName'],$_POST['Manufacturer'],$_POST['DroneType']))
+        if($drone->addDesegnation($droneID,$droneData['ModelName'],$droneData['Manufacturer'],$droneData['DroneType']))
         {   //insert drone characteristics
-            if($drone->addCharacteristics($droneID,$_POST['FlightModes'],$_POST['MaxOperatingSpeed'],$_POST['LaunchType'],$_POST['maxFlightTime']))
+            if($drone->addCharacteristics($droneID,$droneData['FlightModes'],$droneData['MaxOperatingSpeed'],$droneData['LaunchType'],$droneData['maxFlightTime']))
             {   //insert environmental limits
                 
-                if($drone->addEnvLimits($droneID,$_POST['MaxHeight'],$_POST['MaxRadius'],$_POST['MaxWind'],$_POST['TempRangeMin'],$_POST['TempRangeMax'],$_POST['OperatingWeather']))
+                if($drone->addEnvLimits($droneID,$droneData['MaxHeight'],$droneData['MaxRadius'],$droneData['MaxWind'],$droneData['TempRangeMin'],$droneData['TempRangeMax'],$droneData['OperatingWeather']))
                 {  //insert tech specs
-                    if($drone->addTechSpecs($droneID,$_POST['Height'],$_POST['Width'],$_POST['Length'],$_POST['Weight'],$_POST['MaxTakeOffWeight'],$_POST['MotorType'],$_POST['MotorSpeed'],$_POST['ControlDataLink'],$_POST['VideoDataLink'],$_POST['FlightController']))
+                    if($drone->addTechSpecs($droneID,$droneData['Height'],$droneData['Width'],$droneData['Length'],$droneData['Weight'],$droneData['MaxTakeOffWeight'],$droneData['MotorType'],$droneData['MotorSpeed'],$droneData['ControlDataLink'],$droneData['VideoDataLink'],$droneData['FlightController']))
                     {   //insert remote pilot station details
-                        if($drone->addRPSDetails($droneID,$_POST['DataLink'],$_POST['VideoLink'],$_POST['AntennaType']))
+                        if($drone->addRPSDetails($droneID,$droneData['DataLink'],$droneData['VideoLink'],$droneData['AntennaType']))
                         {   //insert payload
-                            if($drone->addPayloadDetails($droneID,$_POST['PayloadName'],$_POST['PayloadMinTemp'],$_POST['PayloadMaxTemp']))
+                            if($drone->addPayloadDetails($droneID,$droneData['PayloadName'],$droneData['PayloadMinTemp'],$droneData['PayloadMaxTemp']))
                             {
                             $droneAdded = true;
                             }
@@ -30,17 +40,24 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             }
 
         }
-    }
-    
-    //delete records if a partial faliure occoured
-    if(!droneAdded)
-    {
-        if($droneID)
+        //delete records if a partial faliure occoured
+        if(!droneAdded)
         {
-            $drone->deleteDrone($droneID);
+            if($droneID)
+            {
+                $drone->deleteDrone($droneID);
+            }
+            $errMsg = "there was an error adding the drone!";
         }
-        $errMsg = "there was an error adding the drone!";
     }
+    else {
+        $errMsg = "Please complete the form!";
+    }
+}
+
+
+    
+    
     
 }
 
