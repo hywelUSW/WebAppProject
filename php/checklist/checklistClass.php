@@ -100,7 +100,7 @@ class checklist{
             if(!$inserted)
             {   //failed to insert subtype
                 $this->deleteChecklist($checklistID);
-                return "There was an error creating the checklist!";
+                return false;
             }
         }
         else

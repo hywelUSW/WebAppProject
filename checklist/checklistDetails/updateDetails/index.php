@@ -54,14 +54,27 @@ if(array_filter($_POST) && isset($_SESSION['user']))
 {
     if(!$noData)
     {
-        if($checklist->updateChecklist($_POST['DroneID'],$_POST['ChecklistName'],$_POST['PlannedDate'],$_POST['Descr'],$_GET['checklistID']))
+        foreach($_POST as $val)
         {
-            
-            $msg = "Checklist updated!";
+            if(empty($val))
+            {
+                $noVal = true;
+            }
         }
-        else 
+        if(!$noVal)
         {
-            $msg = "Could not update checklist!";    
+            if($checklist->updateChecklist($_POST['DroneID'],$_POST['ChecklistName'],$_POST['PlannedDate'],$_POST['Descr'],$_GET['checklistID']))
+            {
+                
+                $msg = "Checklist updated!";
+            }
+            else 
+            {
+                $msg = "Could not update checklist!";    
+            }
+        }
+        else{
+            $msg = "please complete the form!";
         }
         $checklistData = $_POST;
     }

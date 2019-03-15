@@ -12,10 +12,10 @@ if(isset($_POST['password']))
 require_once("php/updateDetails.php");
 }
 //delete account
-if(isset($_POST['passwordDelete']))
+/*if(isset($_POST['passwordDelete']))
 {
 require_once("php/deleteUser.php");
-}
+}*/
 ?>
 <html>
     <head>
@@ -66,7 +66,7 @@ require_once("php/deleteUser.php");
             <section>
                 <h4>Delete Account</h4>
                 <p>Use this to delete your account and any data. This is Irreversable!</p>
-                <form action="" method="POST">
+                <form action="php/deleteUser.php" method="POST">
                     <input type="password" name="passwordDelete"  maxLength="40" placeholder="Password" required>
                     <br><br>
                     <button class="btnMain" type="submit">Delete account</button>

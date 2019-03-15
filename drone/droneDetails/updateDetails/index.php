@@ -28,34 +28,47 @@
   }
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
+    foreach($_POST as $val)
+    {
+        if(empty($val))
+        {
+            $noVal = true;
+        }
+    }
+    
     if(!badUser || !$noData)
     {
-        
-        if(!$drone->updateMainData($_GET['DroneID'],$_POST['DroneName']))
-            $updateFailed = true;
-        if(!$drone->updateDesegnation($_GET['DroneID'],$_POST['ModelName'],$_POST['Manufacturer'],$_POST['DroneType']))
-            $updateFailed = true;
-        if(!$drone->updateCharacteristics($_GET['DroneID'],$_POST['FlightTypes'],$_POST['MaxOperatingSpeed'],$_POST['LaunchType'],$_POST['MaxFlightTime']))
-            $updateFailed = true;
-        if(! $drone->updateEnvLimits($_GET['DroneID'],$_POST['MaxHeight'],$_POST['MaxRadius'],$_POST['MaxWind'],$_POST['TempRangeMin'],$_POST['TempRangeMax'],$_POST['OperatingWeather']))
-            $updateFailed = true;
-        if(! $drone->updateTechSpecs($_GET['DroneID'],$_POST['Height'],$_POST['Width'],$_POST['Length'],$_POST['Weight'],$_POST['MaxTakeOffWeight'],$_POST['MotorType'],$_POST['MotorSpeed'],$_POST['ControlDataLink'],$_POST['VideoDataLink'],$_POST['FlightController']))
-            $updateFailed = true;
-        if(!$drone->updateRPSDetails($_GET['DroneID'],$_POST['DataLink'],$_POST['VideoLink'],$_POST['AntennaType']))
-            $updateFailed = true;
-        if(! $drone->updatePayload($_GET['DroneID'],$_POST['PayloadName'],$_POST['MinTemp'],$_POST['MaxTemp']))
-            $updateFailed = true;   
-        //replace values
-        $droneData = $_POST;
-        if(!$updateFailed)
+        if(!$noVal)
         {
-            $msg = "Checklist updated";
-        }
-        else {
-            $msg = "Could not update all sections, Please check and try again";
+        
+            if(!$drone->updateMainData($_GET['DroneID'],$_POST['DroneName']))
+                $updateFailed = true;
+            if(!$drone->updateDesegnation($_GET['DroneID'],$_POST['ModelName'],$_POST['Manufacturer'],$_POST['DroneType']))
+                $updateFailed = true;
+            if(!$drone->updateCharacteristics($_GET['DroneID'],$_POST['FlightTypes'],$_POST['MaxOperatingSpeed'],$_POST['LaunchType'],$_POST['MaxFlightTime']))
+                $updateFailed = true;
+            if(! $drone->updateEnvLimits($_GET['DroneID'],$_POST['MaxHeight'],$_POST['MaxRadius'],$_POST['MaxWind'],$_POST['TempRangeMin'],$_POST['TempRangeMax'],$_POST['OperatingWeather']))
+                $updateFailed = true;
+            if(! $drone->updateTechSpecs($_GET['DroneID'],$_POST['Height'],$_POST['Width'],$_POST['Length'],$_POST['Weight'],$_POST['MaxTakeOffWeight'],$_POST['MotorType'],$_POST['MotorSpeed'],$_POST['ControlDataLink'],$_POST['VideoDataLink'],$_POST['FlightController']))
+                $updateFailed = true;
+            if(!$drone->updateRPSDetails($_GET['DroneID'],$_POST['DataLink'],$_POST['VideoLink'],$_POST['AntennaType']))
+                $updateFailed = true;
+            if(! $drone->updatePayload($_GET['DroneID'],$_POST['PayloadName'],$_POST['MinTemp'],$_POST['MaxTemp']))
+                $updateFailed = true;   
+            //replace values
+            $droneData = $_POST;
+            if(!$updateFailed)
+            {
+                $msg = "Checklist updated";
+            }
+            else {
+                $msg = "Could not update all sections, Please check and try again";
+            }
+        }else{
+            $msg = "please complete the form!";
         }
         $weather = $_POST['OperatingWeather'];
-    
+        
        
         
     }

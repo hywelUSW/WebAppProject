@@ -30,27 +30,34 @@ else
    //form submitted
     if(array_filter($_POST) && isset($_SESSION['user']))
     {
-        //check date
-        if($_POST['date'] >= date("Y-m-d"))
+        foreach($_POST as $val)
         {
-            if($_POST['drone'] != 0 && $UserOwnsDrone)
+            if(empty($val))
             {
-               
-                require_once($root."php/checklist/checklistClass.php");
-                $checklist = new checklist();
-                $result = $checklist->newChecklist($_SESSION['user'],$_POST['drone'],$_POST['name'],$_POST['date'],$_POST['Descr']);
-                 
-            }
-            else
-            {
-                $errMsg = "invalid drone selected!";
+                $noVal = true;
             }
         }
-        else
+        if(!noVal)
         {
-            //making checklist after date
-           $errMsg = "Please check the selected date!";
-           
+        //check date
+            if($_POST['date'] >= date("Y-m-d"))
+            {
+                if($_POST['drone'] != 0 && $UserOwnsDrone)
+                {
+                    require_once($root."php/checklist/checklistClass.php");
+                    $checklist = new checklist();
+                    $result = $checklist->newChecklist($_SESSION['user'],$_POST['drone'],$_POST['name'],$_POST['date'],$_POST['Descr']);
+                }
+                else {//Drone isnt owned by user
+                    $errMsg = "invalid drone selected!";
+                }
+            }
+            else {//making checklist after date
+            $errMsg = "Please check the selected date!";
+            }
+        }
+        else {
+            $errMsg = "Please complete the form";
         }
         
     }
