@@ -66,23 +66,23 @@ function getWeather(lat, long)
                 temp = temp.toFixed(2);
                 if(DroneEnvDetails.maxWind < weatherResult.wind.speed)
                 {
-                    weatherWarnings.push("Wind speed is above drone limit!");//" +(weatherResult.wind.speed - DroneEnvDetails.maxWind)+"m/s 
+                    weatherWarnings.push("Wind speed is above drone limits!");
                 }
                 if(temp > DroneEnvDetails.maxTemp)
                 {//too hot
-                    weatherWarnings.push("temperature above drone limits");  
+                    weatherWarnings.push("Temperature above drone limits!");  
                 }
                 if(temp < DroneEnvDetails.minTemp)
                 {//too hot
-                    weatherWarnings.push("Temperature below drone limits");  
+                    weatherWarnings.push("Temperature below drone limits!");  
                 }
                 if(temp > DroneEnvDetails.payloadMaxTemp)
                 {
-                    weatherWarnings.push("temperature above payload limits");  
+                    weatherWarnings.push("Temperature above payload limits!");  
                 }
                 if(temp < DroneEnvDetails.payloadMinTemp)
                 {
-                    weatherWarnings.push("Temperature below payload limits");  
+                    weatherWarnings.push("Temperature below payload limits!");  
                 }
                 //https://openweathermap.org/weather-conditions
                 if(!droneCond.includes(weatherResult.weather[0].main))
