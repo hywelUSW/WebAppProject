@@ -10,7 +10,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             $emptyVal = true;
         }
     }
-    if(!emptyVal)
+    if(!$emptyVal)
     {
     require_once($root."php/drone/droneClass.php");
     $drone = new drone();

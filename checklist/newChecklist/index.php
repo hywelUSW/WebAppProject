@@ -37,7 +37,7 @@ else
                 $noVal = true;
             }
         }
-        if(!noVal)
+        if(!$noVal)
         {
         //check date
             if($_POST['date'] >= date("Y-m-d"))

@@ -8,14 +8,28 @@
  if(array_filter($_POST) && isset($_SESSION['user']))
  {
      require_once($root."php/battery/batteryclass.php");
-     $battery = new battery();
-     if($battery->newBattery($_SESSION['user'],$_POST['Name'],$_POST['ModelNo'],$_POST['SerialNo'],$_POST['Weight'],$_POST['Chemistey'],$_POST['powerOutput']))
-      {
-          $querysuccess = true;
-      }
-      else {
-          $errMsg = "There was an error adding the battery";
-      }
+     foreach($_POST as $val)
+     {
+         if(empty($val))
+         {
+             $noVal = true;
+         }
+     }
+     if(!$noVal)
+     {
+        $battery = new battery();
+        if($battery->newBattery($_SESSION['user'],$_POST['Name'],$_POST['ModelNo'],$_POST['SerialNo'],$_POST['Weight'],$_POST['Chemistey'],$_POST['powerOutput']))
+        {
+            $querysuccess = true;
+        }
+        else 
+        {
+            $errMsg = "There was an error adding the battery";
+        }
+    }
+    else{
+        $errMsg = "please complete the form!";
+    }
 
     
  }

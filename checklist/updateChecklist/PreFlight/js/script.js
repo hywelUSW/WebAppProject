@@ -97,24 +97,20 @@ function getWeather(lat, long)
                        $("#weatherWarnings").append("<li>"+weatherWarnings[i]+"</li>");
                    }
                 }
-                else
-                {
-
-                }
+                
+                /*
                 $('#weatherCond').text("Weather: " + weatherResult.weather[0].main)
                 $('#Temp').text("Temperature: " + temp + "°C");
                 $('#windSpeed').text("Wind Speed: " + weatherResult.wind.speed + " m/s");
                 weatherCond = [weatherResult.weather[0].main,temp,weatherResult.wind.speed];
-                $('input[name=WeatherCheck]').val(weatherCond);
+                $('input[name=WeatherCheck]').val(weatherCond);*/
             }
-            else
-            {
-                $('#weatherCond').text("Weather: " + weatherResult.weather[0].main)
+              $('#weatherCond').text("Weather: " + weatherResult.weather[0].main)
                 $('#Temp').text("Temperature: " + temp + "°C");
                 $('#windSpeed').text("Wind Speed: " + weatherResult.wind.speed + " m/s");
                 weatherCond = [weatherResult.weather[0].main,temp,weatherResult.wind.speed];
                 $('input[name=WeatherCheck]').val(weatherCond);
-            }
+            
 
         },
         fail:function()
