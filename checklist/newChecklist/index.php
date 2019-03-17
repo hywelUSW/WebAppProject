@@ -7,8 +7,8 @@
      header("Location:".$root."login/");
      die();
  }
-    //get list of drones owned by the user
- require_once($root."php/drone/droneClass.php");
+//get list of drones owned by the user
+require_once($root."php/drone/droneClass.php");
 $drone = new drone();
 $result = $drone->getDroneList($_SESSION['user']);
 if(!$result)
@@ -18,8 +18,7 @@ if(!$result)
 else
 {
     while($row = $result->fetch_assoc())
-    {
-        
+    { 
         $droneList[] = [$row['DroneID'],$row['DroneName']];
         if($_POST['drone'] == $row['DroneID'])
         {   //check that user owns the drone

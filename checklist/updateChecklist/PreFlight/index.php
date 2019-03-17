@@ -64,6 +64,8 @@ if($weather == null)
                 <hr>
                 <input type='hidden' name='SiteSurveyed' value='0'>
                 <label>Site Surveyed</label><input type="checkbox" name="SiteSurveyed" value='1' <?=$checklist->ischecked($result["SiteSurveyed"])?>>
+                <br>
+                <div id="map" ></div>
                 <hr>
                 <input type='hidden' name='RPASSService' value='0'>
                 <label>RPASS Service</label><input type="checkbox" name="RPASSService" value='1' <?=$checklist->ischecked($result["RPASSService"])?>>
@@ -130,5 +132,6 @@ if($weather == null)
 
     </footer>
 </html>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEslfwKJo0N4lfsbZLwrSFzd7ic2e5Kz0&callback=initMap"></script>
 <script src="<?=$root?>js/master.js"></script>
 <script src="js/script.js"></script>

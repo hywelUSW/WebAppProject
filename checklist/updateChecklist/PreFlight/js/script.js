@@ -1,14 +1,16 @@
 var temp;
 var weatherCond;
 var coords;
+var map;
 var droneCond = DroneEnvDetails.operatingWeather.split(",");
 $("#getWeather").click(function(){
    $("#weatherWarnings").remove();
     
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos){
-            
+            map.setZoom(16);
             getWeather(pos.coords.latitude,pos.coords.longitude);
+
         },
         function(){
             
@@ -33,6 +35,7 @@ $.ajax({
         coords = (data.loc).split(",");
        $("#weather").append("<p id='IPwarning'>Weather measurement may not be accurate</p>");
         getWeather(coords[0],coords[1]);
+        map.setZoom(10);
     },
     fail: function(){
         
@@ -50,8 +53,13 @@ $.ajax({
 
 }
 var tt;
+
 function getWeather(lat, long)
 {
+    var position = new google.maps.LatLng(lat,long);
+   
+    map.panTo(position);
+    
     var weatherWarnings= [];
     $.ajax({
         //api key: 6a234ab97760be692958e294d6cb512f
@@ -110,6 +118,8 @@ function getWeather(lat, long)
                 $('#windSpeed').text("Wind Speed: " + weatherResult.wind.speed + " m/s");
                 weatherCond = [weatherResult.weather[0].main,temp,weatherResult.wind.speed];
                 $('input[name=WeatherCheck]').val(weatherCond);
+
+               
             
 
         },
@@ -128,4 +138,19 @@ function getWeather(lat, long)
     });
     
 
+}
+//google maps
+function initMap()
+{
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 52.5, lng: -2.5},
+        zoom: 5,
+        mapTypeId: 'hybrid',
+        mapTypeControl: false,
+        scaleControl: true,
+        streetViewControl: false,
+        fullscreenControl: false
+      });
+
+          
 }

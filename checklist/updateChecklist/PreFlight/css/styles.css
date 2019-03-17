@@ -8,3 +8,9 @@
 #IPwarning{
     color:red;
 }
+#map{
+    height:300px;
+    width:80%;
+    margin:0 auto;
+    margin-top:10px;
+}

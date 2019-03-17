@@ -40,14 +40,12 @@ class checklist{
     //Get details of specific checklist
     function getChecklistOverview($checklistID)
     {
-       
         $db = new database();
         $conn = $db->dbConnect();
         $query = $conn->prepare("SELECT checklist.*,DroneName FROM checklist INNER JOIN Drone ON checklist.droneID = drone.DroneID  WHERE ChecklistID = ? LIMIT 1");
         $query->bind_param("i",$checklistID);
         $query->execute();
-        return $query->get_result();
-        
+        return $query->get_result(); 
     }
 
     //Create new checklist and initalises the subtypes
