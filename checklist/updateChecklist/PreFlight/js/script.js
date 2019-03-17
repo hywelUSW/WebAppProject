@@ -8,7 +8,7 @@ $("#getWeather").click(function(){
     
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos){
-            map.setZoom(16);
+            map.setZoom(15);
             getWeather(pos.coords.latitude,pos.coords.longitude);
 
         },
@@ -142,10 +142,20 @@ function getWeather(lat, long)
 //google maps
 function initMap()
 {
+    var myStyles =[
+        {
+            featureType: "poi",
+            elementType: "labels",
+            stylers: [
+                  { visibility: "off" }
+            ]
+        }
+    ];
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 52.5, lng: -2.5},
         zoom: 5,
         mapTypeId: 'hybrid',
+        styles: myStyles,
         mapTypeControl: false,
         scaleControl: true,
         streetViewControl: false,
