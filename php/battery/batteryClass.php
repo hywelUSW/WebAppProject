@@ -10,21 +10,16 @@ class battery{
         $query->bind_param("i",$userID);
         $query->execute();
         //print_R($query);
-        $result = $query->get_result();
-        if($result->num_rows > 0)
-        {
-            return $result;
-        }else {
-            return false;
-        }
+        return $query->get_result();
     }
 
     function newBattery($userID,$name,$modelNo,$serialNo,$weight,$chemistry,$powerOutput)
     {
-        $query = "INSERT INTO battery (UserID,Name,ModelNo,SerialNo,Weight,Chemistry,PowerOutput) VALUES (?,?,?,?,?)";
-        $params = array("isisi",$userID,$name,$modelNo,$serialNo,$weight,$chemistry,$powerOutput);
+        $query = "INSERT INTO battery (UserID,Name,ModelNo,SerialNo,Weight,Chemistry,PowerOutput) VALUES (?,?,?,?,?,?,?)";
+        $params = array("isssisi",$userID,$name,$modelNo,$serialNo,$weight,$chemistry,$powerOutput);
         $db = new database();
         $result = $db->exQ($query,$params);
+        print_r($result);
         if($result->affected_rows > 0)
         {
             return true;

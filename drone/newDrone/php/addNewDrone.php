@@ -1,17 +1,8 @@
 <?php
 //check that all feilds are set and user is logged in
 $droneData = array_filter($_POST);
-if(array_filter($_POST) && isset($_SESSION['user']))
+if(array_filter($_POST) && isset($_SESSION['user']) && 1 == 2)
 {   
-    foreach($_POST as $val)
-    {
-        if(empty($val))
-        {
-            $emptyVal = true;
-        }
-    }
-    if(!$emptyVal)
-    {
     require_once($root."php/drone/droneClass.php");
     $drone = new drone();
     $droneID = $drone->insertDroneMainData($_SESSION['user'],$droneData['DroneName']);
@@ -50,15 +41,13 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             $errMsg = "there was an error adding the drone!";
         }
     }
-    else {
-        $errMsg = "Please complete the form!";
-    }
-}
-
-
-    
-    
     
 }
+else
+{
+    $errMsg = "Please complete the form!";
+}
+  
+
 
 ?>

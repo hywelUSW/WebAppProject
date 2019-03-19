@@ -29,9 +29,9 @@
             <br><br>
             <a href="checklist/newChecklist"><button class="btnMain" type="button">Create checklist</button></a>
             <br><br>
-            <a href="checklist/newChecklist"><button class="btnMain" type="button">Add Drone</button></a>
+            <a href="drone/newDrone"><button class="btnMain" type="button">Add Drone</button></a>
             <br><br>
-            <a href="checklist/newChecklist"><button class="btnMain" type="button">Add Battery</button></a>
+            <a href="battery/newBattery"><button class="btnMain" type="button">Add Battery</button></a>
         </div>
         <?php }
         else {

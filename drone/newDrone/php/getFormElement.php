@@ -1,3 +1,4 @@
+<!-- no longer needed-->
 <form method="POST" action="<?=$root?>php/drone/addNewDrone.php">
     <input type="text" name="DroneName" placeholder="name" required>
     <h4>Drone Designation</h4>

@@ -1,10 +1,14 @@
 <?php
+
  include_once("/students/15080900/projectapp/php/initalise.php");
+ require_once($root."php/battery/batteryClass.php");
+ 
  if(!isset($_SESSION['user']))
  {
      header("Location:".$root."login/");
      die();
  }
+ 
 ?>
 <html>
     <head>
@@ -27,10 +31,11 @@
             </div>
             <section>
                 <?php
-                    require_once($root."php/battery/batteryClass.php");
+                   
                     $battery = new battery();
                     $result = $battery->getBatteryList($_SESSION['user']);
-                    if(!result)
+                    
+                    if($result->num_rows < 1)
                     {
                         echo "<p class='msg'>No Batteries added!</p>";
 

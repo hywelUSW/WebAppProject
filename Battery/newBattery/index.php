@@ -8,6 +8,7 @@
  if(array_filter($_POST) && isset($_SESSION['user']))
  {
      require_once($root."php/battery/batteryclass.php");
+     
      foreach($_POST as $val)
      {
          if(empty($val))
@@ -18,8 +19,10 @@
      if(!$noVal)
      {
         $battery = new battery();
-        if($battery->newBattery($_SESSION['user'],$_POST['Name'],$_POST['ModelNo'],$_POST['SerialNo'],$_POST['Weight'],$_POST['Chemistey'],$_POST['powerOutput']))
+        
+        if($battery->newBattery($_SESSION['user'],$_POST['Name'],$_POST['ModelNo'],$_POST['SerialNo'],$_POST['Weight'],$_POST['Chemistry'],$_POST['powerOutput']))
         {
+            
             $querysuccess = true;
         }
         else 
@@ -63,9 +66,9 @@
             <form method="POST">
                 <input type="text" name="Name"  maxLength="40" placeholder="name" required>
                 <br><br>
-                <input type="text" name="ModelNo"  maxLength="20" placeholder="name" required>
+                <input type="text" name="ModelNo"  maxLength="20" placeholder="Model No." required>
                 <br><br>
-                <input type="text" name="SerialNo"  maxLength="20" placeholder="name" required>
+                <input type="text" name="SerialNo"  maxLength="20" placeholder="Serial No." required>
                 <br><br>
                 <input type="number" name="Weight" placeholder="Weight(g)" required>
                 <br><br>

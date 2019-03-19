@@ -119,7 +119,7 @@ if(!isset($weather))
                     <input type="text" name="DroneType" maxLength="40" placeholder="Drone Type" value="<?=$droneData['DroneType']?>" required>
                     <hr>
                     <h4>Flight Characteristics</h4>
-                    <input type="text" name="FlightTypes" maxLength="40" placeholder="Flight Modes" value="<?=$droneData['FlightTypes']?>" required>
+                    <input type="text" name="FlightTypes" maxLength="40" placeholder="Operating Modes" value="<?=$droneData['FlightTypes']?>" required>
                     <br><br>
                     <input type="number" name="MaxOperatingSpeed"  placeholder="Max Speed(m/s)"value="<?=$droneData['MaxOperatingSpeed']?>"  required>
                     <br><br>

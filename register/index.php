@@ -65,9 +65,9 @@
             <p>To register enter your details below</p>
             <hr>
             <form action="" method="POST">
-                <input type="text" name="email" placeholder="Email" maxlength="40" required>
+                <input type="text" name="email" placeholder="Email" maxlength="40" value="<?=$_POST['email']?>" required>
                 <br><br>
-                <input type="text" name="name" placeholder="Name" maxlength="40" required>
+                <input type="text" name="name" placeholder="Name" maxlength="40" value="<?=$_POST['name']?>" required>
                 <br><br>
                 <input type="password" name="password" placeholder="Password" id="password" maxlength="40" required>
                 <br><br>

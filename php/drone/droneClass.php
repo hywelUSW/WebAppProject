@@ -290,7 +290,7 @@ class drone{
         $params = array("isss",$droneID,$name,$minTemp,$maxTemp);
         $db = new database();
         $query = $db->exQ($query,$params);
-        if($query->affected_rows > 0)
+        if($query->affected_rows > 0 || $query->errno == 0)
         {
             return true;
         }
@@ -318,14 +318,17 @@ class drone{
     }
     function isWeatherChecked($cond,$weather)
     {
-        for($i = 0;$i < sizeof($weather);$i++)
+        if(isset($weather))
         {
-            if($cond == $weather[$i])
+            for($i = 0;$i < sizeof($weather);$i++)
             {
-                return "checked";
+                if($cond == $weather[$i])
+                {
+                    return "checked";
+                }
             }
-        }
         
+        }
     }
 
     function deleteDrone($droneID)
