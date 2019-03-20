@@ -55,7 +55,7 @@ if(isset($result['TakeOffTime']))
         ?>
         <main>
             <h2>Post-Take Off</h2>
-            <p><?=$errMsg?></p>
+            <p><?=$msg?></p>
             <form method='post'>
                 <input type='hidden' name='BothControlSticksInner' value='0'>
                 <label>Drone Starts at Idle Speed</label><input type="checkbox" name="BothControlSticksInner" value='1' <?=$checklist->ischecked($result["BothControlSticksInner"])?>>
@@ -66,13 +66,11 @@ if(isset($result['TakeOffTime']))
                 <input type='hidden' name='RPAStable' value='0'>
                 <label>Drone Stable at 3m</label><input type="checkbox" name="RPAStable" value='1' <?=$checklist->ischecked($result["RPAStable"])?>>
                 <hr>
-                
                 <label>Take off Time</label>
                 <div id="timeDate">
                 <input type="datetime-local" name="TakeOffTime" value="<?=$takeoffTime?>">
                 <button type="button" id="getTakeOffTime">Get Take Off Time</button><br><br>
                 </div>
-                
                 <hr>
                 <input type='hidden' name='CameraCheck' value='0'>
                 <label>Camera functioning correctly</label><input type="checkbox" name="CameraCheck" value='1' <?=$checklist->ischecked($result["CameraCheck"])?>>

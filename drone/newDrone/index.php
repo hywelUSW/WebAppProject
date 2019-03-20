@@ -138,7 +138,7 @@ else
                     <br><br>
                     <input type="number" name="MotorType" placeholder="Motor Type" value="<?=$_POST['MotorType']?>" required>
                     <br><br>
-                    <input type="number" name="MotorSpeed" placeholder="Motor Speed(RPM)" value="<?=$_POST['MotorSpeed']?>" required>
+                    <input type="number" name="MotorSpeed" placeholder="Motor Speed(KV)" value="<?=$_POST['MotorSpeed']?>" required>
                     <br><br>
                     <input type="text" name="ControlDataLink"  maxLength="40" placeholder="Control Data Link" value="<?=$_POST['ControlDataLink']?>" required>
                     <br><br>

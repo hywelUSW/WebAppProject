@@ -163,7 +163,7 @@ if(!isset($weather))
                     <br><br>
                     <input type="number" name="MotorType" placeholder="Motor Type" value="<?=$droneData['MotorType']?>" required>
                     <br><br>
-                    <input type="number" name="MotorSpeed" placeholder="Motor Speed(RPM)" value="<?=$droneData['MotorSpeed']?>" required>
+                    <input type="number" name="MotorSpeed" placeholder="Motor Speed(KV)" value="<?=$droneData['MotorSpeed']?>" required>
                     <br><br>
                     <input type="text" name="ControlDataLink" maxLength="40" placeholder="Control Data Link" value="<?=$droneData['ControlDataLink']?>" required>
                     <br><br>
@@ -179,11 +179,11 @@ if(!isset($weather))
                     <input type="text" name="AntennaType" maxLength="40" placeholder="Antenna Type" value="<?=$droneData['AntennaType']?>" required>
                     <hr>
                     <h4>Payload Details</h4>
-                    <input type="text" name="PayloadName" maxLength="40" placeholder="Payload Name" value="<?=$droneData['PayloadName']?>" required>
+                    <input type="text" name="PayloadName" maxLength="40" placeholder="Payload Name" value="<?=$droneData['PayloadName']?>">
                     <br><br>
-                    <input type="number" name="MinTemp" placeholder="Minimum Temperature(°C)" value="<?=$droneData['MinTemp']?>" required>
+                    <input type="number" name="MinTemp" placeholder="Minimum Temperature(°C)" value="<?=$droneData['MinTemp']?>">
                     <br><br>
-                    <input type="number" name="MaxTemp" placeholder="Maxiumum Tempeature(°C)" value="<?=$droneData['MaxTemp']?>" required>
+                    <input type="number" name="MaxTemp" placeholder="Maxiumum Tempeature(°C)" value="<?=$droneData['MaxTemp']?>">
                     <p><?=$errMsg?></p>
                     <br>
                     <button class="btnMain" type="submit">Update Drone</button><br><br>
