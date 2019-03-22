@@ -46,14 +46,14 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             {
                 $drone->deleteDrone($droneID);
             }
-            $errMsg = "there was an error adding the drone!";
+            $errMsg = "There was an error adding the drone!";
         }
     }
+    else {
+        $errMsg = "There was an error adding the drone!";
+    }
 }
-else
-{
-    $errMsg = "Please complete the form!";
-}
+
 ?>
 <html>
     <head>
@@ -136,7 +136,7 @@ else
                     <br><br>
                     <input type="number" name="MaxTakeOffWeight" placeholder="Max Take Off Weight(g)" value="<?=$_POST['MaxTakeOffWeight']?>"  required>
                     <br><br>
-                    <input type="number" name="MotorType" placeholder="Motor Type" value="<?=$_POST['MotorType']?>" required>
+                    <input type="text" name="MotorType" placeholder="Motor Type" value="<?=$_POST['MotorType']?>" required>
                     <br><br>
                     <input type="number" name="MotorSpeed" placeholder="Motor Speed(KV)" value="<?=$_POST['MotorSpeed']?>" required>
                     <br><br>

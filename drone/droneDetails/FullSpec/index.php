@@ -19,6 +19,7 @@ $result = $drone->getFullDetails($_GET['DroneID'],$_SESSION['user']);
 if($result->num_rows > 0)
  {  //user owns data
     $data = $result->fetch_assoc();
+    print_R($data);
      if($data['UserID'] != $_SESSION['user'])
      {
         
@@ -62,7 +63,42 @@ if($result->num_rows > 0)
             <?php 
                 for($i = 0;$i < sizeof($data);$i++)
                 {
-                    echo "<li>".$rowHeaders[$i] .": ".$data[$rowHeaders[$i]] ."</li>\r\n";
+                    echo "<li>".$rowHeaders[$i] .": ".$data[$rowHeaders[$i]] . " ";
+                    switch($rowHeaders[$i])
+                    {
+                        case "MaxOperatingSpeed":
+                        case "MaxWind":
+                            echo "m/s";
+                            break;
+                        case "MaxFlightTime":
+                            echo "minuites";
+                            break;
+                        case "MaxHeight":
+                        case "MaxRadius":
+                            echo "m";
+                            break;
+                        case "Height":
+                        case "Width":
+                        case "Length":
+                            echo "mm";
+                            break;
+                        case "Weight":
+                        case "MaxTakeOffWeight":
+                            echo "g";
+                            break;
+                        case "TempRangeMax":
+                        case "TempRangeMin":
+                        case "MinTemp":
+                        case "MaxTemp":
+                            echo "°C";
+                            break;
+                        case "MotorSpeed":
+                            echo "vh";
+                            break;
+                        default:
+                            break;
+                    }
+                    echo "</li>\r\n";
                 }
             
             } ?>

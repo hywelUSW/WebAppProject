@@ -28,13 +28,14 @@
   }
 if(array_filter($_POST) && isset($_SESSION['user']))
 {
+    /*
     foreach($_POST as $val)
     {
-        if(empty($val))
+        if(empty($val) && $val != 0)
         {
             $noVal = true;
         }
-    }
+    }*/
     
     if(!badUser || !$noData)
     {
@@ -161,7 +162,7 @@ if(!isset($weather))
                     <br><br>
                     <input type="number" name="MaxTakeOffWeight" placeholder="Max Take Off Weight(g)" value="<?=$droneData['MaxTakeOffWeight']?>" required>
                     <br><br>
-                    <input type="number" name="MotorType" placeholder="Motor Type" value="<?=$droneData['MotorType']?>" required>
+                    <input type="text" name="MotorType" placeholder="Motor Type" value="<?=$droneData['MotorType']?>" required>
                     <br><br>
                     <input type="number" name="MotorSpeed" placeholder="Motor Speed(KV)" value="<?=$droneData['MotorSpeed']?>" required>
                     <br><br>
@@ -178,7 +179,7 @@ if(!isset($weather))
                     <br><br>
                     <input type="text" name="AntennaType" maxLength="40" placeholder="Antenna Type" value="<?=$droneData['AntennaType']?>" required>
                     <hr>
-                    <h4>Payload Details</h4>
+                    <h4>Payload Details (optional)</h4>
                     <input type="text" name="PayloadName" maxLength="40" placeholder="Payload Name" value="<?=$droneData['PayloadName']?>">
                     <br><br>
                     <input type="number" name="MinTemp" placeholder="Minimum Temperature(°C)" value="<?=$droneData['MinTemp']?>">

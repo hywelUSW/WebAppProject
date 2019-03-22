@@ -66,9 +66,7 @@ class drone{
     {
         $query = "INSERT INTO drone (DroneName,UserID) VALUES (?,?)";
         $params = array("si",&$droneName,&$userID);
-        
         $db = new database();
-        
         $query = $db->exQ($query,$params);
         if($query->affected_rows > 0)
         { 

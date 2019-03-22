@@ -72,7 +72,7 @@
                                 <li>Max Flight Time: <?=$result['MaxFlightTime']?> minutes</li>
                                 <li>Max Operating Speed: <?=$result['maxoperatingspeed']?> m/s</li>
                             </ul>
-                            <a href="fullSpec?DroneID=<?=$result['DroneID']?>">View full spec</a>
+                            <a href="fullSpec?DroneID=<?=$_GET['DroneID']?>">View full spec</a>
                         </div>              
                         <hr>
                         <div id="flightList">

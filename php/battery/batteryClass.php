@@ -19,7 +19,6 @@ class battery{
         $params = array("isssisi",$userID,$name,$modelNo,$serialNo,$weight,$chemistry,$powerOutput);
         $db = new database();
         $result = $db->exQ($query,$params);
-        print_r($result);
         if($result->affected_rows > 0)
         {
             return true;

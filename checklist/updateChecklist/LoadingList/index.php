@@ -20,10 +20,11 @@ if(array_filter($_POST) && isset($_SESSION['user']))
     if($checklist->updateLoadingList($_GET['checklistID'],$_POST['OpsManual'],$_POST['Maps'],$_POST['TaskInfo'],$_POST['SafetyEquipment'],$_POST['LiPoBag'],$_POST['Controller'],$_POST['EqupmentCharged'],$_POST['Camera'],$_POST['RPAPlatform'],$_POST['Propellers'],$_POST['CarryingCase'],$_POST['PermissionGranted']))
     {
         $result = $checklist->getLoadingList($_GET['checklistID']);
+        $msg = "Checklist updated!";
     }
     else
     {
-        $errMsg = "There was an error updaing the checklist!";
+        $msg = "There was an error updaing the checklist!";
     }
 }
 ?>
@@ -43,7 +44,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
         ?>
         <main>
             <h2>Loading List</h2>
-            <p><?=$errMsg?></p>
+            <p><?=$msg?></p>
             <form method='post'>
                 <input type='hidden' name='OpsManual' value='0'>
                 <label>Operations Manual</label><input type="checkbox" name="OpsManual" value='1'  <?=$checklist->ischecked($result["OpsManual"])?>>
