@@ -8,8 +8,16 @@ if(isset($_POST['email'],$_POST['name'],$_POST['password']))
     $user = new user();
     if($user->verifyPassword($_SESSION['user'],$_POST['password']))
     { //details updated
-         $user->updateDetails($_POST['email'],$_POST['name'],$_POST['password'],$_POST['NewPassword']);
-         $Msg = 'password incorrect!';  
+         if($user->updateDetails($_POST['email'],$_POST['name'],$_POST['password'],$_POST['NewPassword']))
+         {
+             $Msg = "Account updated!";
+
+         }
+         else
+         {
+             $Msg = "There was an error updating your account!";
+         }
+         
     }
     else 
     { //authenication failed

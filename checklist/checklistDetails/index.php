@@ -16,14 +16,12 @@
  
  $checklist = new checklist();
  $result = $checklist->getChecklistOverview($_GET['checklistID']);
- 
  if($result->num_rows > 0)
  {
      $result = $result->fetch_assoc();
      if($result['UserID'] != $_SESSION['user'])
      {
-        header("Location:".$root."checklist/");
-        die();
+        $noData = true;
      }
  }
  else{

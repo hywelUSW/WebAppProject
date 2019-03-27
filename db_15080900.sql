@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2019 at 04:51 PM
+-- Generation Time: Mar 27, 2019 at 10:20 AM
 -- Server version: 5.5.57-log
 -- PHP Version: 7.2.7
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_15080900`
 --
+CREATE DATABASE IF NOT EXISTS `db_15080900` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `db_15080900`;
 
 -- --------------------------------------------------------
 
@@ -31,6 +33,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `battery` (
   `UserID` int(11) NOT NULL,
   `batteryID` int(11) NOT NULL,
+  `ModelNo` varchar(20) NOT NULL,
+  `SerialNo` varchar(20) NOT NULL,
   `Name` varchar(40) NOT NULL,
   `Weight` int(11) NOT NULL,
   `Chemistry` varchar(20) NOT NULL,
@@ -47,19 +51,6 @@ CREATE TABLE `batterycharges` (
   `BatteryID` int(11) NOT NULL,
   `ChargeNo` int(11) NOT NULL,
   `chargeDate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `batteryspec`
---
-
-CREATE TABLE `batteryspec` (
-  `DroneID` int(11) NOT NULL,
-  `Weight` int(11) NOT NULL,
-  `Chemistry` varchar(30) NOT NULL,
-  `PowerOutput` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -98,7 +89,6 @@ CREATE TABLE `checklistamendment` (
 CREATE TABLE `drone` (
   `DroneID` int(11) NOT NULL,
   `DroneName` varchar(40) NOT NULL,
-  `imgSrc` varchar(50) DEFAULT NULL,
   `UserID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -142,7 +132,7 @@ CREATE TABLE `environmentlimits` (
   `MaxWind` int(11) NOT NULL,
   `TempRangeMin` int(11) NOT NULL,
   `TempRangeMax` int(11) NOT NULL,
-  `OperatingWeather` varchar(50) NOT NULL
+  `OperatingWeather` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -153,7 +143,6 @@ CREATE TABLE `environmentlimits` (
 
 CREATE TABLE `loadinglist` (
   `ChecklistID` int(11) NOT NULL,
-  `WeatherCheck` varchar(40) DEFAULT NULL,
   `OpsManual` bit(1) DEFAULT NULL,
   `Maps` bit(1) DEFAULT NULL,
   `TaskInfo` bit(1) DEFAULT NULL,
@@ -176,9 +165,9 @@ CREATE TABLE `loadinglist` (
 
 CREATE TABLE `payload` (
   `DroneID` int(11) NOT NULL,
-  `PayloadName` varchar(40) NOT NULL,
-  `MinTemp` int(11) NOT NULL,
-  `MaxTemp` int(11) NOT NULL
+  `PayloadName` varchar(40) DEFAULT NULL,
+  `MinTemp` int(11) DEFAULT NULL,
+  `MaxTemp` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -325,12 +314,6 @@ ALTER TABLE `batterycharges`
   ADD PRIMARY KEY (`BatteryID`,`ChargeNo`);
 
 --
--- Indexes for table `batteryspec`
---
-ALTER TABLE `batteryspec`
-  ADD PRIMARY KEY (`DroneID`);
-
---
 -- Indexes for table `checklist`
 --
 ALTER TABLE `checklist`
@@ -432,25 +415,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `battery`
 --
 ALTER TABLE `battery`
-  MODIFY `batteryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `batteryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `checklist`
 --
 ALTER TABLE `checklist`
-  MODIFY `ChecklistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ChecklistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `drone`
 --
 ALTER TABLE `drone`
-  MODIFY `DroneID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `DroneID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables
@@ -467,12 +450,6 @@ ALTER TABLE `battery`
 --
 ALTER TABLE `batterycharges`
   ADD CONSTRAINT `fk_bc` FOREIGN KEY (`BatteryID`) REFERENCES `battery` (`batteryID`) ON DELETE CASCADE;
-
---
--- Constraints for table `batteryspec`
---
-ALTER TABLE `batteryspec`
-  ADD CONSTRAINT `FK_BS` FOREIGN KEY (`DroneID`) REFERENCES `drone` (`DroneID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `checklist`

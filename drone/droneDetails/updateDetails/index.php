@@ -60,7 +60,7 @@ if(array_filter($_POST) && isset($_SESSION['user']))
             $droneData = $_POST;
             if(!$updateFailed)
             {
-                $msg = "Checklist updated";
+                $msg = "Drone updated";
             }
             else {
                 $msg = "Could not update all sections, Please check and try again";

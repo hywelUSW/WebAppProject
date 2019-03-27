@@ -5,15 +5,13 @@ class checklistAmenment{
     //create an ammendment
     function newAmendment($checklistID)
     {
-        
         $db = new database();
         //get latest ammendment No
         $amendmendNo = $this->getLatestAmmendment($checklistID);
         $query = "INSERT INTO ChecklistAmendment VALUES (?,?,?)";
         $params = array("iis",$checklistID,($amendmendNo+1),date("Y-m-d H:i"));
         $result = $db->exQ($query,$params);
-        return $result;
-        
+        return $result; 
     }
 
     function getLatestAmmendment($checklistID)
@@ -26,14 +24,9 @@ class checklistAmenment{
         $result = $query->get_result();
         $row = $result->fetch_assoc();
         if($row['amendNo'])
-        {
             return $row['amendNo'];
-
-        }
-        else
-        {//return 0 if not available
+        else//return 0 if not available
             return 0;
-        }
     }
 
     //get all amendments belonging to a checklist

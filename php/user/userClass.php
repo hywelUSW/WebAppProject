@@ -108,8 +108,8 @@
             $query = $conn->prepare("UPDATE user SET email = ?, name = ?, password = ? WHERE email = ?");
             $query->bind_param("ssss",$email,$name,$newPassword,$email);
             $query->execute();
-            if($query->affected_rows==1)
-            {//Query successfull
+            if($query->affected_rows==1 || $query->errno=0)
+            {//Query successful
                 return true;
             }
             else {
@@ -126,7 +126,7 @@
             $query->bind_param("i",$UserID);
             $query->execute();
             if($query->affected_rows > 0)
-            { //query successfull
+            { //query successful
                 return true;
             }
             else{
